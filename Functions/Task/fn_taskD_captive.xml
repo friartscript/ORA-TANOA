@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keys>
+    <Key ID="STR_LL_Diary_Task00_Title">
+        <Original>OPORD: Operation Broken Cage (Hostage Rescue)</Original>
+        <English>OPORD: Operation Broken Cage (Hostage Rescue)</English>
+        <French>OPORD : Opération Broken Cage (Sauvetage d'Otage)</French>
+        <Spanish>OPORD: Operación Broken Cage (Rescate de Cautivo)</Spanish>
+        <German>OPORD: Operation Broken Cage (Gefangenenrettung)</German>
+        <Italian>OPORD: Operazione Broken Cage (Salvataggio Prigioniero)</Italian>
+        <Polish>OPORD: Operacja Broken Cage (Ratowanie Jeńca)</Polish>
+        <Portuguese>OPORD: Operação Broken Cage (Resgate de Refém)</Portuguese>
+        <Russian>Боевой приказ: Операция "Сломанная клетка" (Спасение заложника)</Russian>
+        <Czech>OPORD: Operace Broken Cage (Záchrana rukojmí)</Czech>
+        <Turkish>OPORD: Broken Cage Harekâtı (Tutsak Kurtarma)</Turkish>
+        <Korean>작전 명령: 브로큰 케이지 작전 (포로 구출)</Korean>
+        <Japanese>作戦命令: ブロークン・ケージ作戦（捕虜救出）</Japanese>
+        <Chinese>作战命令：破笼行动（营救人质）</Chinese>
+        <Chinesesimp>作战命令：破笼行动（营救人质）</Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Diary_Task00_Text">
+        <Original>A key undercover intelligence agent was captured during a clandestine counter-narcotics mission. Tanoa cartel hitmen are holding the agent in a fortified jungle compound. Infiltrate the sector quietly, eliminate the cartel sicarios, free the agent before execution, and extract via helicopter.</Original>
+        <French>Un agent de renseignement infiltré clé a été capturé lors d'une mission clandestine de lutte contre le narcotrafic. Les sicarios de la mafia de Tanoa le détiennent dans un camp retranché. Infiltrez le secteur en silence, éliminez les gardes du cartel, libérez l'agent avant son exécution et extrayez-le par vecteur héliporté.</French>
+        <English>A key undercover intelligence agent was captured during a clandestine counter-narcotics mission. Tanoa cartel hitmen are holding the agent in a fortified jungle compound. Infiltrate the sector quietly, eliminate the cartel sicarios, free the agent before execution, and extract via helicopter.</English>
+        <Spanish>Un agente de inteligencia encubierto fue capturado durante una misión antinarcóticos. Los sicarios del cartel de Tanoa lo retienen en un campamento fortificado. Infiltre el sector, elimine a los guardias y rescátelo antes de su ejecución.</Spanish>
+        <German>Ein verdeckter Geheimdienstagent wurde während einer Drogenbekämpfungsmission gefangen genommen. Sicarios des Tanoa-Kartells halten ihn gefangen. Infiltrieren Sie das Lager und befreien Sie ihn vor seiner Hinrichtung.</German>
+        <Italian>Un agente sotto copertura è stato catturato durante una missione contro il narcotraffico. I sicari del cartello di Tanoa lo tengono prigioniero. Infiltrati ed eliminalo prima dell'esecuzione.</Italian>
+        <Polish>Kluczowy agent wywiadu został schwytany podczas tajnej operacji antynarkotykowej. Płatni zabójcy kartelu przetrzymują go w ufortyfikowanym obozie. Infiltruj sektor i uwolnij agenta przed egzekucją.</Polish>
+        <Russian>Ключевой агент под прикрытием был захвачен во время операции по борьбе с наркокартелем Таноа. Сикарио удерживают его в укрепленном лагере. Проникните на объект и спасите агента до казни.</Russian>
+        <Turkish>Uyuşturucuyla mücadele operasyonunda sızma ajanı esir alındı. Tanoa karteli tetikçileri ajanı kampta tutuyor. Sessizce sızın ve infaz edilmeden önce ajanı kurtarın.</Turkish>
+        <Korean>마약 단속 작전 중 잠입 정보 요원이 체포되었습니다. 타노아 카르텔 조직원들이 요새화된 캠프에 그를 감금하고 있습니다. 침투하여 처형되기 전에 구출하십시오.</Korean>
+        <Japanese>麻薬密輸潜入任務中の重要情報員が拘束された。タノア・カルテルの構成員が要塞キャンプに監禁している。処刑される前に救出せよ。</Japanese>
+        <Chinese>一名卧底缉毒情报员被俘。塔诺阿卡特尔的杀手将他关押在设防营地中。在处决前潜入并成功营救该特工。</Chinese>
+        <Chinesesimp>一名卧底缉毒情报员被俘。塔诺阿卡特尔的杀手将他关押在设防营地中。在处决前潜入并成功营救该特工。</Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Task_00_Title">
+        <Original>Rescue Undercover Agent</Original>
+        <English>Rescue Undercover Agent</English>
+        <French>Libérer l'agent infiltré</French>
+        <Spanish>Rescatar al agente infiltrado</Spanish>
+        <German>Infiltrierten Agenten befreien</German>
+        <Italian>Salva l'agente infiltrato</Italian>
+        <Polish>Uwolnij zakonspirowanego agenta</Polish>
+        <Russian>Освободить агента под прикрытием</Russian>
+        <Turkish>Sızan Ajanı Kurtar</Turkish>
+        <Korean>잠입 요원 구출</Korean>
+        <Japanese>潜入捜査官を救出せよ</Japanese>
+        <Chinese>解救卧底特工</Chinese>
+        <Chinesesimp>解救卧底特工</Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Task_00_Desc">
+        <Original>Locate the cartel compound, eliminate the guards, and rescue the captured agent before execution.</Original>
+        <English>Locate the cartel compound, eliminate the guards, and rescue the captured agent before execution.</English>
+        <French>Localisez le camp du cartel, éliminez les gardes et sauvez l'agent captif avant son exécution.</French>
+        <Spanish>Localice el campamento del cartel, elimine a los guardias y rescate al agente cautivo.</Spanish>
+        <German>Lokalisieren Sie das Kartelllager, schalten Sie die Wachen aus und befreien Sie den Agenten.</German>
+        <Italian>Individua il campo del cartello, elimina le guardie e salva l'agente prima che venga giustiziato.</Italian>
+        <Polish>Zlokalizuj obóz kartelu, wyeliminuj strażników i uwolnij uwięzionego agenta.</Polish>
+        <Russian>Определите местоположение лагеря картеля, устраните охрану и спасите пленного агента.</Russian>
+        <Turkish>Kartel kampını bulun, nöbetçileri etkisiz hale getirin ve infaz edilmeden önce esiri kurtarın.</Turkish>
+        <Korean>카르텔 캠프를 찾아 경비병을 제거하고 처형 전에 포로 요원을 구출하십시오.</Korean>
+        <Japanese>カルテルの拠点を特定し、警備兵を排除して処刑前に情報員を救出せよ。</Japanese>
+        <Chinese>定位卡特尔营地，消灭守卫并在处决前解救被俘特工。</Chinese>
+        <Chinesesimp>定位卡特尔营地，消灭守卫并在处决前解救被俘特工。</Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Task_00_Action">
+        <Original>Free captured agent</Original>
+        <English>Free captured agent</English>
+        <French>Libérer l'agent captif</French>
+        <Spanish>Liberar agente cautivo</Spanish>
+        <German>Gefangenen Agenten befreien</German>
+        <Italian>Libera l'agente prigioniero</Italian>
+        <Polish>Uwolnij pojmanego agenta</Polish>
+        <Russian>Освободить агента</Russian>
+        <Turkish>Esir ajanı serbest bırak</Turkish>
+        <Korean>포로 요원 구출</Korean>
+        <Japanese>拘束された情報員を解放</Japanese>
+        <Chinese>解救被俘情报员</Chinese>
+        <Chinesesimp>解救被俘情报员</Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Task_00_ExtractAction">
+        <Original>Extract captured agent</Original>
+        <English>Extract captured agent</English>
+        <French>Embarquer l'agent captif</French>
+        <Spanish>Embarcar agente cautivo</Spanish>
+        <German>Gefangenen Agenten einsteigen lassen</German>
+        <Italian>Imbarca l'agente</Italian>
+        <Polish>Zabierz agenta na pokład</Polish>
+        <Russian>Погрузить агента на борт</Russian>
+        <Turkish>Esir ajanı tahliye et</Turkish>
+        <Korean>포로 요원 탑승</Korean>
+        <Japanese>情報員を搭乗させる</Japanese>
+        <Chinese>登机撤离情报员</Chinese>
+        <Chinesesimp>登机撤离情报员</Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Task_00_Marker">
+        <Original>Captive Agent</Original>
+        <English>Captive Agent</English>
+        <French>Agent Captif</French>
+        <Spanish>Agente Cautivo</Spanish>
+        <German>Gefangener Agent</German>
+        <Italian>Agente Prigioniero</Italian>
+        <Polish>Pojmany Agent</Polish>
+        <Russian>Пленный агент</Russian>
+        <Turkish>Tutsak Ajan</Turkish>
+        <Korean>포로 요원</Korean>
+        <Japanese>拘束された情報員</Japanese>
+        <Chinese>被俘情报员</Chinese>
+        <Chinesesimp>被俘情报员</Chinesesimp>
+    </Key>
+</Keys>

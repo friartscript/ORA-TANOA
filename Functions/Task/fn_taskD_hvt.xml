@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keys>
+    <Key ID="STR_LL_Task_D_HVT_Title">
+        <Original>Eliminate cartel drug lord (HVT)</Original>
+        <English>Eliminate cartel drug lord (HVT)</English>
+        <French>Éliminer le baron du cartel (HVT)</French>
+        <Spanish>Eliminar al líder del cartel (HVT)</Spanish>
+        <German>Kartell-Drogenboss eliminieren (HVT)</German>
+        <Italian>Elimina il boss del cartello (HVT)</Italian>
+        <Polish>Wyeliminuj bossa kartelu (HVT)</Polish>
+        <Portuguese>Eliminar o barão do cartel (HVT)</Portuguese>
+        <Russian>Ликвидировать наркобарона картеля (HVT)</Russian>
+        <Czech>Eliminovat drogového bosse kartelu (HVT)</Czech>
+        <Korean>카르텔 마약왕 제거 (HVT)</Korean>
+        <Japanese>カルテルの麻薬王を排除 (HVT)</Japanese>
+        <Chinese>消除卡特爾毒梟 (HVT)</Chinese>
+        <Chinesesimp>消除卡特尔毒枭 (HVT)</Chinesesimp>
+        <Turkish>Kartel Uyuşturucu Baronunu Etkisiz Hale Getir (HVT)</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_D_HVT_Desc">
+        <Original>Locate and eliminate the cartel drug lord operating in the Tanoa sector.</Original>
+        <English>Locate and eliminate the cartel drug lord operating in the Tanoa sector.</English>
+        <French>Localisez et éliminez le baron du cartel de Tanoa opérant dans le secteur.</French>
+        <Spanish>Localice y elimine al líder del cartel que opera en el sector de Tanoa.</Spanish>
+        <German>Lokalisieren und eliminieren Sie den im Tanoa-Sektor operierenden Kartell-Drogenboss.</German>
+        <Italian>Localizza ed elimina il boss del cartello operativo nel settore di Tanoa.</Italian>
+        <Polish>Zlokalizuj i wyeliminuj bossa kartelu działającego w sektorze Tanoa.</Polish>
+        <Portuguese>Localize e elimine o barão do cartel a operar no sector de Tanoa.</Portuguese>
+        <Russian>Обнаружить и ликвидировать наркобарона картеля, действующего в секторе Таноа.</Russian>
+        <Czech>Lokalizujte a eliminujte drogového bosse kartelu působícího v sektoru Tanoa.</Czech>
+        <Korean>타노아 구역에서 활동 중인 카르텔 마약왕을 위치 추적하고 제거하십시오.</Korean>
+        <Japanese>タノア・セクター内で活動中のカルテル麻薬王を特定し、排除せよ。</Japanese>
+        <Chinese>找到並消除在塔諾阿區域活動的卡特爾毒梟。</Chinese>
+        <Chinesesimp>找到并消除在塔诺阿区域活动的卡特尔毒枭。</Chinesesimp>
+        <Turkish>Tanoa sektöründe faaliyet gösteren kartel uyuşturucu baronunu tespit edin ve etkisiz hale getirin.</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_D_HVT_Marker">
+        <Original>HVT Target</Original>
+        <English>HVT Target</English>
+        <French>Cible HVT</French>
+        <Spanish>Objetivo HVT</Spanish>
+        <German>HVT-Ziel</German>
+        <Italian>Obiettivo HVT</Italian>
+        <Polish>Cel HVT</Polish>
+        <Portuguese>Alvo HVT</Portuguese>
+        <Russian>Цель HVT</Russian>
+        <Czech>Cíl HVT</Czech>
+        <Korean>HVT 표적</Korean>
+        <Japanese>HVTターゲット</Japanese>
+        <Chinese>HVT 目標</Chinese>
+        <Chinesesimp>HVT 目标</Chinesesimp>
+        <Turkish>HVT Hedefi</Turkish>
+    </Key>
+</Keys>

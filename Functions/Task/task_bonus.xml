@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keys>
+    <Key ID="STR_LL_Radio_Emergency_Call">
+        <Original>Vous etes appele a une mission d'urgence !</Original>
+        <English>You are called to an emergency mission!</English>
+        <French>Vous êtes appelé à une mission d'urgence !</French>
+        <Spanish>¡Ha sido llamado a una misión de emergencia!</Spanish>
+        <Italian>Siete chiamati per una missione di emergenza!</Italian>
+        <German>Sie wurden zu einem Noteinsatz gerufen!</German>
+        <Polish>Zostałeś wezwany na misję ratunkową!</Polish>
+        <Russian>Вас вызывают на экстренное задание!</Russian>
+        <Turkish>Acil bir göreve çağrıldınız!</Turkish>
+        <Korean>긴급 임무에 호출되었습니다!</Korean>
+        <Japanese>緊急任務が発令された！</Japanese>
+        <Chinese>您已被指派执行紧急任务！</Chinese>
+    </Key>
+    <Key ID="STR_LL_Task_Bonus_Move_Title">
+        <Original>Se rendre sur la zone d'urgence</Original>
+        <English>Proceed to Emergency Zone</English>
+        <French>Se rendre sur la zone d'urgence</French>
+        <Spanish>Dirigirse a la zona de emergencia</Spanish>
+        <Italian>Raggiungere la zona di emergenza</Italian>
+        <German>Zum Noteinsatzort vorrücken</German>
+        <Polish>Dotrzyj do strefy awaryjnej</Polish>
+        <Russian>Выдвигайтесь в зону чрезвычайной ситуации</Russian>
+        <Turkish>Acil durum bölgesine intikal edin</Turkish>
+        <Korean>긴급 구역으로 이동</Korean>
+        <Japanese>緊急エリアへ移動</Japanese>
+        <Chinese>前往紧急行动区域</Chinese>
+    </Key>
+    <Key ID="STR_LL_Task_Bonus_Move_Desc">
+        <Original>Le QG signale une situation critique dans un autre secteur. Redeployez votre escouade vers la nouvelle zone d'operation (perimetre de 500m). Utilisez le soutien helicoptere pour vous ravitailler ou faire larguer un vehicule.</Original>
+        <English>HQ reports a critical situation in another sector. Redeploy your squad to the new operational area (500m perimeter). Use helicopter support to resupply or call for a vehicle drop.</English>
+        <French>Le QG signale une situation critique dans un autre secteur. Redéployez votre escouade vers la nouvelle zone d'opération (périmètre de 500m). Utilisez le soutien hélicoptère pour vous ravitailler ou faire larguer un véhicule.</French>
+        <Spanish>El cuartel general informa de una situación crítica en otro sector. Redespliegue su escuadrón a la nueva zona operativa (perímetro de 500 m). Utilice el apoyo de helicópteros para reabastecerse o solicitar el lanzamiento de un vehículo.</Spanish>
+        <Italian>Il comando segnala una situazione critica in un altro settore. Ridistribuite la squadra nella nuova area operativa (perimetro di 500m). Utilizzate il supporto dell'elicottero per rifornirvi o richiedere un veicolo.</Italian>
+        <German>Das Hauptquartier meldet eine kritische Lage in einem anderen Sektor. Verlegen Sie Ihren Trupp in das neue Einsatzgebiet (500m Umkreis). Nutzen Sie den Hubschraubersupport für Nachschub oder Fahrzeugabwurf.</German>
+        <Polish>Dowództwo zgłasza krytyczną sytuację w innym sektorze. Przegrupuj drużynę do nowej strefy operacyjnej (promień 500m). Użyj wsparcia śmigłowca, aby uzupełnić zapasy lub zrzucić pojazd.</Polish>
+        <Russian>Штаб сообщает о критической ситуации в другом секторе. Передислоцируйте отделение в новую зону операций (периметр 500 м). Используйте поддержку вертолета для пополнения запасов или сброса техники.</Russian>
+        <Turkish>Karargah başka bir sektörde kritik bir durum bildiriyor. Manganızı yeni operasyon alanına (500m çevre) intikal ettirin. İkmal veya araç indirme için helikopter desteğini kullanın.</Turkish>
+        <Korean>사령부에서 다른 구역의 위기 상황을 보고했습니다. 새 작전 구역(반경 500m)으로 분대를 재배치하십시오. 헬리콥터 지원을 사용하여 보급하거나 차량을 공수받으십시오.</Korean>
+        <Japanese>司令部が別セクターでの危機的状況を報告。分隊を新たな作戦地域（500m圏内）へ再展開せよ。補給や車両投下要請にはヘリ支援を活用せよ。</Japanese>
+        <Chinese>指挥部报告另一扇区发生紧急状况。将您的小队重新部署到新的行动区域（500米警戒圈）。利用直升机支援进行补给或空投载具。</Chinese>
+    </Key>
+    <Key ID="STR_LL_Task_Bonus_Move_Marker">
+        <Original>Urgence</Original>
+        <English>Emergency</English>
+        <French>Urgence</French>
+        <Spanish>Emergencia</Spanish>
+        <Italian>Emergenza</Italian>
+        <German>Notfall</German>
+        <Polish>Nagły wypadek</Polish>
+        <Russian>Срочно</Russian>
+        <Turkish>Acil</Turkish>
+        <Korean>긴급</Korean>
+        <Japanese>緊急</Japanese>
+        <Chinese>紧急</Chinese>
+    </Key>
+</Keys>

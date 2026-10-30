@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keys>
+    <Key ID="STR_LL_Task_D_Transmission_Title">
+        <Original>Destroy cartel radio relays</Original>
+        <English>Destroy cartel radio relays</English>
+        <French>Détruire les relais radio du cartel</French>
+        <Spanish>Destruir las estaciones de radio del cartel</Spanish>
+        <German>Kartell-Funkrelais zerstören</German>
+        <Italian>Distruggi i ponti radio del cartello</Italian>
+        <Polish>Zniszcz przekaźniki radiowe kartelu</Polish>
+        <Portuguese>Destruir estações de rádio do cartel</Portuguese>
+        <Russian>Уничтожить радиоретрансляторы картеля</Russian>
+        <Czech>Zničit rádiové stanice kartelu</Czech>
+        <Korean>카르텔 무전 중계소 파괴</Korean>
+        <Japanese>カルテル無線中継局の破壊</Japanese>
+        <Chinese>摧毀卡特爾無線電中繼站</Chinese>
+        <Chinesesimp>摧毁卡特尔无线电中继站</Chinesesimp>
+        <Turkish>Kartel Radyo Rölelerini Yok Et</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_D_Transmission_Desc">
+        <Original>Cartel operatives are using scattered radio relays to coordinate their smuggling routes. Locate and destroy all of them.</Original>
+        <English>Cartel operatives are using scattered radio relays to coordinate their smuggling routes. Locate and destroy all of them.</English>
+        <French>Les trafiquants du cartel utilisent des relais radio dispersés pour coordonner leurs convois. Localisez-les et détruisez-les tous.</French>
+        <Spanish>Los operativos del cartel usan estaciones de radio dispersas para coordinar el contrabando. Localícelas y destrúyalas todas.</Spanish>
+        <German>Das Kartell nutzt verstreute Funkrelais zur Koordination des Schmuggels. Lokalisieren und zerstören Sie alle.</German>
+        <Italian>Gli operativi del cartello usano stazioni radio sparse per coordinare il contrabbando. Trovali e distruggili tutti.</Italian>
+        <Polish>Przemytnicy kartelu używają rozproszonych przekaźników radiowych. Zlokalizuj je i zniszcz wszystkie.</Polish>
+        <Portuguese>Os membros do cartel usam estações de rádio para coordenar o contrabando. Localize e destrua todas.</Portuguese>
+        <Russian>Боевики картеля используют радиоретрансляторы для координации контрабанды. Найдите и уничтожьте их все.</Russian>
+        <Czech>Příslušníci kartelu používají radiostanice ke koordinaci pašování. Najděte a zničte je všechny.</Czech>
+        <Korean>카르텔 조직원들이 밀수 경로를 조정하기 위해 라디오 중계소를 사용하고 있습니다. 모두 찾아 파괴하십시오.</Korean>
+        <Japanese>カルテル工作員は密輸経路の調整に無線中継局を使用している。すべて発見し破壊せよ。</Japanese>
+        <Chinese>卡特尔武装分子利用分散的无线电中继站协调走私路线。找到并摧毁所有中继站。</Chinese>
+        <Chinesesimp>卡特尔武装分子利用分散的无线电中继站协调走私路线。找到并摧毁所有中继站。</Chinesesimp>
+        <Turkish>Kartel üyeleri kaçakçılık rotalarını koordine etmek için radyo rölelerini kullanıyor. Hepsini bulun ve imha edin.</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_D_Transmission_Marker">
+        <Original>Radio Stations</Original>
+        <English>Radio Stations</English>
+        <French>Stations Radio</French>
+        <Spanish>Estaciones de radio</Spanish>
+        <German>Radiostationen</German>
+        <Italian>Stazioni radio</Italian>
+        <Polish>Stacje radiowe</Polish>
+        <Portuguese>Estações de Rádio</Portuguese>
+        <Russian>Радиостанции</Russian>
+        <Czech>Rádiové stanice</Czech>
+        <Korean>라디오 방송국</Korean>
+        <Japanese>ラジオ局</Japanese>
+        <Chinese>广播站</Chinese>
+        <Chinesesimp>广播站</Chinesesimp>
+        <Turkish>Radyo İstasyonları</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_D_Transmission_Sub_Title">
+        <Original>Destroy Station</Original>
+        <English>Destroy Station</English>
+        <French>Détruire la station</French>
+        <Spanish>Destruir estación</Spanish>
+        <German>Station zerstören</German>
+        <Italian>Distruggi stazione</Italian>
+        <Polish>Zniszcz stację</Polish>
+        <Portuguese>Destruir Estação</Portuguese>
+        <Russian>Уничтожить станцию</Russian>
+        <Czech>Zničit stanici</Czech>
+        <Korean>방송국 파괴</Korean>
+        <Japanese>局を破壊する</Japanese>
+        <Chinese>摧毁站</Chinese>
+        <Chinesesimp>摧毁站</Chinesesimp>
+        <Turkish>İstasyonu Yık</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_D_Transmission_Sub_Desc">
+        <Original>Plant an explosive charge on the radio terminal.</Original>
+        <English>Plant an explosive charge on the radio terminal.</English>
+        <French>Placez une charge explosive sur le terminal radio.</French>
+        <Spanish>Coloque una carga explosiva en el terminal de radio.</Spanish>
+        <German>Bringen Sie eine Sprengladung am Funkterminal an.</German>
+        <Italian>Piazza una carica esplosiva sul terminale radio.</Italian>
+        <Polish>Podłóż ładunek wybuchowy na terminalu radiowym.</Polish>
+        <Portuguese>Plante uma carga explosiva no terminal de rádio.</Portuguese>
+        <Russian>Установите взрывчатку на радиотерминал.</Russian>
+        <Czech>Umístěte výbušninu na rádiový terminál.</Czech>
+        <Korean>무전기 단말기에 폭발물을 설치하십시오.</Korean>
+        <Japanese>無線端末に爆薬を仕掛けろ。</Japanese>
+        <Chinese>在无线电终端上放置炸药。</Chinese>
+        <Chinesesimp>在无线电终端上放置炸药。</Chinesesimp>
+        <Turkish>Radyo terminaline patlayıcı yerleştirin.</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_D_Transmission_Sub_Marker">
+        <Original>Station Target</Original>
+        <English>Station Target</English>
+        <French>Cible Station</French>
+        <Spanish>Objetivo de estación</Spanish>
+        <German>Stationsziel</German>
+        <Italian>Obiettivo Stazione</Italian>
+        <Polish>Cel Stacji</Polish>
+        <Portuguese>Alvo da Estação</Portuguese>
+        <Russian>Цель: Станция</Russian>
+        <Czech>Cíl stanice</Czech>
+        <Korean>방송국 표적</Korean>
+        <Japanese>局のターゲット</Japanese>
+        <Chinese>站目标</Chinese>
+        <Chinesesimp>站目标</Chinesesimp>
+        <Turkish>İstasyon Hedefi</Turkish>
+    </Key>
+    <Key ID="STR_LL_Task_D_Transmission_Action">
+        <Original>Plant Explosives</Original>
+        <English>Plant Explosives</English>
+        <French>Poser des explosifs</French>
+        <Spanish>Plantar explosivos</Spanish>
+        <German>Sprengstoff anbringen</German>
+        <Italian>Piazza esplosivi</Italian>
+        <Polish>Podłóż ładunki</Polish>
+        <Portuguese>Plantar Explosivos</Portuguese>
+        <Russian>Установить взрывчатку</Russian>
+        <Czech>Položit výbušniny</Czech>
+        <Korean>폭발물 설치</Korean>
+        <Japanese>爆薬を仕掛ける</Japanese>
+        <Chinese>放置炸药</Chinese>
+        <Chinesesimp>放置炸药</Chinesesimp>
+        <Turkish>Patlayıcıları Yerleştir</Turkish>
+    </Key>
+    <Key ID="STR_LL_Diary_TaskD_Transmission_Title">
+        <Original>Intel: Radio Transmissions</Original>
+        <English>Intel: Radio Transmissions</English>
+        <French>Renseignement : Transmissions Radio</French>
+        <Spanish>Inteligencia: Transmisiones de radio</Spanish>
+        <German>Geheimdienst: Funkübertragungen</German>
+        <Italian>Intelligence: Trasmissioni Radio</Italian>
+        <Polish>Wywiad: Transmisje Radiowe</Polish>
+        <Portuguese>Informações: Transmissões de Rádio</Portuguese>
+        <Russian>Разведданные: Радиопередачи</Russian>
+        <Czech>Zpravodajství: Rádiové přenosy</Czech>
+        <Korean>정보: 무선 전송</Korean>
+        <Japanese>インテル: 無線通信</Japanese>
+        <Chinese>情报：无线电传输</Chinese>
+        <Chinesesimp>情报：无线电传输</Chinesesimp>
+        <Turkish>İstihbarat: Radyo İletimleri</Turkish>
+    </Key>
+    <Key ID="STR_LL_Diary_TaskD_Transmission_Text">
+        <Original>HQ has intercepted encoded cartel transmissions originating from clandestine terminals in the sector. These stations are critical to their smuggling coordination. We must disable their communication network by destroying all identified terminals.</Original>
+        <English>HQ has intercepted encoded cartel transmissions originating from clandestine terminals in the sector. These stations are critical to their smuggling coordination. We must disable their communication network by destroying all identified terminals.</English>
+        <French>Le QG a intercepté des transmissions cryptées du cartel provenant de plusieurs terminaux clandestins dans le secteur. Ces stations sont essentielles pour coordonner leurs convois et go-fasts. Nous devons anéantir leur réseau de communication en détruisant tous les terminaux identifiés.</French>
+        <Spanish>El cuartel general ha interceptado transmisiones codificadas del cartel procedentes de terminales clandestinos en el sector. Estas estaciones son fundamentales para coordinar su contrabando. Debemos desactivar su red de comunicación destruyendo todos los terminales identificados.</Spanish>
+        <German>Das HQ hat verschlüsselte Kartell-Übertragungen abgefangen. Diese Stationen sind entscheidend für ihren Schmuggel. Zerstören Sie alle identifizierten Terminals.</German>
+        <Italian>Il QG ha intercettato trasmissioni cifrate del cartello. Queste stazioni sono fondamentali per il loro contrabbando. Distruggi tutti i terminali identificati.</Italian>
+        <Polish>Dowództwo przechwyciło zakodowane transmisje kartelu. Stacje te mają kluczowe znaczenie dla ich przemytu. Zniszcz wszystkie zidentyfikowane terminale.</Polish>
+        <Portuguese>O QG intercetou transmissões encriptadas do cartel. Estas estações são críticas para o contrabando. Destrua todos os terminais identificados.</Portuguese>
+        <Russian>Штаб перехватил зашифрованные передачи картеля. Эти станции критически важны для контрабанды. Уничтожьте все выявленные терминалы.</Russian>
+        <Czech>Velitelství zachytilo šifrované vysílání kartelu. Tyto stanice jsou klíčové pro pašování. Zničte všechny identifikované terminály.</Czech>
+        <Korean>본부에서 카르텔의 암호화된 밀수 통신을 가로챘습니다. 확인된 모든 단말기를 완전히 파괴하여 통신망을 무력화하십시오.</Korean>
+        <Japanese>司令部はカルテルの暗号化された密輸通信を傍受した。特定されたすべての端末を完全に破壊せよ。</Japanese>
+        <Chinese>总部拦截了该区域内卡特尔走私网络的加密通信信号。彻底摧毁所有确定的终端以瘫痪其通信。</Chinese>
+        <Chinesesimp>总部拦截了该区域内卡特尔走私网络的加密通信信号。彻底摧毁所有确定的终端以瘫痪其通信。</Chinesesimp>
+        <Turkish>Karargah, kartelin şifreli kaçakçılık yayınlarını ele geçirdi. Tanımlanan tüm terminalleri tamamen imha edin.</Turkish>
+    </Key>
+</Keys>

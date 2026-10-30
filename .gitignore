@@ -1,0 +1,14 @@
+# OS & Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Arma 3 Backup & Logs
+*.bak
+*.log

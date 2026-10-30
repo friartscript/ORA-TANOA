@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keys>
+    <Key ID="STR_LL_Diary_Task08_Title">
+        <Original>OPORD: Destroy Heavy Technical &amp; Jammer</Original>
+        <English>OPORD: Destroy Heavy Technical &amp; Jammer</English>
+        <French>OPORD : Détruire le Technical Lourd et le Brouilleur</French>
+        <Spanish>OPORD: Destruir el Technical Pesado y el Inhibidor</Spanish>
+        <German>OPORD: Schweres Technical &amp; Störsender zerstören</German>
+        <Italian>OPORD: Distruggi il Technical Pesante e il Disturbatore</Italian>
+        <Polish>OPORD: Zniszcz ciężki technical i zagłuszacz</Polish>
+        <Portuguese>OPORD: Destruir o Technical Pesado e o Bloqueador</Portuguese>
+        <Russian>Боевой приказ: Уничтожить тяжелый пикап и глушитель</Russian>
+        <Czech>OPORD: Zničit těžký technical a rušičku</Czech>
+        <Turkish>OPORD: Ağır Silahlı Pikap ve Karıştırıcıyı Yok Et</Turkish>
+        <Korean>작전 명령: 중화기 테크니컬 및 교란기 파괴</Korean>
+        <Japanese>作戦命令: 重武装テクニカルとジャマーの破壊</Japanese>
+        <Chinese>作战命令：摧毁重型武装皮卡与干扰器</Chinese>
+        <Chinesesimp>作战命令：摧毁重型武装皮卡与干扰器</Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Diary_Task08_Text">
+        <Original>&lt;font color='#FF4444'&gt;HIGH RISK MISSION&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The Tanoa cartel has fortified a heavy anti-aircraft network and electronic jamming system. Allied air support is unavailable at the start of operations.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;ALLIED LOGISTICS FLIGHT:&lt;/font&gt;&lt;br/&gt;- A French RACS C-130J cargo flight will transit the airspace &lt;b&gt;between the 45th and 55th minute&lt;/b&gt;.&lt;br/&gt;- If the Tempest jammer and cartel heavy technicals are not neutralized before arrival, enemy fire will shoot down the cargo plane, causing mission failure.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;TACTICAL INFO:&lt;/font&gt;&lt;br/&gt;- &lt;font color='#FF8800'&gt;Drone Jammer (Position A):&lt;/font&gt; A Tempest jammer truck blocks tactical drone support.&lt;br/&gt;- &lt;font color='#FF8800'&gt;Heavy Cartel Technical (Position B, &gt;600m):&lt;/font&gt; A modified heavy pickup armed with twin 23mm autocannons and a rocket launcher denies helicopter flight corridors.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;RESOLUTION:&lt;/font&gt;&lt;br/&gt;- Destroying the Tempest jammer validates the primary objective, unlocks drone surveillance, and blinds cartel air defense radars.&lt;br/&gt;- Destroying the heavy technical unlocks CAS helicopter support.</Original>
+        <French>&lt;font color='#FF4444'&gt;MISSION À HAUT RISQUE&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Le cartel de Tanoa a mis en place un puissant réseau de brouillage et une défense antiaérienne mobile. Les soutiens aériens alliés sont indisponibles au début de l'opération.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;VOL LOGISTIQUE ALLIÉ :&lt;/font&gt;&lt;br/&gt;- Un avion cargo C-130J de la Légion RACS doit survoler l'espace aérien &lt;b&gt;entre la 45ème et la 55ème minute&lt;/b&gt;.&lt;br/&gt;- Si le brouilleur Tempest et les technicals du cartel ne sont pas neutralisés avant son arrivée, l'avion cargo sera abattu, entraînant l'échec de la mission.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;INFORMATIONS TACTIQUES :&lt;/font&gt;&lt;br/&gt;- &lt;font color='#FF8800'&gt;Brouilleur Drone (Position A) :&lt;/font&gt; Un camion Tempest (Dispositif) bloque l'utilisation du drone.&lt;br/&gt;- &lt;font color='#FF8800'&gt;Technical Armé Lourd (Position B, &gt;600m) :&lt;/font&gt; Un pickup lourd militarisé équipé d'un bitube antiaérien et d'un lance-roquettes bloque les hélicoptères.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;RÉSOLUTION :&lt;/font&gt;&lt;br/&gt;- La destruction du Tempest valide la tâche principale, débloque le drone et aveugle la défense antiaérienne du cartel.&lt;br/&gt;- La destruction du technical lourd débloque le soutien hélicoptère.</French>
+        <English>&lt;font color='#FF4444'&gt;HIGH RISK MISSION&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The Tanoa cartel has fortified a heavy anti-aircraft network and electronic jamming system. Allied air support is unavailable at the start of operations.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;ALLIED LOGISTICS FLIGHT:&lt;/font&gt;&lt;br/&gt;- A French RACS C-130J cargo flight will transit the airspace &lt;b&gt;between the 45th and 55th minute&lt;/b&gt;.&lt;br/&gt;- If the Tempest jammer and cartel heavy technicals are not neutralized before arrival, enemy fire will shoot down the cargo plane, causing mission failure.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;TACTICAL INFO:&lt;/font&gt;&lt;br/&gt;- &lt;font color='#FF8800'&gt;Drone Jammer (Position A):&lt;/font&gt; A Tempest jammer truck blocks tactical drone support.&lt;br/&gt;- &lt;font color='#FF8800'&gt;Heavy Cartel Technical (Position B, &gt;600m):&lt;/font&gt; A modified heavy pickup armed with twin 23mm autocannons and a rocket launcher denies helicopter flight corridors.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;RESOLUTION:&lt;/font&gt;&lt;br/&gt;- Destroying the Tempest jammer validates the primary objective, unlocks drone surveillance, and blinds cartel air defense radars.&lt;br/&gt;- Destroying the heavy technical unlocks CAS helicopter support.</English>
+        <Spanish>&lt;font color='#FF4444'&gt;MISIÓN DE ALTO RIESGO&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;El cartel de Tanoa ha desplegado un sistema de interferencias y defensa antiaérea móvil. Destruya el camión inhibidor Tempest y el pickup pesado artillado para asegurar el vuelo logístico aliado.</Spanish>
+        <German>&lt;font color='#FF4444'&gt;HOCHRISIKO-EINSATZ&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Das Tanoa-Kartell hat ein Störsystem und schwere bewaffnete Pickups postiert. Zerstören Sie den Tempest-Störsender und das schwere Technical, um den alliierten Frachtflug zu sichern.</German>
+        <Italian>&lt;font color='#FF4444'&gt;MISSIONE AD ALTO RISCHIO&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Il cartello di Tanoa ha schierato disturbatori e pickup pesanti armati. Neutralizza il camion Tempest e il technical per proteggere il volo cargo alleato.</Italian>
+        <Polish>&lt;font color='#FF4444'&gt;MISJA WYSOKIEGO RYZYKA&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Kartel z Tanoa rozmieścił system zakłócania i ciężkie uzbrojone technicale. Zniszcz pojazd Tempest oraz uzbrojony pickup, aby zabezpieczyć sojuszniczy przelot logistyczny.</Polish>
+        <Russian>&lt;font color='#FF4444'&gt;ОПАСНАЯ МИССИЯ&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Картель Таноа развернул систему глушения и тяжелые пикапы с зенитными орудиями. Уничтожьте грузовик Tempest и тяжелый technical для защиты транспортного самолета союзников.</Russian>
+        <Turkish>&lt;font color='#FF4444'&gt;YÜKSEK RİSKLİ GÖREV&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Tanoa karteli karıştırma sistemi ve ağır silahlı pikaplar konuşlandırdı. Müttefik kargo uçağını korumak için Tempest aracını ve teknik aracı yok edin.</Turkish>
+        <Korean>&lt;font color='#FF4444'&gt;고위험 임무&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;타노아 카르텔이 전파 방해 장치와 중화기 무장 테크니컬을 배치했습니다. 아군 수송기 통과를 위해 템페스트 차량과 테크니컬을 파괴하십시오.</Korean>
+        <Japanese>&lt;font color='#FF4444'&gt;高リスク任務&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;タノア・カルテルは電子妨害装置と重武装テクニカルを配備しました。味方輸送機の安全のため、テンペスト車両と武装ピックアップを破壊せよ。</Japanese>
+        <Chinese>&lt;font color='#FF4444'&gt;高风险任务&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;塔诺阿卡特尔部署了电子干扰系统与重武装皮卡。摧毁神风干扰车与重型武装皮卡，确保盟军运输机安全飞越。</Chinese>
+        <Chinesesimp>&lt;font color='#FF4444'&gt;高风险任务&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;塔诺阿卡特尔部署了电子干扰系统与重武装皮卡。摧毁神风干扰车与重型武装皮卡，确保盟军运输机安全飞越。</Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Task_08_Title">
+        <Original>Destroy Heavy Technical and Jammer</Original>
+        <English>Destroy Heavy Technical and Jammer</English>
+        <French>Détruire le Pickup d'appui lourd et le Brouilleur</French>
+        <Spanish>Destruir el Pickup de apoyo pesado y el Inhibidor</Spanish>
+        <German>Schweres Unterstützungs-Technical und Störsender zerstören</German>
+        <Italian>Distruggi il Pickup di supporto pesante e il Disturbatore</Italian>
+        <Polish>Zniszcz ciężki pickup wsparcia i zagłuszacz</Polish>
+        <Russian>Уничтожить тяжелый пикап огневой поддержки и глушитель</Russian>
+        <Turkish>Ağır Destek Pikabını ve Karıştırıcıyı Yok Et</Turkish>
+        <Korean>중화기 지원 테크니컬 및 교란기 파괴</Korean>
+        <Japanese>重火力支援テクニカルとジャマーを破壊</Japanese>
+        <Chinese>摧毁重火力支援皮卡与干扰器</Chinese>
+        <Chinesesimp>摧毁重火力支援皮卡与干扰器</Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Task_08_Desc">
+        <Original>Destroy the cartel Tempest jammer, the armed heavy technical, and the rocket launcher artillery.</Original>
+        <English>Destroy the cartel Tempest jammer, the armed heavy technical, and the rocket launcher artillery.</English>
+        <French>Détruisez le Tempest (brouilleur), le pickup armé lourd et le lance-roquettes du cartel.</French>
+        <Spanish>Destruye el Tempest (inhibidor), el pickup pesado artillado y el lanzacohetes del cartel.</Spanish>
+        <German>Zerstören Sie den Tempest-Störsender, das bewaffnete schwere Technical und die Raketenartillerie des Kartells.</German>
+        <Italian>Distruggi il Tempest (disturbatore), il pickup pesante armato e il lanciarazzi del cartello.</Italian>
+        <Polish>Zniszcz zagłuszacz Tempest, uzbrojony ciężki pickup i artylerię rakietową kartelu.</Polish>
+        <Russian>Уничтожьте глушитель Tempest, вооруженный тяжелый пикап и ракетную артиллерию картеля.</Russian>
+        <Turkish>Kartelin Tempest karıştırıcısını, silahlı ağır pikabını ve roketatar topçusunu yok edin.</Turkish>
+        <Korean>카르텔의 템페스트 교란기, 무장 중화기 테크니컬, 로켓포를 파괴하십시오.</Korean>
+        <Japanese>カルテルのテンペストジャマー、重武装テクニカル、ロケット砲兵を破壊せよ。</Japanese>
+        <Chinese>摧毁卡特尔神风干扰车、武装重型皮卡与火箭炮。</Chinese>
+        <Chinesesimp>摧毁卡特尔神风干扰车、武装重型皮卡与火箭炮。</Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Task_08_MarkerVehicles">
+        <Original>Heavy Technical - High Risk</Original>
+        <English>Heavy Technical - High Risk</English>
+        <French>Technical armé - Risque Élevé</French>
+        <Spanish>Technical artillado - Riesgo Alto</Spanish>
+        <German>Bewaffnetes Technical - Hohes Risiko</German>
+        <Italian>Technical armato - Rischio Elevato</Italian>
+        <Polish>Uzbrojony Technical - Wysokie Ryzyko</Polish>
+        <Russian>Вооруженный пикап - Высокий риск</Russian>
+        <Turkish>Silahlı Pikap - Yüksek Risk</Turkish>
+        <Korean>무장 테크니컬 - 높은 위험</Korean>
+        <Japanese>武装テクニカル - 高リスク</Japanese>
+        <Chinese>重武装皮卡 - 高风险</Chinese>
+        <Chinesesimp>重武装皮卡 - 高风险</Chinesesimp>
+    </Key>
+</Keys>

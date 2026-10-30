@@ -1,0 +1,213 @@
+briefingName = "OPERATION ROYAL ALLIANCE";
+onLoadName = "OPERATION ROYAL ALLIANCE";
+onLoadMission = "Tanoa — RACS Foreign Legion Narcotraffic Operations";
+author = "Friart Script";
+loadScreen = "loadScreen.jpg";
+overviewPicture = "overviewPicture.jpg";
+overviewText = "Tanoa — RACS Foreign Legion Narcotraffic Operations. Traque des cartels et sécurisation de l'archipel.";
+disabledAI = 0;
+
+#include "Dialogs\main_menu.hpp"
+#include "CfgSounds.hpp"
+
+class CfgFunctions
+{
+    class LL
+    {
+        tag = "LL";
+        recompile = 1;
+        class Spawn
+        {
+            file = "Functions\Spawn";
+            class spawn_main_menu {};
+        };
+        class Medical
+        {
+            file = "Functions\Medical";
+            class aiHealSelf {};
+        };
+        class Task
+        {
+            file = "Functions\Task";
+            class intro_01 {};
+            class intro_02 {};
+            class spawnStartArsenal {};
+            class initVehicleLoadout {};
+            class task_generator {};
+            class taskA {};
+            class taskB {};
+            class taskC {};
+            class taskCleanup {};
+            class taskD_captive {};
+            class taskD_hvt {};
+            class taskD_transmission {};
+            class taskD_chemical {};
+            class taskD_documents {};
+            class taskD_tigris {};
+            class taskBonus {};
+            class extraction {};
+            class extraction_secure {};
+        };
+        class Environment
+        {
+            file = "Functions\Environment";
+            class randomWeather {};
+            class initSkills {};
+            class doorSecurity {};
+            class playEzan {};
+            class preventWater {};
+        };
+        class Team
+        {
+            file = "Functions\Team";
+            class applyIdentity {};
+            class randomizeLoadout {};
+            class switchToAI {};
+            class badgeManager {};
+            class identityManager {};
+            class applyRoE {};
+            class addRoeActions {};
+            class reloadWeapons {};
+        };
+        class Civilian
+        {
+            file = "Functions\Civilian";
+            class ambientCivilians {};
+            class ambientSheep {};
+            class initTakistaniDB {};
+            class applyTakistaniIdentity {};
+            class spawnPresence {};
+            class secureOpforLanguage {};
+            class rebelAmbush {};
+        };
+        class Player
+        {
+            file = "Functions\Player";
+            class initIdentity {};
+            class applyLoadout {};
+            class initLoadout {};
+            class addHealAction {};
+
+            class initLocal {};
+        };
+        class Briefing
+        {
+            file = "Functions\Briefing";
+            class initBriefing {};
+            class initContext {};
+        };
+        class Helicopter
+        {
+            file = "Functions\Helicopter";
+            class heliManager {};
+            class heliDispatch {};
+            class initSupport {};
+            class addResupplyAction {};
+        };
+        class Drone
+        {
+            file = "Functions\Drone";
+            class droneManager {};
+            class droneDispatch {};
+        };
+        class UI
+        {
+            file = "Functions\UI";
+            class radioMessage {};
+        };
+    };
+};
+
+class CfgCommunicationMenu
+{
+    class Support_Ammo
+    {
+        text = "$STR_LL_Support_Ammo";
+        submenu = "";
+        expression = "['LIVRAISON', _pos, _caller, 2] call LL_fnc_heliDispatch;";
+        icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa";
+        cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
+        enable = "1";
+        removeAfterExpressionCall = 0;
+    };
+    class Support_Vehicle
+    {
+        text = "$STR_LL_Support_Vehicle";
+        submenu = "";
+        expression = "['VEHICULE', _pos, _caller, 2] call LL_fnc_heliDispatch;";
+        icon = "\a3\ui_f\data\igui\cfg\simpletasks\types\car_ca.paa";
+        cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
+        enable = "1";
+        removeAfterExpressionCall = 0;
+    };
+    class Support_Extract
+    {
+        text = "$STR_LL_Support_Extract";
+        submenu = "";
+        expression = "['EMBARQUEMENT', _pos, _caller, 3] call LL_fnc_heliDispatch;";
+        icon = "\a3\ui_f\data\igui\cfg\simpletasks\types\getin_ca.paa";
+        cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
+        enable = "1";
+        removeAfterExpressionCall = 0;
+    };
+    class Support_CAS
+    {
+        text = "$STR_LL_Support_CAS";
+        submenu = "";
+        expression = "['CAS', _pos, _caller, 4] call LL_fnc_heliDispatch;";
+        icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\casheli_ca.paa";
+        cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
+        enable = "1";
+        removeAfterExpressionCall = 0;
+    };
+    class Support_Drone
+    {
+        text = "$STR_Drone_Surveillance";
+        submenu = "";
+        expression = "['SURVEILLANCE', _pos, _caller] call LL_fnc_droneDispatch;";
+        icon = "\a3\ui_f\data\igui\cfg\simpletasks\types\radio_ca.paa";
+        cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
+        enable = "1";
+        removeAfterExpressionCall = 0;
+    };
+};
+
+class CfgMusic
+{
+    tracks[] = {};
+
+    class Legion_001
+    {
+        name = "Legion 001 - Marche";
+        sound[] = {"Music\legion_001.ogg", db+3, 1.0};
+        titles[] = {0, ""};
+    };
+
+    class Legion_002
+    {
+        name = "Legion 002 - Extraction";
+        sound[] = {"Music\legion_002.ogg", db+3, 1.0};
+        titles[] = {0, ""};
+    };
+
+    class Music_Intro: Legion_001 {};
+    class Music_Legion_01: Legion_001 {};
+    class Music_Track_01: Legion_001 {};
+    class Music_Rubab_01: Legion_001 {};
+    class Rubab_01: Legion_001 {};
+    class Music_Rubab_02: Legion_002 {};
+    class Rubab_02: Legion_002 {};
+    class Music_Rubab_Full: Legion_002 {};
+    class Rubab_Full: Legion_002 {};
+};
+
+class CfgUnitInsignia
+{
+    class RACS_Badge
+    {
+        displayName = "RACS Foreign Legion";
+        author = "Friart Script";
+        texture = "Images\racs_badge_backup_user-raliser-le-meme-drapeau-a-lidentique-mais-version.jpg";
+        textureVehicle = "";
+    };
+};

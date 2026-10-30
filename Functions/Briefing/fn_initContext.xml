@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keys>
+    <Key ID="STR_LL_Context_Tab">
+        <Original>Context</Original>
+        <French>Contexte de Mission</French>
+        <English>Context</English>
+        <Spanish>Contexto de Misión</Spanish>
+        <Italian>Contesto Missione</Italian>
+        <German>Missionskontext</German>
+        <Polish>Kontekst Misji</Polish>
+        <Russian>Контекст миссии</Russian>
+        <Turkish>Görev Bağlamı</Turkish>
+        <Japanese>ミッションの背景</Japanese>
+        <Korean>임무 배경</Korean>
+        <Chinese>任务背景</Chinese>
+    </Key>
+
+    <Key ID="STR_LL_Context_1_Title">
+        <Original>1. Geopolitical Context (Cartel War)</Original>
+        <French>1. Contexte Géopolitique (Guerre des Cartels)</French>
+        <English>1. Geopolitical Context (Cartel War)</English>
+        <Spanish>1. Contexto Geopolítico (Guerra de Carteles)</Spanish>
+        <Italian>1. Contesto Geopolitico (Guerra dei Cartelli)</Italian>
+        <German>1. Geopolitischer Kontext (Kartellkrieg)</German>
+        <Polish>1. Kontekst geopolityczny (Wojna karteli)</Polish>
+        <Russian>1. Геополитический контекст (Война картелей)</Russian>
+        <Turkish>1. Jeopolitik Bağlam (Kartel Savaşı)</Turkish>
+        <Japanese>1. 地政学的背景（カルテル戦争）</Japanese>
+        <Korean>1. 지정학적 배경 (카르텔 전쟁)</Korean>
+        <Chinese>1. 地缘政治背景（卡特尔战争）</Chinese>
+    </Key>
+    <Key ID="STR_LL_Context_1_Text">
+        <Original>
+&lt;font color='#FFA500' size='16'&gt;1. Global Context (War Against the Tanoa Mafia)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The &lt;font color='#FFD700'&gt;Tanoa archipelago&lt;/font&gt; has fallen under the grip of a heavily armed &lt;font color='#FFD700'&gt;mafia and narco-terrorist syndicate&lt;/font&gt;. This cartel controls drug refining, maritime smuggling, and heavy weapons trafficking, becoming a &lt;font color='#FF0000'&gt;major international danger&lt;/font&gt; to global security.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;The RACS Foreign Legion (French Branch)&lt;/font&gt;&lt;br/&gt;With local forces crippled by corruption and outgunned, Allied High Command has deployed the &lt;font color='#00FF00'&gt;French branch of the RACS Foreign Legion&lt;/font&gt;.&lt;br/&gt;&lt;br/&gt;This elite force of seasoned operators and international volunteers is tasked with striking without delay to crush this criminal syndicate, eliminate its kingpins, and restore security across the archipelago.
+        </Original>
+        <French>
+&lt;font color='#FFA500' size='16'&gt;1. Contexte Global (Guerre contre la Mafia de Tanoa)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;L'archipel de &lt;font color='#FFD700'&gt;Tanoa&lt;/font&gt; est tombé sous la coupe d'une &lt;font color='#FFD700'&gt;organisation mafieuse et narco-terroriste&lt;/font&gt; surarmée. Ce cartel contrôle le raffinage des stupéfiants, la contrebande maritime et le trafic d'armes lourdes, devenant un &lt;font color='#FF0000'&gt;danger international majeur&lt;/font&gt; pour la sécurité mondiale.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;La Légion Étrangère du RACS (Branche Française)&lt;/font&gt;&lt;br/&gt;Face à la corruption et à l'impuissance des forces locales, le commandement allié a déployé la &lt;font color='#00FF00'&gt;branche française de la Légion Étrangère du RACS&lt;/font&gt;.&lt;br/&gt;&lt;br/&gt;Cette force d'élite d'opérateurs chevronnés et volontaires internationaux a reçu l'ordre d'intervenir sans délai pour anéantir ce syndicat criminel, éliminer ses barons et restaurer la sécurité dans l'archipel.
+        </French>
+        <English>
+&lt;font color='#FFA500' size='16'&gt;1. Global Context (War Against the Tanoa Mafia)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The &lt;font color='#FFD700'&gt;Tanoa archipelago&lt;/font&gt; has fallen under the grip of a heavily armed &lt;font color='#FFD700'&gt;mafia and narco-terrorist syndicate&lt;/font&gt;. This cartel controls drug refining, maritime smuggling, and heavy weapons trafficking, becoming a &lt;font color='#FF0000'&gt;major international danger&lt;/font&gt; to global security.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;The RACS Foreign Legion (French Branch)&lt;/font&gt;&lt;br/&gt;With local forces crippled by corruption and outgunned, Allied High Command has deployed the &lt;font color='#00FF00'&gt;French branch of the RACS Foreign Legion&lt;/font&gt;.&lt;br/&gt;&lt;br/&gt;This elite force of seasoned operators and international volunteers is tasked with striking without delay to crush this criminal syndicate, eliminate its kingpins, and restore security across the archipelago.
+        </English>
+        <Spanish>
+&lt;font color='#FFA500' size='16'&gt;1. Contexto Global (Guerra contra la Mafia de Tanoa)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;El archipiélago de &lt;font color='#FFD700'&gt;Tanoa&lt;/font&gt; ha caído bajo el control de una &lt;font color='#FFD700'&gt;organización mafiosa y narcoterrorista&lt;/font&gt; fuertemente armada. Este cartel controla el refinado de drogas y el tráfico marítimo de armas, convirtiéndose en un &lt;font color='#FF0000'&gt;peligro internacional grave&lt;/font&gt; para la seguridad global.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;La Legión Extranjera de RACS (Rama Francesa)&lt;/font&gt;&lt;br/&gt;Ante la impotencia de las fuerzas locales, el Alto Mando ha desplegado la &lt;font color='#00FF00'&gt;rama francesa de la Legión Extranjera de RACS&lt;/font&gt;.&lt;br/&gt;&lt;br/&gt;Esta fuerza de élite tiene la misión de aplastar a este sindicato criminal, eliminar a sus cabecillas y restablecer la paz en el archipiélago.
+        </Spanish>
+        <Italian>
+&lt;font color='#FFA500' size='16'&gt;1. Contesto Globale (Guerra contro la Mafia di Tanoa)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;L'arcipelago di &lt;font color='#FFD700'&gt;Tanoa&lt;/font&gt; è caduto sotto il controllo di un &lt;font color='#FFD700'&gt;sindacato mafioso e narcoterrorista&lt;/font&gt; pesantemente armato. Questo cartello controlla il traffico marittimo e di armi, diventando un &lt;font color='#FF0000'&gt;grave pericolo internazionale&lt;/font&gt;.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;La Legione Straniera RACS (Branca Francese)&lt;/font&gt;&lt;br/&gt;Di fronte alla corruzione locale, il Comando ha schierato la &lt;font color='#00FF00'&gt;branca francese della Legione Straniera RACS&lt;/font&gt; per neutralizzare i boss e smantellare i loro santuari.
+        </Italian>
+        <German>
+&lt;font color='#FFA500' size='16'&gt;1. Globaler Kontext (Krieg gegen die Tanoa-Mafia)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Der &lt;font color='#FFD700'&gt;Tanoa-Archipel&lt;/font&gt; ist unter die Kontrolle eines schwer bewaffneten &lt;font color='#FFD700'&gt;Mafia- und Drogenterrorismus-Kartells&lt;/font&gt; geraten. Dieses Kartell kontrolliert Raffinerien und Waffenschmuggel und ist zu einer &lt;font color='#FF0000'&gt;internationalen Gefahr&lt;/font&gt; geworden.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;Die RACS-Fremdenlegion (Französischer Zweig)&lt;/font&gt;&lt;br/&gt;Da die lokalen Behörden überfordert sind, entsendet das Oberkommando die &lt;font color='#00FF00'&gt;französische Abteilung der RACS-Fremdenlegion&lt;/font&gt;, um das Syndikat zu zerschlagen und die Anführer zu eliminieren.
+        </German>
+        <Polish>
+&lt;font color='#FFA500' size='16'&gt;1. Kontekst Globalny (Wojna z mafią Tanoa)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Archipelag &lt;font color='#FFD700'&gt;Tanoa&lt;/font&gt; dostał się pod kontrolę uzbrojonego &lt;font color='#FFD700'&gt;syndykatu mafijnego i narkoterroryzmu&lt;/font&gt;, stając się &lt;font color='#FF0000'&gt;zagrożeniem międzynarodowym&lt;/font&gt;.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;Legia Cudzoziemska RACS (Oddział Francuski)&lt;/font&gt;&lt;br/&gt;Dowództwo rozmieściło &lt;font color='#00FF00'&gt;francuską gałąź Legii Cudzoziemskiej RACS&lt;/font&gt;, aby rozbić kartel i zlikwidować jego bossów.
+        </Polish>
+        <Russian>
+&lt;font color='#FFA500' size='16'&gt;1. Глобальный контекст (Война с мафией Таноа)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Архипелаг &lt;font color='#FFD700'&gt;Таноа&lt;/font&gt; захвачен хорошо вооруженным &lt;font color='#FFD700'&gt;мафиозным и наркотеррористическим синдикатом&lt;/font&gt;, ставшим &lt;font color='#FF0000'&gt;международной угрозой&lt;/font&gt;.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;Иностранный легион RACS (Французское отделение)&lt;/font&gt;&lt;br/&gt;Командование направило &lt;font color='#00FF00'&gt;французское отделение Иностранного легиона RACS&lt;/font&gt; для разгрома наркокартеля и ликвидации его главарей.
+        </Russian>
+        <Turkish>
+&lt;font color='#FFA500' size='16'&gt;1. Küresel Bağlam (Tanoa Mafyasına Karşı Savaş)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFD700'&gt;Tanoa takımadaları&lt;/font&gt;, ağır silahlı bir &lt;font color='#FFD700'&gt;mafya ve narko-terör örgütünün&lt;/font&gt; kontrolüne geçerek &lt;font color='#FF0000'&gt;uluslararası bir tehlike&lt;/font&gt; haline gelmiştir.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;RACS Yabancı Lejyonu (Fransız Kolu)&lt;/font&gt;&lt;br/&gt;Komutanlık, karteli çökertmek ve elebaşlarını etkisiz hale getirmek için &lt;font color='#00FF00'&gt;RACS Yabancı Lejyonu'nun Fransız kolunu&lt;/font&gt; konuşlandırmıştır.
+        </Turkish>
+        <Japanese>
+&lt;font color='#FFA500' size='16'&gt;1. グローバルな背景（タノア・マフィアとの戦い）&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFD700'&gt;タノア諸島&lt;/font&gt;は重武装した&lt;font color='#FFD700'&gt;麻薬テロ・マフィア組織&lt;/font&gt;に支配され、&lt;font color='#FF0000'&gt;国際的な重大脅威&lt;/font&gt;へと激化しました。&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;RACS外人部隊（フランス部隊）&lt;/font&gt;&lt;br/&gt;連合司令部はカルテルを解体し首領を排除するため、&lt;font color='#00FF00'&gt;RACS外人部隊フランス分隊&lt;/font&gt;を派遣しました。
+        </Japanese>
+        <Korean>
+&lt;font color='#FFA500' size='16'&gt;1. 글로벌 배경 (타노아 마피아와의 전쟁)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFD700'&gt;타노아 군도&lt;/font&gt;는 중무장한 &lt;font color='#FFD700'&gt;마피아 및 마약 테러 조직&lt;/font&gt;의 손에 넘어가 &lt;font color='#FF0000'&gt;심각한 국제적 위험&lt;/font&gt;이 되었습니다.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;RACS 외인부대 (프랑스 지부)&lt;/font&gt;&lt;br/&gt;사령부는 카르텔을 격멸하고 거물급 수괴들을 제거하기 위해 &lt;font color='#00FF00'&gt;RACS 외인부대 프랑스 부대&lt;/font&gt;를 전격 파견했습니다.
+        </Korean>
+        <Chinese>
+&lt;font color='#FFA500' size='16'&gt;1. 全球背景（对塔诺阿黑手党的战争）&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFD700'&gt;塔诺阿群岛&lt;/font&gt;已被全副武装的&lt;font color='#FFD700'&gt;黑手党毒品恐怖集团&lt;/font&gt;所控制，成为全球安全的&lt;font color='#FF0000'&gt;重大国际危险&lt;/font&gt;。&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;RACS 外籍军团（法国分队）&lt;/font&gt;&lt;br/&gt;盟军指挥部已部署&lt;font color='#00FF00'&gt;RACS 外籍军团法国分队&lt;/font&gt;，旨在彻底粉碎该犯罪集团并消灭其头目。
+        </Chinese>
+        <Chinesesimp>
+&lt;font color='#FFA500' size='16'&gt;1. 全球背景（对塔诺阿黑手党的战争）&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFD700'&gt;塔诺阿群岛&lt;/font&gt;已被全副武装的&lt;font color='#FFD700'&gt;黑手党毒品恐怖集团&lt;/font&gt;所控制，成为全球安全的&lt;font color='#FF0000'&gt;重大国际危险&lt;/font&gt;。&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;RACS 外籍军团（法国分队）&lt;/font&gt;&lt;br/&gt;盟军指挥部已部署&lt;font color='#00FF00'&gt;RACS 外籍军团法国分队&lt;/font&gt;，旨在彻底粉碎该犯罪集团并消灭其头目。
+        </Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Context_2_Title">
+        <Original>2. Mandate and Operational Directives</Original>
+        <French>2. Mandat et Directives d'Intervention</French>
+        <English>2. Mandate and Operational Directives</English>
+        <Spanish>2. Mandato y Directivas Operativas</Spanish>
+        <Italian>2. Mandato e Direttive Operative</Italian>
+        <German>2. Mandat und Einsatzrichtlinien</German>
+        <Polish>2. Mandat i wytyczne operacyjne</Polish>
+        <Russian>2. Мандат и оперативные директивы</Russian>
+        <Turkish>2. Görev Yönergesi ve Operasyonel Direktifler</Turkish>
+        <Japanese>2. 任務権限および作戦指示</Japanese>
+        <Korean>2. 위임 권한 및 작전 지침</Korean>
+        <Chinese>2. 任务授权与作战指令</Chinese>
+    </Key>
+    <Key ID="STR_LL_Context_2_Text">
+        <Original>
+&lt;font color='#FFA500' size='16'&gt;2. Objectives and Mandate of the Foreign Legion&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The French branch of the RACS Foreign Legion operates under a direct mandate to &lt;font color='#00FF00'&gt;eradicate the Tanoa mafia&lt;/font&gt; and protect the islanders.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;Priority Missions&lt;/font&gt;&lt;br/&gt;- &lt;font color='#00FF00'&gt;Logistical Dismantlement:&lt;/font&gt; Destroy refining labs, clandestine radio relays, and neutralize heavy armed technicals.&lt;br/&gt;- &lt;font color='#00FF00'&gt;Neutralization of Kingpins:&lt;/font&gt; Eliminate or capture high-value drug lords (HVT) and seize secret cartel financial ledgers.&lt;br/&gt;- &lt;font color='#00FF00'&gt;Rescue of Infiltrated Agents:&lt;/font&gt; Rapidly extract captured undercover intelligence agents before they are executed by hitmen.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;Civilian Protection&lt;/font&gt;&lt;br/&gt;- Zero civilian casualties tolerated among local islanders.&lt;br/&gt;- Prevent any collateral damage that could bolster cartel influence.
+        </Original>
+        <French>
+&lt;font color='#FFA500' size='16'&gt;2. Objectifs et Mandat de la Légion Étrangère&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;La branche française de la Légion Étrangère du RACS est investie d'un mandat direct pour &lt;font color='#00FF00'&gt;éradiquer la mafia de Tanoa&lt;/font&gt; et protéger les populations insulaires.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;Missions Prioritaires&lt;/font&gt;&lt;br/&gt;- &lt;font color='#00FF00'&gt;Démantèlement Logistique :&lt;/font&gt; Détruire les laboratoires de raffinage, les relais radio de contrebande et neutraliser les pickups armés lourds (technicals).&lt;br/&gt;- &lt;font color='#00FF00'&gt;Neutralisation des Têtes de Réseau :&lt;/font&gt; Éliminer ou capturer les barons de la drogue (HVT) et saisir leurs registres de comptabilité secrète.&lt;br/&gt;- &lt;font color='#00FF00'&gt;Sauvetage d'Agents Infiltrés :&lt;/font&gt; Exfiltrer d'urgence les officiers de renseignement capturés avant leur exécution par les sicarios.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;Protection des Civils&lt;/font&gt;&lt;br/&gt;- Zéro perte civile tolérée parmi les villageois de l'archipel.&lt;br/&gt;- Éviter tout dommage collatéral susceptible de nourrir l'influence du cartel.
+        </French>
+        <English>
+&lt;font color='#FFA500' size='16'&gt;2. Objectives and Mandate of the Foreign Legion&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The French branch of the RACS Foreign Legion operates under a direct mandate to &lt;font color='#00FF00'&gt;eradicate the Tanoa mafia&lt;/font&gt; and protect the islanders.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;Priority Missions&lt;/font&gt;&lt;br/&gt;- &lt;font color='#00FF00'&gt;Logistical Dismantlement:&lt;/font&gt; Destroy refining labs, clandestine radio relays, and neutralize heavy armed technicals.&lt;br/&gt;- &lt;font color='#00FF00'&gt;Neutralization of Kingpins:&lt;/font&gt; Eliminate or capture high-value drug lords (HVT) and seize secret cartel financial ledgers.&lt;br/&gt;- &lt;font color='#00FF00'&gt;Rescue of Infiltrated Agents:&lt;/font&gt; Rapidly extract captured undercover intelligence agents before they are executed by hitmen.&lt;br/&gt;&lt;br/&gt;&lt;font color='#00BFFF' size='14'&gt;Civilian Protection&lt;/font&gt;&lt;br/&gt;- Zero civilian casualties tolerated among local islanders.&lt;br/&gt;- Prevent any collateral damage that could bolster cartel influence.
+        </English>
+        <Spanish>
+&lt;font color='#FFA500' size='16'&gt;2. Objetivos y Mandato de la Legión Extranjera&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;La rama francesa de la Legión Extranjera RACS opera con el mandato de erradicar la mafia de Tanoa.&lt;br/&gt;&lt;br/&gt;- Desmantelar laboratorios y terminales de comunicación.&lt;br/&gt;- Eliminar a los líderes del cartel (HVT).&lt;br/&gt;- Rescatar a los agentes infiltrados.&lt;br/&gt;- Proteger estrictamente a los civiles.
+        </Spanish>
+        <Italian>
+&lt;font color='#FFA500' size='16'&gt;2. Obiettivi e Mandato della Legione Straniera&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;La branca francese della Legione Straniera RACS ha il mandato di debellare la mafia di Tanoa:&lt;br/&gt;&lt;br/&gt;- Smantellamento logistico e dei laboratori.&lt;br/&gt;- Neutralizzazione dei boss (HVT).&lt;br/&gt;- Salvataggio degli agenti sotto copertura.&lt;br/&gt;- Massima protezione della popolazione civile.
+        </Italian>
+        <German>
+&lt;font color='#FFA500' size='16'&gt;2. Ziele und Mandat der Fremdenlegion&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Der französische Zweig der RACS-Fremdenlegion ist beauftragt, die Tanoa-Mafia zu zerschlagen:&lt;br/&gt;&lt;br/&gt;- Zerstörung von Raffinerielaboren und Funkrelais.&lt;br/&gt;- Eliminierung der Drogenbosse (HVT).&lt;br/&gt;- Rettung infiltrierter Agenten.&lt;br/&gt;- Schutz der Zivilbevölkerung.
+        </German>
+        <Polish>
+&lt;font color='#FFA500' size='16'&gt;2. Cele i Mandat Legii Cudzoziemskiej&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Francuski oddział Legii Cudzoziemskiej RACS ma za zadanie zlikwidować mafię Tanoa:&lt;br/&gt;&lt;br/&gt;- Likwidacja laboratoriów i stacji radiowych.&lt;br/&gt;- Eliminacja bossów kartelu (HVT).&lt;br/&gt;- Ocalenie schwytanych agentów wywiadu.&lt;br/&gt;- Bezwzględna ochrona ludności cywilnej.
+        </Polish>
+        <Russian>
+&lt;font color='#FFA500' size='16'&gt;2. Цели и мандат Иностранного легиона&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Французское отделение Легиона RACS уполномочено уничтожить мафию Таноа:&lt;br/&gt;&lt;br/&gt;- Уничтожение нарколабораторий и радиоузлов.&lt;br/&gt;- Ликвидация главарей картеля (HVT).&lt;br/&gt;- Спасение агентов под прикрытием.&lt;br/&gt;- Полная защита гражданского населения.
+        </Russian>
+        <Turkish>
+&lt;font color='#FFA500' size='16'&gt;2. Yabancı Lejyonun Hedefleri ve Görev Yönergesi&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;RACS Yabancı Lejyonu Fransız kolu Tanoa mafyasını ortadan kaldırmakla görevlendirilmiştir:&lt;br/&gt;&lt;br/&gt;- Laboratuvarları ve iletişim rölelerini yok etme.&lt;br/&gt;- Kartel liderlerini (HVT) etkisiz hale getirme.&lt;br/&gt;- Sızan istihbaratçıları kurtarma.&lt;br/&gt;- Sivilleri kesin olarak koruma.
+        </Turkish>
+        <Japanese>
+&lt;font color='#FFA500' size='16'&gt;2. 外人部隊の目標と任務権限&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;RACSフランス外人部隊はタノア・マフィア壊滅の直接任務を帯びています：&lt;br/&gt;&lt;br/&gt;- 麻薬精製ラボおよび通信拠点の解体。&lt;br/&gt;- カルテル首領（HVT）の排除または拘束。&lt;br/&gt;- 潜入捜査官の救出。&lt;br/&gt;- 一般市民の絶対保護。
+        </Japanese>
+        <Korean>
+&lt;font color='#FFA500' size='16'&gt;2. 외인부대의 목표 및 임무&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;RACS 프랑스 외인부대는 타노아 마피아 박멸 명령을 받았습니다:&lt;br/&gt;&lt;br/&gt;- 정제 시설 및 불법 통신망 파괴.&lt;br/&gt;- 카르텔 수괴(HVT) 제거 및 생포.&lt;br/&gt;- 잠입 정보 요원 긴급 구출.&lt;br/&gt;- 민간인 무고 피해 방지.
+        </Korean>
+        <Chinese>
+&lt;font color='#FFA500' size='16'&gt;2. 外籍军团的目标与授权&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;RACS 法国外籍军团肩负铲除塔诺阿黑手党的直接使命：&lt;br/&gt;&lt;br/&gt;- 摧毁精炼工场与通信中继。&lt;br/&gt;- 消灭或抓捕核心头目（HVT）。&lt;br/&gt;- 营救被俘的卧底特工。&lt;br/&gt;- 严密保护当地平民。
+        </Chinese>
+        <Chinesesimp>
+&lt;font color='#FFA500' size='16'&gt;2. 外籍军团的目标与授权&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;RACS 法国外籍军团肩负铲除塔诺阿黑手党的直接使命：&lt;br/&gt;&lt;br/&gt;- 摧毁精炼工场与通信中继。&lt;br/&gt;- 消灭或抓捕核心头目（HVT）。&lt;br/&gt;- 营救被俘的卧底特工。&lt;br/&gt;- 严密保护当地平民。
+        </Chinesesimp>
+    </Key>
+
+    <Key ID="STR_LL_Context_3_Title">
+        <Original>3. Clandestine Networks &amp; International Threat</Original>
+        <French>3. Enjeux Clandestins et Danger International</French>
+        <English>3. Clandestine Networks &amp; International Threat</English>
+        <Spanish>3. Redes Clandestinas y Amenaza Internacional</Spanish>
+        <Italian>3. Reti Clandestine e Minaccia Internazionale</Italian>
+        <German>3. Klandestine Netzwerke &amp; Internationale Bedrohung</German>
+        <Polish>3. Sieci konspiracyjne i zagrożenie międzynarodowe</Polish>
+        <Russian>3. Подпольные сети и международная угроза</Russian>
+        <Turkish>3. Gizli Ağlar ve Uluslararası Tehdit</Turkish>
+        <Japanese>3. 地下ネットワークと国際的脅威</Japanese>
+        <Korean>3. 비밀 네트워크 및 국제적 위협</Korean>
+        <Chinese>3. 秘密网络与国际威胁</Chinese>
+    </Key>
+    <Key ID="STR_LL_Context_3_Text">
+        <Original>
+&lt;font color='#FFA500' size='16'&gt;3. Narrative Context (International Threat)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The Tanoa mafia has expanded far beyond the archipelago: it now operates as a transnational criminal syndicate funding terrorism and destabilizing maritime corridors across the Indian and Pacific Oceans.&lt;br/&gt;&lt;br/&gt;Equipped with sophisticated military hardware (Tempest electronic jammers, heavy anti-aircraft technicals, stealth speedboats), this cartel relies on corrupt international mercenary networks.&lt;br/&gt;&lt;br/&gt;The surgical strike conducted by the &lt;font color='#00FF00'&gt;French branch of the RACS Foreign Legion&lt;/font&gt; is a vital imperative to crush this threat before it engulfs the entire region.
+        </Original>
+        <French>
+&lt;font color='#FFA500' size='16'&gt;3. Contexte Narratif (Danger International)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;La mafia de Tanoa a étendu son emprise bien au-delà de l'archipel : elle constitue désormais une organisation criminelle transnationale finançant le terrorisme et déstabilisant les corridors maritimes de l'Océan Indien et du Pacifique.&lt;br/&gt;&lt;br/&gt;Équipé de matériel militaire sophistiqué (brouilleurs électroniques Tempest, pickups bitubes lourds, vedettes rapides furtives), ce cartel bénéficie de complicités mercenaires internationales.&lt;br/&gt;&lt;br/&gt;La frappe chirurgicale menée par la &lt;font color='#00FF00'&gt;branche française de la Légion Étrangère du RACS&lt;/font&gt; a pour impératif de briser cette menace avant qu'elle n'embrase toute la région.
+        </French>
+        <English>
+&lt;font color='#FFA500' size='16'&gt;3. Narrative Context (International Threat)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The Tanoa mafia has expanded far beyond the archipelago: it now operates as a transnational criminal syndicate funding terrorism and destabilizing maritime corridors across the Indian and Pacific Oceans.&lt;br/&gt;&lt;br/&gt;Equipped with sophisticated military hardware (Tempest electronic jammers, heavy anti-aircraft technicals, stealth speedboats), this cartel relies on corrupt international mercenary networks.&lt;br/&gt;&lt;br/&gt;The surgical strike conducted by the &lt;font color='#00FF00'&gt;French branch of the RACS Foreign Legion&lt;/font&gt; is a vital imperative to crush this threat before it engulfs the entire region.
+        </English>
+        <Spanish>
+&lt;font color='#FFA500' size='16'&gt;3. Contexto Narrativo (Amenaza Internacional)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;La mafia de Tanoa se ha expandido a nivel transnacional y representa una &lt;font color='#00FF00'&gt;amenaza internacional directa&lt;/font&gt;. Equipada con armas pesadas y tecnología de interferencia militar, la intervención de la rama francesa de la Legión Extranjera RACS es esencial para neutralizarla.
+        </Spanish>
+        <Italian>
+&lt;font color='#FFA500' size='16'&gt;3. Contesto Narrativo (Minaccia Internazionale)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;La mafia di Tanoa costituisce una pericolosa organizzazione transnazionale armata fino ai denti. La frazione francese della Legione Straniera RACS è dispiegata per sradicare questo pericolo globale.
+        </Italian>
+        <German>
+&lt;font color='#FFA500' size='16'&gt;3. Erzählerischer Kontext (Internationale Bedrohung)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Die Tanoa-Mafia agiert als globales Kartell mit schwerem Kriegsgerät. Der französische Zweig der RACS-Fremdenlegion führt gezielte Schläge, um diese Bedrohung zu beseitigen.
+        </German>
+        <Polish>
+&lt;font color='#FFA500' size='16'&gt;3. Kontekst Fabularny (Zagrożenie Międzynarodowe)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Mafia Tanoa stała się syndykatem transnarodowym zasilanym sprzętem wojskowym. Francuski oddział Legii RACS musi zlikwidować tę globalną groźbę.
+        </Polish>
+        <Russian>
+&lt;font color='#FFA500' size='16'&gt;3. Сюжетный контекст (Международная угроза)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Мафия Таноа превратилась в транснациональный синдикат, дестабилизирующий морские пути. Удар французского отделения Легиона RACS призван уничтожить эту угрозу.
+        </Russian>
+        <Turkish>
+&lt;font color='#FFA500' size='16'&gt;3. Hikaye Bağlamı (Uluslararası Tehdit)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Tanoa mafyası uluslararası bir tehdit teşkil etmektedir. RACS Yabancı Lejyonu Fransız kolu bu organize suç ağını ortadan kaldırmak için operasyon yürütmektedir.
+        </Turkish>
+        <Japanese>
+&lt;font color='#FFA500' size='16'&gt;3. 物語の背景（国際的脅威）&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;タノア・マフィアは国際的犯罪シンジケートへと拡大し、重大な脅威となっています。RACSフランス外人部隊の外科手術的打撃により壊滅を図ります。
+        </Japanese>
+        <Korean>
+&lt;font color='#FFA500' size='16'&gt;3. 내러티브 배경 (국제적 위협)&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;타노아 마피아는 초국가적 범죄 네트워크로 진화하여 국제 안보를 위협하고 있습니다. RACS 프랑스 외인부대가 이 위험을 분쇄하기 위해 투입되었습니다.
+        </Korean>
+        <Chinese>
+&lt;font color='#FFA500' size='16'&gt;3. 叙事背景（国际威胁）&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;塔诺阿黑手党已演变成跨国犯罪组织，对国际海运与安全造成严重威胁。RACS 法国外籍军团展开精确打击以瓦解该武装威胁。
+        </Chinese>
+        <Chinesesimp>
+&lt;font color='#FFA500' size='16'&gt;3. 叙事背景（国际威胁）&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;塔诺阿黑手党已演变成跨国犯罪组织，对国际海运与安全造成严重威胁。RACS 法国外籍军团展开精确打击以瓦解该武装威胁。
+        </Chinesesimp>
+    </Key>
+</Keys>
