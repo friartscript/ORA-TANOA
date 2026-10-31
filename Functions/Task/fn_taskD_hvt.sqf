@@ -51,10 +51,10 @@ private _sentinelLogics = _otherLogics select [0, 4];
     _sGrp setCombatMode "WHITE";
     _allGroups pushBack _sGrp;
 
-    private _fClasses = missionNamespace getVariable ["MISSION_CivilianClasses_Female", []];
-    private _isSentinelFemale = (random 1) < 0.20 && { count _fClasses > 0 };
+    private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
+    private _isSentinelFemale = (random 1) < 0.20 && { count _fEnemyClasses > 0 };
     private _sClass = if (_isSentinelFemale) then {
-        selectRandom _fClasses
+        selectRandom _fEnemyClasses
     } else {
         "O_G_Soldier_F"
     };
@@ -92,9 +92,10 @@ for "_p" from 1 to 2 do {
     _pStartPos set [2, (_pStartPos select 2) + 0.2];
 
     for "_g" from 1 to 2 do {
-        private _isPGuardFemale = (random 1) < 0.15;
+        private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
+        private _isPGuardFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
         private _pGuardClass = if (_isPGuardFemale) then {
-            if (isClass (configFile >> "CfgVehicles" >> "Max_Tak_woman1")) then { selectRandom MISSION_CivilianClasses_Female } else { "O_G_Soldier_F" };
+            selectRandom _fEnemyClasses
         } else {
             "O_G_Soldier_F"
         };
@@ -123,9 +124,10 @@ private _angles = [0, 120, 240];
     private _bgPos = _hvtPos getPos [3 + random 2, _x];
     _bgPos set [2, (_bgPos select 2) + 0.2];
 
-    private _isBgFemale = (random 1) < 0.15;
+    private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
+    private _isBgFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
     private _bgClass = if (_isBgFemale) then {
-        if (isClass (configFile >> "CfgVehicles" >> "Max_Tak_woman1")) then { selectRandom MISSION_CivilianClasses_Female } else { "O_G_Soldier_F" };
+        selectRandom _fEnemyClasses
     } else {
         "O_G_Soldier_F"
     };
@@ -148,9 +150,10 @@ _hvtGrp setBehaviour "SAFE";
 _hvtGrp setCombatMode "WHITE";
 _allGroups pushBack _hvtGrp;
 
-private _isHvtFemale = (random 1) < 0.10;
+private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
+private _isHvtFemale = (random 1) < 0.10 && { count _fEnemyClasses > 0 };
 private _hvtClass = if (_isHvtFemale) then {
-    if (isClass (configFile >> "CfgVehicles" >> "Max_Tak_woman1")) then { selectRandom MISSION_CivilianClasses_Female } else { "O_Officer_F" };
+    selectRandom _fEnemyClasses
 } else {
     "O_Officer_F"
 };

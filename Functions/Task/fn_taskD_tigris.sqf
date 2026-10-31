@@ -52,9 +52,10 @@ for "_gIdx" from 0 to (_numGroups - 1) do {
     for "_u" from 1 to _sz do {
         private _cls = selectRandom _classes;
         private _spawnSpot = _posVeh getPos [15 + random 20, random 360];
-        private _isUnitFemale = (random 1) < 0.15;
+        private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
+        private _isUnitFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
         private _unitClass = if (_isUnitFemale) then {
-            if (isClass (configFile >> "CfgVehicles" >> "Max_Tak_woman1")) then { selectRandom MISSION_CivilianClasses_Female } else { _cls };
+            selectRandom _fEnemyClasses
         } else {
             _cls
         };

@@ -398,29 +398,22 @@ class CfgSounds
         sound[] = {"Music\legion_001.ogg", db+3, 1.0};
         titles[] = {0, ""};
     };
+    class Sound_Legion_001
+    {
+        name = "Sound_Legion_001";
+        sound[] = {"Music\legion_001.ogg", db+3, 1.0};
+        titles[] = {0, ""};
+    };
+    class Sound_Legion_002
+    {
+        name = "Sound_Legion_002";
+        sound[] = {"Music\legion_002.ogg", db+3, 1.0};
+        titles[] = {0, ""};
+    };
     class ezan
     {
         name = "ezan";
         sound[] = {"Music\ezan.ogg", db+12, 1.0, 2000};
-    };
-    class Sound_Rubab_01
-    {
-        name = "Sound_Rubab_01";
-        sound[] = {"Music\legion_001.ogg", db+3, 1.0};
-        titles[] = {0, ""};
-    };
-    class Sound_Rubab_02
-    {
-        name = "Sound_Rubab_02";
-        sound[] = {"Music\legion_002.ogg", db+3, 1.0};
-        titles[] = {0, ""};
-    };
-    class Sound_Legion_001: Sound_Rubab_01 {};
-    class Sound_Legion_002: Sound_Rubab_02 {};
-    class Sound_Rubab_Full
-    {
-        name = "Sound_Rubab_Full";
-        sound[] = {"Music\legion_002.ogg", db+3, 1.0};
         titles[] = {0, ""};
     };
 };

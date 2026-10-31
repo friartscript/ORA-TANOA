@@ -9,15 +9,15 @@ from kokoro import KPipeline
 from pydub import AudioSegment
 from pydub.generators import Sine, WhiteNoise
 
-# Configuration de la voix Kokoro (Anglais américain 'a') :
-# - 'am_fenrir' : Voix masculine grave, rauque, éraillée / criarde (style opérateur radio sous tension)
-# - 'am_adam'   : Voix masculine grave et autoritaire
-# - 'am_onyx'   : Voix masculine très profonde et lourde
-KOKORO_LANG = "a"
+# Configuration de la voix Kokoro pour le Français ('f') :
+# - 'am_fenrir' : Voix masculine grave, rauque, éraillée (style opérateur radio militaire sous tension)
+# - 'am_adam'   : Voix masculine autoritaire et posée
+# - 'ff_siwis'  : Voix féminine française native
+KOKORO_LANG = "f"
 KOKORO_VOICE = "am_fenrir"
-KOKORO_SPEED = 1.08  # Débit radio militaire tendu et rythmé
+KOKORO_SPEED = 1.05  # Débit radio militaire naturel et intelligible en français
 
-# Initialisation du pipeline Kokoro TTS
+# Initialisation du pipeline Kokoro TTS en français
 _pipeline = KPipeline(lang_code=KOKORO_LANG)
 
 # Ajouter ffmpeg et ffprobe au PATH système pour cette exécution
@@ -46,8 +46,8 @@ def clean_text(text):
     
     text = re.sub(r"<[^>]+>", "", text)
     
-    # Ignorer les textes qui ne contiennent aucune lettre ou chiffre (ex: "...")
-    if not re.search(r'[a-zA-Z0-9]', text):
+    # Ignorer les textes qui ne contiennent aucune lettre ou chiffre (support des accents français)
+    if not re.search(r'[a-zA-Z0-9àâäéèêëîïôöùûüÿçÀÂÄÉÈÊËÎÏÔÖÙÛÜŸÇ]', text):
         return ""
     
     return text.strip()
@@ -152,24 +152,41 @@ def generate_tts(text, output_path, key_id="", speed=KOKORO_SPEED, voice=KOKORO_
     sf.write(output_path, np.concatenate(chunks), 24000)  # sortie en .wav
 
 def generate_cfg_sounds(output_dir, cfg_path):
+    import stat
     sounds = []
     for file in os.listdir(output_dir):
         if file.endswith(".ogg"):
             sounds.append(file[:-4])
             
-    with open(cfg_path, "w", encoding="utf-8") as f:
-        f.write('class CfgSounds\n{\n    sounds[] = {};\n\n')
-        for key_id in sorted(sounds):
-            f.write(f'    class {key_id}\n    {{\n')
-            f.write(f'        name = "{key_id}";\n')
-            f.write(f'        sound[] = {{"TTS\\output\\{key_id}.ogg", db+5, 1.0}};\n')
-            f.write(f'        titles[] = {{0, ""}};\n')
-            f.write(f'    }};\n')
-        f.write('    class LL_Charge_Beep\n    {\n        name = "LL_Charge_Beep";\n        sound[] = {"A3\\Sounds_F\\sfx\\beep_target.wss", db+8, 1.0};\n        titles[] = {0, ""};\n    };\n')
-        f.write('    class Sound_Music_Intro\n    {\n        name = "Sound_Music_Intro";\n        sound[] = {"Music\\Shadow_of_the_Valley_01.ogg", db+0, 1.0};\n        titles[] = {0, ""};\n    };\n')
-        f.write('    class ezan\n    {\n        name = "ezan";\n        sound[] = {"Music\\ezan.ogg", db+12, 1.0, 2000};\n        titles[] = {0, ""};\n    };\n')
-        f.write('};\n')
-    print(f"[CfgSounds] Généré avec succès ({len(sounds)} sons) dans {cfg_path}")
+    content = 'class CfgSounds\n{\n    sounds[] = {};\n\n'
+    for key_id in sorted(sounds):
+        content += f'    class {key_id}\n    {{\n'
+        content += f'        name = "{key_id}";\n'
+        content += f'        sound[] = {{"TTS\\output\\{key_id}.ogg", db+5, 1.0}};\n'
+        content += f'        titles[] = {{0, ""}};\n'
+        content += f'    }};\n'
+    content += '    class LL_Charge_Beep\n    {\n        name = "LL_Charge_Beep";\n        sound[] = {"A3\\Sounds_F\\sfx\\beep_target.wss", db+8, 1.0};\n        titles[] = {0, ""};\n    };\n'
+    content += '    class Sound_Music_Intro\n    {\n        name = "Sound_Music_Intro";\n        sound[] = {"Music\\legion_001.ogg", db+3, 1.0};\n        titles[] = {0, ""};\n    };\n'
+    content += '    class Sound_Legion_001\n    {\n        name = "Sound_Legion_001";\n        sound[] = {"Music\\legion_001.ogg", db+3, 1.0};\n        titles[] = {0, ""};\n    };\n'
+    content += '    class Sound_Legion_002\n    {\n        name = "Sound_Legion_002";\n        sound[] = {"Music\\legion_002.ogg", db+3, 1.0};\n        titles[] = {0, ""};\n    };\n'
+    content += '    class ezan\n    {\n        name = "ezan";\n        sound[] = {"Music\\ezan.ogg", db+12, 1.0, 2000};\n        titles[] = {0, ""};\n    };\n'
+    content += '};\n'
+
+    try:
+        if os.path.exists(cfg_path):
+            os.chmod(cfg_path, stat.S_IWRITE)
+        with open(cfg_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        print(f"[CfgSounds] Généré avec succès ({len(sounds)} sons) dans {cfg_path}")
+    except PermissionError:
+        temp_cfg = os.path.join(ROOT_DIR, "CfgSounds_generated.hpp")
+        try:
+            with open(temp_cfg, "w", encoding="utf-8") as f:
+                f.write(content)
+            print(f"[CfgSounds] ATTENTION : '{cfg_path}' est verrouillé (Arma 3 est probablement en cours d'exécution).")
+            print(f"[CfgSounds] Le fichier a été écrit dans '{temp_cfg}'. Quittez Arma 3 pour le copier dans CfgSounds.hpp.")
+        except Exception as e:
+            print(f"[CfgSounds] Impossible d'écrire CfgSounds : {e}")
 
 def is_tts_key(key_id):
     # Clés liées aux messages radio et PNJ
@@ -203,10 +220,12 @@ def main():
         if not is_tts_key(key_id):
             continue
             
-        # Utilisation de la version anglaise (voix d'homme en anglais)
-        node = key.find("English")
+        # Utilisation de la version française (voix radio en français)
+        node = key.find("French")
         if node is None or not node.text:
             node = key.find("Original")
+        if node is None or not node.text:
+            node = key.find("English")
         
         if node is not None and node.text:
             text = clean_text(node.text)

@@ -2496,6 +2496,329 @@ Ağ doluysa istekleriniz reddedilebilir veya kesintiye uğrayabilir.&lt;br/&gt;&
             <Chinesesimp>如果想活命，请仔细阅读作战简报。</Chinesesimp>
             <Turkish>Hayatta kalmak istiyorsanız operasyonel brifingi inceleyin.</Turkish>
         </Key>
+        <Key ID="STR_LL_Intro_MissionStartSubtitle">
+            <Original>Review the operational briefing if you value your life.</Original>
+            <English>Review the operational briefing if you value your life.</English>
+            <French>Consultez le briefing opérationnel si vous tenez à votre peau.</French>
+            <Spanish>Consulte el informe operativo si valora su vida.</Spanish>
+            <German>Missionsbriefing lesen, wenn Sie am Leben bleiben wollen.</German>
+            <Italian>Consulta il briefing operativo se tieni alla pelle.</Italian>
+            <Polish>Zapoznaj się z odprawą operacyjną, jeśli zależy ci na życiu.</Polish>
+            <Portuguese>Consulte o briefing operacional se dá valor à sua vida.</Portuguese>
+            <Russian>Ознакомьтесь с оперативным брифингом, если хотите остаться в живых.</Russian>
+            <Czech>Seznamte se s operačním brífinkem, pokud si vážíte svého života.</Czech>
+            <Korean>살고 싶다면 작전 브리핑을 정독하십시오.</Korean>
+            <Japanese>命が惜しければ作戦説明を確認せよ。</Japanese>
+            <Chinese>如果想活命，請仔細閱讀作戰簡報。</Chinese>
+            <Chinesesimp>如果想活命，请仔细阅读作战简报。</Chinesesimp>
+            <Turkish>Hayatta kalmak istiyorsanız operasyonel brifingi inceleyin.</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_01">
+            <Original>The Legion marches to the front</Original>
+            <English>The Legion marches to the front</English>
+            <French>La Légion marche vers le front</French>
+            <Spanish>La Legión marcha hacia el frente</Spanish>
+            <German>Die Legion marschiert an die Front</German>
+            <Italian>La Legione marcia verso il fronte</Italian>
+            <Polish>Legia maszeruje na front</Polish>
+            <Portuguese>A Legião marcha para a frente</Portuguese>
+            <Russian>Легион марширует на фронт</Russian>
+            <Czech>Legie pochoduje na front</Czech>
+            <Korean>외인부대가 전선으로 행진한다</Korean>
+            <Japanese>外人部隊は前線へと進軍する</Japanese>
+            <Chinese>外籍軍團奔赴前線</Chinese>
+            <Chinesesimp>外籍军团奔赴前线</Chinesesimp>
+            <Turkish>Lejyon cepheye doğru yürüyor</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_02">
+            <Original>Singing, we follow</Original>
+            <English>Singing, we follow</English>
+            <French>En chantant nous suivons</French>
+            <Spanish>Cantando la seguimos</Spanish>
+            <German>Singend folgen wir</German>
+            <Italian>Cantando noi seguiamo</Italian>
+            <Polish>Śpiewając idziemy za nią</Polish>
+            <Portuguese>Cantando nós seguimos</Portuguese>
+            <Russian>С песней мы следуем за ней</Russian>
+            <Czech>Se zpěvem ji následujeme</Czech>
+            <Korean>우리는 노래하며 뒤따른다</Korean>
+            <Japanese>歌いながら我らは従う</Japanese>
+            <Chinese>高歌隨行</Chinese>
+            <Chinesesimp>高歌随行</Chinesesimp>
+            <Turkish>Şarkı söyleyerek takip ediyoruz</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_03">
+            <Original>Heirs to its traditions</Original>
+            <English>Heirs to its traditions</English>
+            <French>Héritiers de ses traditions</French>
+            <Spanish>Herederos de sus tradiciones</Spanish>
+            <German>Erben ihrer Traditionen</German>
+            <Italian>Eredi delle sue tradizioni</Italian>
+            <Polish>Spadkobiercy jej tradycji</Polish>
+            <Portuguese>Herdeiros de suas tradições</Portuguese>
+            <Russian>Наследники её традиций</Russian>
+            <Czech>Dědicové jejích tradic</Czech>
+            <Korean>전통의 계승자들</Korean>
+            <Japanese>伝統を受け継ぐ者たち</Japanese>
+            <Chinese>傳統之繼承者</Chinese>
+            <Chinesesimp>传统之继承者</Chinesesimp>
+            <Turkish>Geleneklerinin mirasçıları</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_04">
+            <Original>We too, we march</Original>
+            <English>We too, we march</English>
+            <French>Nous aussi nous marchons</French>
+            <Spanish>Nosotros también marchamos</Spanish>
+            <German>Auch wir marschieren</German>
+            <Italian>Anche noi marciamo</Italian>
+            <Polish>My także maszerujemy</Polish>
+            <Portuguese>Nós também marchamos</Portuguese>
+            <Russian>И мы тоже маршируем</Russian>
+            <Czech>My také pochodujeme</Czech>
+            <Korean>우리 또한 행진한다</Korean>
+            <Japanese>我らもまた進軍する</Japanese>
+            <Chinese>我等亦在前行</Chinese>
+            <Chinesesimp>我等亦在前行</Chinesesimp>
+            <Turkish>Biz de yürüyoruz</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_05">
+            <Original>We too, we march</Original>
+            <English>We too, we march</English>
+            <French>Nous aussi nous marchons</French>
+            <Spanish>Nosotros también marchamos</Spanish>
+            <German>Auch wir marschieren</German>
+            <Italian>Anche noi marciamo</Italian>
+            <Polish>My także maszerujemy</Polish>
+            <Portuguese>Nós também marchamos</Portuguese>
+            <Russian>И мы тоже маршируем</Russian>
+            <Czech>My také pochodujeme</Czech>
+            <Korean>우리 또한 행진한다</Korean>
+            <Japanese>我らもまた進軍する</Japanese>
+            <Chinese>我等亦在前行</Chinese>
+            <Chinesesimp>我等亦在前行</Chinesesimp>
+            <Turkish>Biz de yürüyoruz</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_06">
+            <Original>We are the men of the assault troops</Original>
+            <English>We are the men of the assault troops</English>
+            <French>Nous sommes les hommes des troupes d'assaut</French>
+            <Spanish>Somos los hombres de las tropas de asalto</Spanish>
+            <German>Wir sind die Männer der Sturmtruppen</German>
+            <Italian>Siamo gli uomini delle truppe d'assalto</Italian>
+            <Polish>Jesteśmy ludźmi oddziałów szturmowych</Polish>
+            <Portuguese>Somos os homens das tropas de assalto</Portuguese>
+            <Russian>Мы — бойцы штурмовых отрядов</Russian>
+            <Czech>Jsme muži útočných jednotek</Czech>
+            <Korean>우리는 돌격대의 용사들</Korean>
+            <Japanese>我らは突撃部隊の兵士</Japanese>
+            <Chinese>我等乃突擊先鋒</Chinese>
+            <Chinesesimp>我等乃突击先锋</Chinesesimp>
+            <Turkish>Biz hücum kıtalarının erleriyiz</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_07">
+            <Original>Soldiers of the old Legion</Original>
+            <English>Soldiers of the old Legion</English>
+            <French>Soldats de la vieille Légion</French>
+            <Spanish>Soldados de la vieja Legión</Spanish>
+            <German>Soldaten der alten Legion</German>
+            <Italian>Soldati della vecchia Legione</Italian>
+            <Polish>Żołnierze starej Legii</Polish>
+            <Portuguese>Soldados da velha Legião</Portuguese>
+            <Russian>Солдаты старого Легиона</Russian>
+            <Czech>Vojáci staré Legie</Czech>
+            <Korean>유서 깊은 외인부대의 군인들</Korean>
+            <Japanese>古き外人部隊の兵士たち</Japanese>
+            <Chinese>老牌軍團的戰士</Chinese>
+            <Chinesesimp>老牌军团的战士</Chinesesimp>
+            <Turkish>Kadim Lejyonun askerleri</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_08">
+            <Original>Tomorrow brandishing our banners</Original>
+            <English>Tomorrow brandishing our banners</English>
+            <French>Demain brandissant nos drapeaux</French>
+            <Spanish>Mañana enarbolando nuestras banderas</Spanish>
+            <German>Morgen unsere Fahnen schwenkend</German>
+            <Italian>Domani sventolando le nostre bandiere</Italian>
+            <Polish>Jutro wznosząc nasze sztandary</Polish>
+            <Portuguese>Amanhã empunhando nossas bandeiras</Portuguese>
+            <Russian>Завтра, высоко подняв наши знамёна</Russian>
+            <Czech>Zítra pozvedneme své prapory</Czech>
+            <Korean>내일 우리의 깃발을 드높이며</Korean>
+            <Japanese>明日 我らの軍旗を掲げて</Japanese>
+            <Chinese>明日高揚我等旗幟</Chinese>
+            <Chinesesimp>明日高扬我等旗帜</Chinesesimp>
+            <Turkish>Yarın bayraklarımızı dalgalandırarak</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_09">
+            <Original>As victors we will march</Original>
+            <English>As victors we will march</English>
+            <French>En vainqueurs nous défilerons</French>
+            <Spanish>Como vencedores desfilaremos</Spanish>
+            <German>Als Sieger werden wir marschieren</German>
+            <Italian>Da vincitori sfileremo</Italian>
+            <Polish>Jako zwycięzcy przedefilujemy</Polish>
+            <Portuguese>Como vencedores nós desfilaremos</Portuguese>
+            <Russian>Победителями мы пройдём строем</Russian>
+            <Czech>Jako vítězové budeme defilovat</Czech>
+            <Korean>승리자로서 당당히 행진하리라</Korean>
+            <Japanese>勝者として我らは行進する</Japanese>
+            <Chinese>凱旋受閱行進</Chinese>
+            <Chinesesimp>凯旋受阅行进</Chinesesimp>
+            <Turkish>Zafer kazananlar olarak geçit yapacağız</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_10">
+            <Original>For this knightly destiny</Original>
+            <English>For this knightly destiny</English>
+            <French>Pour ce destin de chevalier</French>
+            <Spanish>Por este destino de caballero</Spanish>
+            <German>Für dieses ritterliche Schicksal</German>
+            <Italian>Per questo destino da cavaliere</Italian>
+            <Polish>Dla tego rycerskiego przeznaczenia</Polish>
+            <Portuguese>Por este destino de cavaleiro</Portuguese>
+            <Russian>Ради этого рыцарского жребия</Russian>
+            <Czech>Pro tento rytířský osud</Czech>
+            <Korean>이 기사도적 운명을 위해</Korean>
+            <Japanese>この騎士たる運命のために</Japanese>
+            <Chinese>為這騎士之宿命</Chinese>
+            <Chinesesimp>为这骑士之宿命</Chinesesimp>
+            <Turkish>Bu şövalye kaderi uğruna</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_11">
+            <Original>Honor, fidelity</Original>
+            <English>Honor, fidelity</English>
+            <French>Honneur, fidélité</French>
+            <Spanish>Honor, fidelidad</Spanish>
+            <German>Ehre, Treue</German>
+            <Italian>Onore, fedeltà</Italian>
+            <Polish>Honor, wierność</Polish>
+            <Portuguese>Honra, fidelidade</Portuguese>
+            <Russian>Честь и верность</Russian>
+            <Czech>Čest, věrnost</Czech>
+            <Korean>명예와 충성</Korean>
+            <Japanese>名誉、忠誠</Japanese>
+            <Chinese>榮譽與忠誠</Chinese>
+            <Chinesesimp>荣誉与忠诚</Chinesesimp>
+            <Turkish>Onur, sadakat</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_12">
+            <Original>We are proud to belong</Original>
+            <English>We are proud to belong</English>
+            <French>Nous sommes fiers d'appartenir</French>
+            <Spanish>Estamos orgullosos de pertenecer</Spanish>
+            <German>Wir sind stolz dazuzugehören</German>
+            <Italian>Siamo fieri di appartenere</Italian>
+            <Polish>Jesteśmy dumni, że należymy</Polish>
+            <Portuguese>Temos orgulho de pertencer</Portuguese>
+            <Russian>Мы гордимся тем, что принадлежим</Russian>
+            <Czech>Jsme hrdí, že patříme</Czech>
+            <Korean>우리는 긍지 높게 함께하노라</Korean>
+            <Japanese>我らは誇り高く属する</Japanese>
+            <Chinese>我等為之自豪</Chinese>
+            <Chinesesimp>我等为之自豪</Chinesesimp>
+            <Turkish>Ait olmaktan gurur duyuyoruz</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_13">
+            <Original>To those who are about to die</Original>
+            <English>To those who are about to die</English>
+            <French>À ceux qui vont mourir</French>
+            <Spanish>A aquellos que van a morir</Spanish>
+            <German>Zu jenen, die sterben werden</German>
+            <Italian>A coloro che stanno per morire</Italian>
+            <Polish>Do tych, którzy idą na śmierć</Polish>
+            <Portuguese>Àqueles que vão morrer</Portuguese>
+            <Russian>К тем, кто идёт на смерть</Russian>
+            <Czech>K těm, kteří jdou na smrt</Czech>
+            <Korean>죽음을 향해 나아가는 이들에게</Korean>
+            <Japanese>死に向かいゆく者たちに</Japanese>
+            <Chinese>投身赴死之人</Chinese>
+            <Chinesesimp>投身赴死之人</Chinesesimp>
+            <Turkish>Ölüme gidenlerin safına</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_14">
+            <Original>To those who are about to die</Original>
+            <English>To those who are about to die</English>
+            <French>À ceux qui vont mourir</French>
+            <Spanish>A aquellos que van a morir</Spanish>
+            <German>Zu jenen, die sterben werden</German>
+            <Italian>A coloro che stanno per morire</Italian>
+            <Polish>Do tych, którzy idą na śmierć</Polish>
+            <Portuguese>Àqueles que vão morrer</Portuguese>
+            <Russian>К тем, кто идёт на смерть</Russian>
+            <Czech>K těm, kteří jdou na smrt</Czech>
+            <Korean>죽음을 향해 나아가는 이들에게</Korean>
+            <Japanese>死に向かいゆく者たちに</Japanese>
+            <Chinese>投身赴死之人</Chinese>
+            <Chinesesimp>投身赴死之人</Chinesesimp>
+            <Turkish>Ölüme gidenlerin safına</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_15">
+            <Original>The Legion marches to the front</Original>
+            <English>The Legion marches to the front</English>
+            <French>La Légion marche vers le front</French>
+            <Spanish>La Legión marcha hacia el frente</Spanish>
+            <German>Die Legion marschiert an die Front</German>
+            <Italian>La Legione marcia verso il fronte</Italian>
+            <Polish>Legia maszeruje na front</Polish>
+            <Portuguese>A Legião marcha para a frente</Portuguese>
+            <Russian>Легион марширует на фронт</Russian>
+            <Czech>Legie pochoduje na front</Czech>
+            <Korean>외인부대가 전선으로 행진한다</Korean>
+            <Japanese>外人部隊は前線へと進軍する</Japanese>
+            <Chinese>外籍軍團奔赴前線</Chinese>
+            <Chinesesimp>外籍军团奔赴前线</Chinesesimp>
+            <Turkish>Lejyon cepheye doğru yürüyor</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_16">
+            <Original>Singing, we march</Original>
+            <English>Singing, we march</English>
+            <French>En chantant nous marchons</French>
+            <Spanish>Cantando marchamos</Spanish>
+            <German>Singend marschieren wir</German>
+            <Italian>Cantando marciamo</Italian>
+            <Polish>Śpiewając maszerujemy</Polish>
+            <Portuguese>Cantando nós marchamos</Portuguese>
+            <Russian>С песней мы маршируем</Russian>
+            <Czech>Se zpěvem pochodujeme</Czech>
+            <Korean>우리는 노래하며 행진한다</Korean>
+            <Japanese>歌いながら我らは行進する</Japanese>
+            <Chinese>高歌前行</Chinese>
+            <Chinesesimp>高歌前行</Chinesesimp>
+            <Turkish>Şarkı söyleyerek yürüyoruz</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_17">
+            <Original>Heirs to its traditions</Original>
+            <English>Heirs to its traditions</English>
+            <French>Héritiers de ses traditions</French>
+            <Spanish>Herederos de sus tradiciones</Spanish>
+            <German>Erben ihrer Traditionen</German>
+            <Italian>Eredi delle sue tradizioni</Italian>
+            <Polish>Spadkobiercy jej tradycji</Polish>
+            <Portuguese>Herdeiros de suas tradições</Portuguese>
+            <Russian>Наследники её традиций</Russian>
+            <Czech>Dědicové jejích tradic</Czech>
+            <Korean>전통의 계승자들</Korean>
+            <Japanese>伝統を受け継ぐ者たち</Japanese>
+            <Chinese>傳統之繼承者</Chinese>
+            <Chinesesimp>传统之继承者</Chinesesimp>
+            <Turkish>Geleneklerinin mirasçıları</Turkish>
+        </Key>
+        <Key ID="STR_LL_Song_Verse_18">
+            <Original>We too, we march</Original>
+            <English>We too, we march</English>
+            <French>Nous aussi nous marchons</French>
+            <Spanish>Nosotros también marchamos</Spanish>
+            <German>Auch wir marschieren</German>
+            <Italian>Anche noi marciamo</Italian>
+            <Polish>My także maszerujemy</Polish>
+            <Portuguese>Nós também marchamos</Portuguese>
+            <Russian>И мы тоже маршируем</Russian>
+            <Czech>My také pochodujeme</Czech>
+            <Korean>우리 또한 행진한다</Korean>
+            <Japanese>我らもまた進軍する</Japanese>
+            <Chinese>我等亦在前行</Chinese>
+            <Chinesesimp>我等亦在前行</Chinesesimp>
+            <Turkish>Biz de yürüyoruz</Turkish>
+        </Key>
         <Key ID="STR_LL_StartArsenal_Marker">
             <Original>PREPARATION (Arsenal)</Original>
             <French>PREPARATIFS (Arsenal)</French>
@@ -2519,9 +2842,9 @@ Ağ doluysa istekleriniz reddedilebilir veya kesintiye uğrayabilir.&lt;br/&gt;&
             <French>Se rendre sur les lieux</French>
         </Key>
         <Key ID="STR_LL_Task_Man1_Desc">
-            <Original>Reach the objective area (550m perimeter) to start the operations.</Original>
-            <English>Reach the objective area (550m perimeter) to start the operations.</English>
-            <French>Atteignez la zone d'opération (périmètre de 550m) pour débuter l'intervention.</French>
+            <Original>Reach the objective area (800m perimeter) to start the operations.</Original>
+            <English>Reach the objective area (800m perimeter) to start the operations.</English>
+            <French>Atteignez la zone d'opération (périmètre de 800m) pour débuter l'intervention.</French>
         </Key>
         <Key ID="STR_LL_Task_Man1_Marker">
             <Original>Insertion</Original>

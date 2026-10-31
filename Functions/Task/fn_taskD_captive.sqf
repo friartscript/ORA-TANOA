@@ -48,7 +48,7 @@ for "_i" from 0 to (_numGroups - 1) do {
         private _guardPos = _spawnPos getPos [1 + random 3, random 360];
         _guardPos set [2, 0.1];
         
-        private _fClasses = missionNamespace getVariable ["MISSION_CivilianClasses_Female", []];
+        private _fClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
         private _isGuardFemale = (random 1) < 0.20 && { count _fClasses > 0 };
         private _guardClass = if (_isGuardFemale) then {
             selectRandom _fClasses
@@ -81,7 +81,7 @@ for "_i" from 0 to (_numGroups - 1) do {
 sleep 1.5;
 
 private _grpCiv = createGroup [civilian, true];
-private _fClasses = missionNamespace getVariable ["MISSION_CivilianClasses_Female", ["C_man_1"]];
+private _fClasses = (missionNamespace getVariable ["MISSION_CivilianClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) && _x != "C_man_1" };
 private _isHostageFemale = (random 1) < 0.50 && { count _fClasses > 0 };
 private _hostageClass = if (_isHostageFemale) then {
     selectRandom _fClasses

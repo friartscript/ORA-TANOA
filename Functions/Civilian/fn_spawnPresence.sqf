@@ -35,13 +35,18 @@ private _spawnedUnits = 0;
         _bPos set [2, (_bPos select 2) + 0.1];
         
         private _grp = createGroup _spawnSide;
-        private _fClasses = missionNamespace getVariable ["MISSION_CivilianClasses_Female", []];
-        private _isFemale = (random 1) < 0.40 && { count _fClasses > 0 };
-        private _defaultClass = if (_spawnSide == civilian) then { "C_man_1" } else { "O_G_Soldier_F" };
+        private _fCivClasses = (missionNamespace getVariable ["MISSION_CivilianClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) && _x != "C_man_1" };
+        private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) && _x != "O_G_Soldier_F" };
+        private _canSpawnFemale = if (_isEnemy) then { count _fEnemyClasses > 0 } else { count _fCivClasses > 0 };
+        private _isFemale = (random 1) < 0.40 && { _canSpawnFemale };
         private _class = if (_isFemale) then {
-            selectRandom _fClasses
+            if (_isEnemy) then {
+                selectRandom _fEnemyClasses
+            } else {
+                selectRandom _fCivClasses
+            };
         } else {
-            _defaultClass
+            if (_spawnSide == civilian) then { "C_man_1" } else { "O_G_Soldier_F" }
         };
         
         private _unit = _grp createUnit [_class, _bPos, [], 0, "NONE"];

@@ -31,6 +31,7 @@ class CfgFunctions
             file = "Functions\Task";
             class intro_01 {};
             class intro_02 {};
+            class subtitles_legion {};
             class spawnStartArsenal {};
             class initVehicleLoadout {};
             class task_generator {};
@@ -209,5 +210,40 @@ class CfgUnitInsignia
         author = "Friart Script";
         texture = "Images\racs_badge_backup_user-raliser-le-meme-drapeau-a-lidentique-mais-version.jpg";
         textureVehicle = "";
+    };
+};
+
+class RscTitles
+{
+    class LL_Legion_Subtitles
+    {
+        idd = -1;
+        movingEnable = 0;
+        duration = 10000;
+        fadein = 0;
+        fadeout = 0;
+        name = "LL_Legion_Subtitles";
+        onLoad = "uiNamespace setVariable ['LL_disp_subtitles', _this select 0];";
+        onUnload = "uiNamespace setVariable ['LL_disp_subtitles', displayNull];";
+        class controls
+        {
+            class SubtitleText: RscStructuredText
+            {
+                idc = 8888;
+                x = "safezoneX";
+                y = "safezoneY + safezoneH - 0.15";
+                w = "safezoneW";
+                h = "0.14";
+                colorBackground[] = {0,0,0,0};
+                size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.15)";
+                class Attributes
+                {
+                    font = "PuristaMedium";
+                    color = "#ffffff";
+                    align = "center";
+                    shadow = 2;
+                };
+            };
+        };
     };
 };

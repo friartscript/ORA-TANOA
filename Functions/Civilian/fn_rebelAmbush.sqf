@@ -87,12 +87,20 @@ private _excludedObjects = [
             private _spawnPos = _basePos getPos [random 2, random 360];
             _spawnPos set [2, (_basePos select 2)];
 
-            private _unit = _grpEast createUnit ["C_man_1", _spawnPos, [], 0, "CAN_COLLIDE"];
+            private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) && _x != "O_G_Soldier_F" };
+            private _isRebelFemale = (random 1) < 0.20 && { count _fEnemyClasses > 0 };
+            private _unitClass = if (_isRebelFemale) then {
+                selectRandom _fEnemyClasses
+            } else {
+                "O_G_Soldier_F"
+            };
+
+            private _unit = _grpEast createUnit [_unitClass, _spawnPos, [], 0, "CAN_COLLIDE"];
             _unit setVariable ["not_Random", true, true];
             _unit setPosATL _spawnPos;
             [_unit] joinSilent _grpEast;
 
-            [_unit, false, true] call LL_fnc_applyTakistaniIdentity;
+            [_unit, _isRebelFemale, true] call LL_fnc_applyTakistaniIdentity;
 
             _unit addEventHandler ["Killed", {
                 params ["_killedUnit", "_killer", "_instigator"];

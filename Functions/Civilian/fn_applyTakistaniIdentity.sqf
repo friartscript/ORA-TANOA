@@ -8,9 +8,15 @@ if (isNull _unit || !local _unit) exitWith {};
 
 _unit setVariable ["not_Random", true, true];
 
-if (_isFemale || { (toLower typeOf _unit) find "woman" != -1 } || { (toLower typeOf _unit) find "female" != -1 } || { (typeOf _unit) in (missionNamespace getVariable ["MISSION_CivilianClasses_Female", []]) }) then {
-    _isFemale = true;
-};
+private _tOf = toLower typeOf _unit;
+private _isModelFemale = ((_tOf find "woman" != -1) || 
+                         (_tOf find "female" != -1) || 
+                         (_tOf find "tcgm" != -1) || 
+                         ((typeOf _unit) in (missionNamespace getVariable ["MISSION_CivilianClasses_Female", []])) || 
+                         ((typeOf _unit) in (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]))) && 
+                         { typeOf _unit != "C_man_1" && typeOf _unit != "O_G_Soldier_F" && !(_tOf find "c_man" != -1) };
+
+_isFemale = _isModelFemale;
 
 private _fullName = "";
 private _firstName = "";
@@ -72,23 +78,37 @@ _unit setVariable ["LL_isFemale", _isFemale, true];
 removeAllWeapons _unit;
 removeAllItems _unit;
 removeAllAssignedItems _unit;
-removeUniform _unit;
 removeVest _unit;
 removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
 if (!_isEnemy) then {
-    if (_isFemale) then {
-        private _uList = missionNamespace getVariable ["MISSION_CivilianUniforms_Female", ["TCGM_F_Mini_Casual2"]];
-        if (count _uList == 0) then { _uList = ["TCGM_F_Mini_Casual2"]; };
-        _unit forceAddUniform (selectRandom _uList);
-    } else {
-        private _uList = missionNamespace getVariable ["MISSION_CivilianUniforms_Male", ["U_C_Poloshirt_blue"]];
-        if (count _uList == 0) then { _uList = ["U_C_Poloshirt_blue"]; };
-        _unit forceAddUniform (selectRandom _uList);
+    _unit setCaptive true;
+    _unit setUnitCombatMode "BLUE";
+    _unit setBehaviour "CARELESS";
+    if (rating _unit < 5000) then { _unit addRating (5000 - (rating _unit)); };
+    _unit setVariable ["LL_isEnemy", false, true];
 
-        private _hatList = missionNamespace getVariable ["MISSION_CivilianHats", []];
+    if (side group _unit != civilian) then {
+        private _grpCiv = createGroup [civilian, true];
+        [_unit] joinSilent _grpCiv;
+    };
+
+    if (_isFemale) then {
+        private _uList = (missionNamespace getVariable ["MISSION_CivilianUniforms_Female", []]) select { isClass (configFile >> "CfgWeapons" >> _x) };
+        if (count _uList > 0) then {
+            _unit forceAddUniform (selectRandom _uList);
+        };
+    } else {
+        private _uList = (missionNamespace getVariable ["MISSION_CivilianUniforms_Male", []]) select { isClass (configFile >> "CfgWeapons" >> _x) };
+        if (count _uList == 0) then { _uList = ["U_C_Poloshirt_blue", "U_C_Man_casual_1_F"]; };
+        _unit forceAddUniform (selectRandom _uList);
+        if (uniform _unit == "") then {
+            _unit forceAddUniform "U_C_Poloshirt_blue";
+        };
+
+        private _hatList = (missionNamespace getVariable ["MISSION_CivilianHats", []]) select { _x == "" || isClass (configFile >> "CfgWeapons" >> _x) };
         if (count _hatList > 0) then {
             private _hat = selectRandom _hatList;
             if (!isNil "_hat" && { _hat != "" }) then {
@@ -96,7 +116,7 @@ if (!_isEnemy) then {
             };
         };
 
-        private _vestList = missionNamespace getVariable ["MISSION_CivilianVests", []];
+        private _vestList = (missionNamespace getVariable ["MISSION_CivilianVests", []]) select { isClass (configFile >> "CfgWeapons" >> _x) };
         if (count _vestList > 0) then {
             private _vest = selectRandom _vestList;
             if (!isNil "_vest" && { _vest != "" }) then {
@@ -105,6 +125,7 @@ if (!_isEnemy) then {
         };
     };
 } else {
+    _unit setCaptive false;
     _unit setVariable ["LL_isEnemy", true, true];
 
     if (side group _unit != east) then {
@@ -121,15 +142,22 @@ if (!_isEnemy) then {
     }];
 
     if (_isFemale) then {
-        private _uList = missionNamespace getVariable ["MISSION_EnemyUniforms_Female", ["TCGM_Survival_MTP_Bra"]];
-        if (count _uList == 0) then { _uList = ["TCGM_Survival_MTP_Bra"]; };
-        _unit forceAddUniform (selectRandom _uList);
+        private _uList = (missionNamespace getVariable ["MISSION_EnemyUniforms_Female", []]) select { isClass (configFile >> "CfgWeapons" >> _x) && !((toLower _x) find "bra" != -1) && !((toLower _x) find "bikini" != -1) && !((toLower _x) find "swim" != -1) && !((toLower _x) find "naked" != -1) };
+        if (count _uList == 0) then {
+            _uList = (missionNamespace getVariable ["MISSION_CivilianUniforms_Female", []]) select { isClass (configFile >> "CfgWeapons" >> _x) };
+        };
+        if (count _uList > 0) then {
+            _unit forceAddUniform (selectRandom _uList);
+        };
     } else {
-        private _uList = missionNamespace getVariable ["MISSION_EnemyUniforms_Male", ["U_I_C_Soldier_Bandit_4_F"]];
-        if (count _uList == 0) then { _uList = ["U_I_C_Soldier_Bandit_4_F"]; };
+        private _uList = (missionNamespace getVariable ["MISSION_EnemyUniforms_Male", ["U_I_C_Soldier_Bandit_1_F"]]) select { isClass (configFile >> "CfgWeapons" >> _x) };
+        if (count _uList == 0) then { _uList = ["U_I_C_Soldier_Bandit_1_F", "U_I_C_Soldier_Bandit_4_F", "U_BG_Guerilla1_1"]; };
         _unit forceAddUniform (selectRandom _uList);
+        if (uniform _unit == "") then {
+            _unit forceAddUniform "U_I_C_Soldier_Bandit_1_F";
+        };
 
-        private _eHats = missionNamespace getVariable ["MISSION_EnemyHats", []];
+        private _eHats = (missionNamespace getVariable ["MISSION_EnemyHats", []]) select { _x == "" || isClass (configFile >> "CfgWeapons" >> _x) };
         if (count _eHats > 0) then {
             private _hat = selectRandom _eHats;
             if (!isNil "_hat" && { _hat != "" }) then {
@@ -137,7 +165,7 @@ if (!_isEnemy) then {
             };
         };
 
-        private _eGogs = missionNamespace getVariable ["MISSION_EnemyGoggles", []];
+        private _eGogs = (missionNamespace getVariable ["MISSION_EnemyGoggles", []]) select { _x == "" || isClass (configFile >> "CfgGlasses" >> _x) };
         if (count _eGogs > 0) then {
             private _gog = selectRandom _eGogs;
             if (!isNil "_gog" && { _gog != "" }) then {
@@ -146,7 +174,7 @@ if (!_isEnemy) then {
         };
     };
 
-    private _eVests = missionNamespace getVariable ["MISSION_EnemyVests", []];
+    private _eVests = (missionNamespace getVariable ["MISSION_EnemyVests", []]) select { isClass (configFile >> "CfgWeapons" >> _x) };
     if (count _eVests > 0) then {
         private _vest = selectRandom _eVests;
         if (!isNil "_vest" && { _vest != "" }) then {
@@ -154,7 +182,7 @@ if (!_isEnemy) then {
         };
     };
 
-    private _eBps = missionNamespace getVariable ["MISSION_BanditBackpacks", []];
+    private _eBps = (missionNamespace getVariable ["MISSION_BanditBackpacks", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
     if (count _eBps > 0) then {
         private _bp = selectRandom _eBps;
         if (!isNil "_bp" && { _bp != "" }) then {
@@ -162,8 +190,8 @@ if (!_isEnemy) then {
         };
     };
 
-    private _weapons = missionNamespace getVariable ["MISSION_BanditWeapons", ["arifle_AKM_F"]];
-    if (count _weapons == 0) then { _weapons = ["arifle_AKM_F"]; };
+    private _weapons = (missionNamespace getVariable ["MISSION_BanditWeapons", ["arifle_AKM_F"]]) select { isClass (configFile >> "CfgWeapons" >> _x) };
+    if (count _weapons == 0) then { _weapons = ["arifle_AKM_F", "arifle_Katiba_F"]; };
     private _weapon = selectRandom _weapons;
     if (!isNil "_weapon" && { _weapon != "" }) then {
         private _magazines = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines");

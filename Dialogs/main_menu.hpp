@@ -557,7 +557,7 @@ class RscMapControl
     };
     class Ruin
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\ruins_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\ruin_ca.paa";
         color[] = {1, 1, 1, 1};
         size = 16;
         importance = 1;
@@ -566,7 +566,7 @@ class RscMapControl
     };
     class Ruins
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\ruins_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\ruin_ca.paa";
         color[] = {1, 1, 1, 1};
         size = 16;
         importance = 1;
@@ -575,7 +575,7 @@ class RscMapControl
     };
     class SmallTree
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\something_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\bush_ca.paa";
         color[] = {0.45, 0.64, 0.33, 0.4};
         size = 12;
         importance = 0.6;
@@ -593,7 +593,7 @@ class RscMapControl
     };
     class Tree
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\something_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\bush_ca.paa";
         color[] = {0.45, 0.64, 0.33, 0.4};
         size = 12;
         importance = 0.9;
@@ -611,7 +611,7 @@ class RscMapControl
     };
     class Tourism
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\tourist_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\tourism_ca.paa";
         color[] = {1, 1, 1, 1};
         size = 16;
         importance = 1;
@@ -620,7 +620,7 @@ class RscMapControl
     };
     class Tourist
     {
-        icon = "\A3\ui_f\data\map\mapcontrol\tourist_ca.paa";
+        icon = "\A3\ui_f\data\map\mapcontrol\tourism_ca.paa";
         color[] = {1, 1, 1, 1};
         size = 16;
         importance = 1;

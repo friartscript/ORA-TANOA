@@ -25,7 +25,7 @@ private _targetPos = getMarkerPos _locMarker;
 
 waitUntil {
     sleep 2;
-    ({ alive _x && (_x distance2D _targetPos) < 500 } count (allPlayers + switchableUnits + [player])) > 0
+    ({ alive _x && (_x distance2D _targetPos) < 800 } count (allPlayers + switchableUnits + [player])) > 0
 };
 
 [_targetPos] spawn LL_fnc_secureOpforLanguage;

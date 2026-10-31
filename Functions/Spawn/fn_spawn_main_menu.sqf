@@ -181,12 +181,13 @@ if (_mode == "OPEN") exitWith {
     };
 
     private _insCtrl = _display displayCtrl 7301;
-    lbClear _insCtrl;
-    private _i1 = _insCtrl lbAdd (localize "STR_INS_HELI");
-    _insCtrl lbSetData [_i1, "HELI"];
-    private _i2 = _insCtrl lbAdd (localize "STR_INS_AIRDROP");
-    _insCtrl lbSetData [_i2, "TAP"];
-    _insCtrl lbSetCurSel 0;
+    if (!isNull _insCtrl) then {
+        lbClear _insCtrl;
+        private _i1 = _insCtrl lbAdd (localize "STR_INS_HELI");
+        _insCtrl lbSetData [_i1, "HELI"];
+        _insCtrl lbSetCurSel 0;
+        _insCtrl ctrlEnable false;
+    };
 
     uiSleep 0.05;
     ["UPDATE_MAP"] call LL_fnc_spawn_main_menu;
@@ -346,7 +347,7 @@ if (_mode == "LAUNCH") exitWith {
     private _overcast = parseNumber (_ctrlClouds lbData (lbCurSel _ctrlClouds));
     private _fog = parseNumber (_ctrlFog lbData (lbCurSel _ctrlFog));
     private _selectedLocationMarker = _locCtrl lbData (lbCurSel _locCtrl);
-    private _selectedInsertion = _insCtrl lbData (lbCurSel _insCtrl);
+    private _selectedInsertion = "HELI";
     private _rebelAmbushEnabled = cbChecked (_display displayCtrl 7120);
     
     closeDialog 0;
@@ -433,17 +434,7 @@ if (_mode == "LAUNCH") exitWith {
 
     private _selectedVehClass = if (!isNil "MISSION_var_selected_vehicle_class") then { MISSION_var_selected_vehicle_class } else { "CUP_I_LR_Transport_RACS" };
 
-    switch (_selectedInsertion) do {
-        case "HELI": {
-            [_selectedLocationMarker, _dropPosCenter, _selectedVehClass] spawn LL_fnc_intro_01;
-        };
-        case "TAP": {
-            [_selectedLocationMarker, _dropPosCenter, _selectedVehClass] spawn LL_fnc_intro_02;
-        };
-        default {
-            [_selectedLocationMarker, _dropPosCenter, _selectedVehClass] spawn LL_fnc_intro_01;
-        };
-    };
+    [_selectedLocationMarker, _dropPosCenter, _selectedVehClass] spawn LL_fnc_intro_01;
 
     [_dropPosCenter, 400, 15, _targetPos] spawn LL_fnc_ambientCivilians;
     [_targetPos, 400, 30, _dropPosCenter] spawn LL_fnc_ambientCivilians;

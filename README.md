@@ -1,11 +1,12 @@
-# ⚔️ OPERATION ROYAL ALLIANCE — Takistan
+# ⚔️ OPERATION ROYAL ALLIANCE — Tanoa
 
 <div align="center">
 
 ![Arma 3](https://img.shields.io/badge/Arma%203-Scenario%20%5BSP%5D-blue?style=for-the-badge&logo=arma)
+![DLC](https://img.shields.io/badge/DLC%20Required-Apex%20%28Tanoa%29-yellow?style=for-the-badge)
 ![Engine](https://img.shields.io/badge/Engine-Real%20Virtuality%204-red?style=for-the-badge)
-![Mods](https://img.shields.io/badge/Dependencies-CUP%20%7C%20Max%20Women-orange?style=for-the-badge)
-![Languages](https://img.shields.io/badge/Localization-14%20Languages-green?style=for-the-badge)
+![Mods](https://img.shields.io/badge/Dependencies-CUP%20%7C%20TCGM%20Girls-orange?style=for-the-badge)
+![Languages](https://img.shields.io/badge/Localization-15%20Languages-green?style=for-the-badge)
 ![Author](https://img.shields.io/badge/Author-Friart%20Script-purple?style=for-the-badge)
 
 **Un générateur d'opérations dynamiques en bac à sable et un centre de commandement tactique immersif pour Arma 3 Solo.**
@@ -20,17 +21,17 @@
 
 ## 🎯 Vue d'Ensemble
 
-**Operation Royal Alliance (ORA)** est une mission solo tactique non-linéaire qui réinvente l'expérience d'engagement en milieu aride sur le théâtre d'opérations du **Takistan**. 
+**Operation Royal Alliance (ORA)** est une mission solo tactique non-linéaire se déroulant sur l'archipel tropical de **Tanoa**
 
-Incarnez le chef de groupe d'une escouade de la **Légion Étrangère du RACS** (*Royal Army Corps of Sahrani*). Grâce à un **lanceur tactique 3D sur mesure**, planifiez votre vecteur d'insertion, sélectionnez votre appui motorisé, réglez la météo et enchaînez des missions procédurales infinies dans un environnement moyen-oriental vivant et hautement réactif.
+Incarnez le chef de groupe d'une escouade d'élite de la **Branche Française de la Légion Étrangère du RACS** (*Royal Army Corps of Sahrani*). Grâce à un **centre de commandement tactique 3D**, planifiez votre insertion héliportée, sélectionnez votre véhicule terrestre d'appui, réglez la météo en temps réel et enchaînez des missions procédurales infinies dans un environnement insulaire vivant, hostile et hautement réactif.
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│  CENTRE DE COMMANDEMENT ──► INSERTION TACTIQUE ──► OPÉRATIONS EN ZONE        │
-│  (GUI 3 Panneaux & PiP)     (UH-60L ou C-130 HALO) (Missions Procédurales)   │
+│  CENTRE DE COMMANDEMENT ──► INSERTION HÉLIPORTÉE ──► OPÉRATIONS EN ZONE      │
+│  (GUI 3 Panneaux & PiP)     (UH-60L Black Hawk LZ)   (Missions Procédurales) │
 │                                                                │             │
 │  FIN DE SESSION ◄──────────── EXTRACTION HÉLIPORTÉE ◄──────────┘             │
-│  (Rapport de Mission)         (UH-60 CAS & Évacuation)                       │
+│  (Rapport de Mission)         (UH-60L CAS & Évacuation)                      │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -38,58 +39,61 @@ Incarnez le chef de groupe d'une escouade de la **Légion Étrangère du RACS** 
 
 ## 🌍 Contexte Stratégique & Lore
 
-### 1. La Guerre Civile au Takistan (2025–2026)
-Le **Takistan** est plongé dans une guerre civile sanglante. Carrefour géostratégique du Moyen-Orient riche en ressources sensibles, la région est devenue le sanctuaire de milices rebelles surarmées, de cellules terroristes et de seigneurs de guerre locaux menaçant la stabilité internationale.
+### 1. La Guerre Contre les Cartels & le Narcotrafic (Océan Indien)
+L'archipel de **Tanoa** et les îles environnantes sont devenus la plaque tournante du narcotrafic international dans l'Océan Indien. Profitant de la porosité des frontières maritimes, un cartel mafieux surarmé (le **Syndikat**) a transformé la région en sanctuaire de raffinage de drogue dure, de contrebande d'armes de guerre et de piraterie maritime. 
 
-### 2. Le Corps Expéditionnaire de Sahrani (RACS)
-À la suite de la réunification du Royaume de Sahrani, la monarchie a créé une unité d'élite dédiée aux interventions extérieures à haut risque : la **Légion Étrangère du RACS** (*RACS Foreign Legion*). Composée de vétérans internationaux aguerris, l'escouade est déployée sous mandat de pacification pour éliminer la menace insurgée et protéger les populations locales sans exposer les forces régulières du Royaume.
+### 2. Le Corps Expéditionnaire de Sahrani (Légion RACS)
+Face à la corruption locale et à la menace représentée par les milices du cartel, le gouvernement a fait appel à la **Branche Française de la Légion Étrangère du RACS**. Cette unité d'élite mène des frappes chirurgicales au cœur des sanctuaires de la mafia insulaire avec un mandat strict :
+* **Démanteler les infrastructures logistiques clandestines** (laboratoires chimiques, émetteurs radio de contrebande, technicals armés).
+* **Traquer et neutraliser les têtes de réseau** (barons de la drogue et lieutenants).
+* **Secourir les agents infiltrés et otages** avant leur exécution.
+* **Protéger rigoureusement la population civile insulaire** (règle absolue : zéro dommage collatéral).
 
 ---
 
 ## ⚡ Fonctionnalités Majeures
 
 ### 🖥️ 1. Lanceur de Mission Tactique Interactif (GUI)
-* **Centre de Commandement 3D :** Interface graphique à 3 volets déployée avant chaque départ en mission.
-* **Vecteurs d'Insertion Dédiés :**
-  * *Vol basse altitude :* Insertion cinématique à bord d'un hélicoptère **UH-60L Black Hawk** au ras du relief.
-  * *Parachutage HALO :* Largage à haute altitude depuis un avion-cargo **C-130J Hercules**.
-* **Visualiseur 3D en Temps Réel (PiP) :** Sélection interactive du véhicule terrestre d'appui (Land Rover MG RACS) avec rendu caméra 3D dynamique.
-* **Météorologie Dynamique :** Paramétrage temps réel de l'heure, du brouillard et de la nébulosité.
+* **Centre de Commandement 3D :** Interface graphique interactive déployée avant chaque départ en mission.
+* **Insertion Héliportée Dédiée :** Dépose cinématique au ras de la canopée et des lagons à bord d'un hélicoptère **UH-60L Black Hawk** sur la zone d'atterrissage (LZ).
+* **Visualiseur 3D en Temps Réel (PiP) :** Sélection interactive du véhicule terrestre d'appui (Land Rover MG RACS) avec rendu caméra 3D direct.
+* **Météorologie Dynamique :** Paramétrage temps réel de l'heure, du brouillard et de la couverture nuageuse.
+* **Bande Son Immersive & Sous-Titres :** *Chant de la Légion Étrangère* synchronisé en temps réel avec une couche d'affichage cinéma haute définition et traduction intégrale dans les 15 langues du jeu.
 
 ---
 
-### 🔄 2. Moteur d'Opérations Dynamiques & Infinies
+### 🔄 2. Moteur d'Opérations Dynamiques & Procédurales
 * **Boucle de Jeu Sans Limites :** Enchaînez autant d'objectifs que souhaité sans jamais interrompre la partie.
-* **Génération Procédurale :** Placement dynamique des camps ennemis, patrouilles, otages, relais de communication et caches chimiques à travers les villages et montagnes du Takistan.
-* **Contre-Attaque Ennemie Réactive :** À la complétion d'un objectif majeur, les cellules insurgées locales déclenchent immédiatement une manœuvre de riposte agressive (*Search & Destroy*).
-* **Extraction Cinématique à la Demande :** Demandez l'évacuation à tout moment via la molette. L'hélicoptère de soutien vient extraire votre groupe sous couverture aérienne avec retour à la base et debriefing complet.
+* **Génération Procédurale Réactive :** Placement dynamique des camps ennemis, patrouilles, otages, relais de communication, convois chimiques et technicals à travers la jungle, les villages et les installations côtières.
+* **Contre-Attaque Ennemie Réactive :** À la réussite d'un objectif majeur, des cellules de sicarios déclenchent une manœuvre de traque et d'interception (*Search & Destroy*).
+* **Extraction Cinématique à la Demande :** Demandez l'évacuation à tout moment via la molette. L'UH-60L de soutien vient extraire votre groupe sous couverture armée avec debriefing complet.
 
 ---
 
-### 🕌 3. Immersion Culturelle & Vie Rurale Vivante
-* **Appel à la Prière 3D Spatialisé (Ezan) :** Diffusion audio Mono 3D ultra-réaliste depuis les minarets des mosquées avec écho naturel de vallée (2.2s - 3.4s) et algorithme anti-cacophonie (< 350m).
-* **Population Takistanaise Réaliste :**
-  * Hommes civils vêtus de tenues traditionnelles, turbans (*Lungee*), bonnets (*Pakol*, *SkullCap*) et barbes afghanes.
-  * **Présence de femmes civiles et combattantes** avec des modèles 3D féminins authentiques (*Mod Max Women*), burqas et tenues régionales.
-  * **Protocole Vocal Persan & Pachto :** Voix natives persanes (`RadioProtocolPER`) avec modulation de pitch pour des dialogues et réactions de panique authentiques.
-* **Vie Rurale & Faune :** Troupeaux de moutons procéduraux avec comportements de pâturage et dispersion sous les tirs.
-* **Profils Comportementaux IA :** 6 états psychologiques civils distincts (fuite paniquée, mise à couvert, résignation, neutralité).
+### 🌴 3. Immersion Insulaire & Vie Locale Vivante
+* **Identités Civiles & Régionales :**
+  * Noms et patronymes authentiques de l'Océan Indien (Mayotte, Comores, Tanoa).
+  * Population masculine vêtue de tenues tropicales civiles, polos, chemisettes et vêtements de travail.
+  * **Présence de femmes civiles et de combattantes ennemies :** Séparation stricte et étanche entre citoyennes civiles inoffensives (immunité totale, statut captif et zéro ciblage) et combattantes ennemies armées du cartel.
+  * **Système Vocal CUP CZ Dédié :** Voix tchèques natives assignées séparément aux hommes (`CUP_D_Male*_CZ`) et aux femmes (`CUP_D_Female*_CZ`).
+* **Faune Insulaire Authentique :** Volailles de basse-cour (poules `Hen_random_F`, coqs `Cock_random_F`) déambulant dans les cours villageoises en remplacement des troupeaux désertiques.
+* **Surveillance Anti-Noyade (`fn_preventWater`) :** Algorithme temps réel garantissant que les IA civiles et ennemies ne plongent pas et ne se noient pas dans les lagons ou l'océan.
 
 ---
 
 ### 🎮 4. Commandement d'Escouade & Continuité Solo
-* **Contrôle Tactique R.O.E :** Régulez instantanément la posture de vos 5 coéquipiers IA via le menu déroulant (Infiltration, Normal, Défense, Regroupement d'Urgence, Assaut).
-* **Transfert de Commandement Transparent (`fn_switchToAI`) :** Si le joueur tombe au combat, la caméra et le commandement basculent immédiatement et sans coupure sur un coéquipier IA survivant de l'escouade.
+* **Contrôle Tactique R.O.E :** Régulez instantanément la posture de vos coéquipiers IA via la molette (Infiltration, Normal, Défense, Regroupement d'Urgence, Assaut).
+* **Transfert de Commandement Transparent (`fn_switchToAI`) :** Si le joueur tombe au combat, la caméra et le commandement basculent immédiatement et sans coupure sur un coéquipier survivant de l'escouade.
 * **Auto-Soin des Unités Alliées :** Gestionnaire autonome de premiers secours permettant aux coéquipiers IA de se soigner et de stabiliser leurs blessures au combat.
-* **Système Intelligent de Portes & Grilles (`fn_doorSecurity`) :** Ouverture automatique universelle des portes, volets métalliques de commerces et portails à 4.5m pour l'infanterie, avec fermeture automatique à 6.0m pour éliminer les blocages de pathfinding d'Arma 3.
+* **Gestionnaire Intelligent de Portes & Grilles (`fn_doorSecurity`) :** Ouverture automatique universelle des portes, volets métalliques et portails à 4,5 m pour l'infanterie, avec fermeture à 6 m pour éliminer les blocages de pathfinding.
 
 ---
 
 ### 🚁 5. Appuis Tactiques & Armes Combinées
-* **Appui Aérien & CAS (UH-60L Black Hawk) :** Mitraillage au sol sur coordonnées désignées.
+* **Appui Aérien Rapproché CAS (UH-60L Black Hawk) :** Mitraillage au sol sur coordonnées désignées.
 * **Largage de Ravitaillement :** Parachutage de caisses d'armement et munitions sur votre position.
 * **Drone de Reconnaissance (MQ-9 Reaper) :** Télémétrie en temps réel et retransmission vidéo de surveillance sur zone.
-* **Radio TTS Vocale & Insignes :** Communications militaires immersives et écusson officiel brodé de la Légion Étrangère du RACS sur les gilets de combat.
+* **Écusson Officiel :** Insigne brodé de la Légion Étrangère du RACS sur les gilets de combat alliés.
 
 ---
 
@@ -99,15 +103,15 @@ Chaque déploiement combine des directives d'engagement globales et des missions
 
 | Code Tâche | Type d'Opération | Description Stratégique |
 | :---: | :--- | :--- |
-| **Tâche A** | **Transit & Reconnaissance** | Déploiement initial et prise de position dans le secteur opérationnel (550m). |
-| **Tâche B** | **Protection Civile** | Préservation des civils et respect strict des règles d'engagement (ROE). |
-| **Tâche C** | **Survie du Détachement** | Préservation des effectifs de la Légion et extraction sécurisée de l'escouade. |
-| **Tâche D-00** | **Libération d'Otage** | Infiltration d'un complexe fortifié pour secourir un agent de renseignement captif. |
-| **Tâche D-01** | **Capture de Documents** | Récupération de données secrètes et plans de bataille au cœur d'un avant-poste ennemi. |
-| **Tâche D-04** | **Neutralisation Chimique** | Infiltration d'une usine clandestine et destruction de fûts de neurotoxiques. |
-| **Tâche D-08** | **Sabotage de Relais** | Destruction d'une station de transmission et d'un drone tactique *Tigris*. |
-| **Tâche D-HVT** | **Élimination de Cible (HVT)** | Traque et neutralisation d'un haut commandant insurgé retranché. |
-| **Tâche D-Trans**| **Piratage de Fréquence** | Piratage et désactivation d'un émetteur radio de propagande rebelle. |
+| **Tâche A** | **Infiltration du Secteur** | Débarquement discret et progression à travers la jungle vers la zone contrôlée par le cartel. |
+| **Tâche B** | **Protection Civile** | Zéro victime collatérale. Respect absolu des règles d'engagement envers les villageois insulaires. |
+| **Tâche C** | **Survie du Détachement** | Préservation des effectifs de la Légion et évacuation sécurisée de l'escouade. |
+| **Tâche D-00** | **Sauvetage d'Agent Infiltré** | Infiltration d'un camp retranché pour libérer un agent anti-drogue avant son exécution. |
+| **Tâche D-01** | **Comptabilité Noire & Documents** | Récupération des registres de corruption et routes maritimes sur le corps d'un lieutenant du cartel. |
+| **Tâche D-04** | **Citerne de Précurseurs Chimiques** | Sécurisation d'une citerne de solvants de raffinage et extraction par hélitreuillage lourd (Slingload). |
+| **Tâche D-08** | **Destruction de Technical Lourd** | Neutralisation d'un pickup armé lourd (ZU-23-2 / HMG) et d'un camion de brouillage Tempest. |
+| **Tâche D-HVT** | **Élimination du Baron de la Drogue** | Traque et neutralisation du chef local du cartel protégé par sa garde rapprochée. |
+| **Tâche D-Trans**| **Terminaux Radio de Contrebande** | Sabotage aux explosifs des relais radio clandestins servant à la coordination des go-fast. |
 
 ---
 
@@ -117,43 +121,42 @@ Gérez la tactique de votre escouade en direct via le menu dynamique (molette de
 
 | Posture Tactique | Effet sur l'Escouade IA | Cas d'Usage Idéal |
 | :--- | :--- | :--- |
-| 🤫 **Infiltration** | Déplacement furtif en silence, accroupi, désactivation de l'autocombat. | Approche nocturne, reconnaissance, contournement de patrouilles. |
-| 🛡️ **Normal** | Vitesse standard, engagement libre à portée utile, couverture mutuelle. | Progression générale en terrain ouvert et fouille de village. |
-| 🏰 **Défense** | Prise de position statique à 360°, couverture des accès et fenêtres. | Attente de l'extraction, sécurisation de VIP, tenue d'un carrefour. |
-| ⚡ **Regroupement d'Urgence** | Sprint immédiat vers le leader, rupture de contact sans riposte. | Désengagement sous tir de mortier, extraction précipitée. |
-| 💥 **Assaut** | Vitesse maximale, tir de suppression soutenu et progression agressive. | Assaut final sur bâtiment fortifié, réduction d'un nid de résistance. |
+| 🤫 **Infiltration** | Déplacement furtif en silence, accroupi, désactivation de l'autocombat. | Approche discrète dans la jungle, contournement de sentinelles. |
+| 🛡️ **Normal** | Vitesse standard, engagement libre à portée utile, couverture mutuelle. | Progression générale en terrain ouvert et reconnaissance de village. |
+| 🏰 **Défense** | Prise de position statique à 360°, couverture des accès et clairières. | Attente de l'hélicoptère d'extraction, tenue d'un carrefour ou d'un quai. |
+| ⚡ **Regroupement d'Urgence** | Sprint immédiat vers le leader, rupture de contact sans riposte. | Désengagement sous tir de mitrailleuse lourde, repli d'urgence. |
+| 💥 **Assaut** | Vitesse maximale, tir de suppression soutenu et progression agressive. | Assaut final sur bâtiment fortifié, réduction d'un camp retranché. |
 
 ---
 
 ## 📦 Installation & Dépendances
 
-### 1. Prérequis (Mods Requis)
-Cette mission nécessite les mods suivants, disponibles sur le **Steam Workshop** :
+### 1. Prérequis (DLC & Mods Requis)
+Cette mission nécessite l'extension officielle et les mods suivants :
 
-* [CUP Terrains - Core](https://steamcommunity.com/sharedfiles/filedetails/?id=583496341)
-* [CUP Terrains - Maps](https://steamcommunity.com/sharedfiles/filedetails/?id=583544988)
+* **Arma 3 Apex** (DLC officiel Bohemia Interactive — carte de **Tanoa**)
 * [CUP Units](https://steamcommunity.com/sharedfiles/filedetails/?id=497661914)
 * [CUP Vehicles](https://steamcommunity.com/sharedfiles/filedetails/?id=541888371)
 * [CUP Weapons](https://steamcommunity.com/sharedfiles/filedetails/?id=497660133)
-* [Max Women](https://steamcommunity.com/sharedfiles/filedetails/?id=1451755886)
+* [TCGM_Girls](https://steamcommunity.com/sharedfiles/filedetails/?id=1451755886) (Modèles & tenues féminines civiles et militaires)
 
 ### 2. Installation Manuelle
 1. Téléchargez ou clonez ce dépôt :
    ```bash
-   git clone https://github.com/votre-compte/ORA.Takistan.git
+   git clone https://github.com/votre-compte/ORA.Tanoa.git
    ```
-2. Déposez le dossier `ORA.Takistan` dans votre répertoire de missions Solo Arma 3 :
+2. Déposez le dossier `ORA.Tanoa` dans votre répertoire de missions Solo Arma 3 :
    ```text
-   C:\Users\<VotreNom>\Documents\Arma 3\missions\ORA.Takistan
+   C:\Users\<VotreNom>\Documents\Arma 3\missions\ORA.Tanoa
    ```
-3. Lancez **Arma 3** avec les mods CUP et Max Women activés.
+3. Lancez **Arma 3** avec les extensions et mods activés.
 4. Rendez-vous dans le menu : **Jouer** ──► **Scénarios** ──► **Operation Royal Alliance**.
 
 ---
 
-## 🌐 Localisation Multilingue (14 Langues)
+## 🌐 Localisation Multilingue (15 Langues)
 
-La mission intègre une internationalisation native complète grâce à un pipeline XML compilé :
+La mission intègre une internationalisation native complète grâce au fichier compilé `stringtable.xml` :
 
 | Langue | Statut | Langue | Statut | Langue | Statut |
 | :--- | :---: | :--- | :---: | :--- | :---: |
@@ -161,30 +164,30 @@ La mission intègre une internationalisation native complète grâce à un pipel
 | 🇩🇪 **Allemand** | 100% | 🇮🇹 **Italien** | 100% | 🇵🇱 **Polonais** | 100% |
 | 🇷🇺 **Russe** | 100% | 🇹🇷 **Turc** | 100% | 🇯🇵 **Japonais** | 100% |
 | 🇰🇷 **Coréen** | 100% | 🇨🇳 **Chinois** | 100% | 🇵🇹 **Portugais** | 100% |
-| 🇨🇿 **Tchèque** | 100% | 🌐 **Original** | 100% | | |
+| 🇨🇿 **Tchèque** | 100% | 🌐 **Original** | 100% | 🇨🇳 **Chinois (Alt)** | 100% |
 
-*Pour ajouter ou modifier des traductions, consultez le guide dédié :* [`INFO_STRINTABLE.md`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/INFO_STRINTABLE.md).
+*Pour plus de détails sur le système de localisation, consultez :* [`INFO_STRINTABLE.md`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/INFO_STRINTABLE.md).
 
 ---
 
-## 🏗️ Architecture Technique
+## 🏗️ Architecture & Documentation Complémentaire
 
-Le code source de la mission a été conçu selon des normes strictes de modularité et de performance :
+Le projet suit des normes strictes de modularité et d'optimisation Solo (sans surcharge réseau inutile) :
 
-* **Zéro Desync :** 100% optimisé pour le moteur Solo (pas de surcharge réseau multijoueur inutile).
-* **Architecture Modulaire :** 54 fonctions SQF spécialisées regroupées par domaine sous `Functions/` (`Briefing/`, `Civilian/`, `Drone/`, `Environment/`, `Helicopter/`, `Medical/`, `Player/`, `Spawn/`, `Task/`, `Team/`).
-* **Documentation Exhaustive :** Pour une analyse technique détaillée fichier par fichier de l'ensemble du projet, consultez le document d'architecture :  
-  👉 **[`ARCHI.md`](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Takistan/ARCHI.md)**
+* **[INFO_TANOA.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/INFO_TANOA.md)** : Synthèse narrative et technique détaillée du passage sur Tanoa et de la lutte contre le narcotrafic.
+* **[Music/MUSIC.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/Music/MUSIC.md)** : Retranscription intégrale, traduction et chronologie des 18 vers du *Chant de la Légion Étrangère*.
+* **[ARCHI.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/ARCHI.md)** : Architecture logicielle complète, nomenclature des fonctions et arborescence SQF.
+* **[VETEMENTS.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/VETEMENTS.md)** : Répertoire des équipements et tenues des différentes factions.
 
 ---
 
 ## 👤 Auteur & Crédits
 
 * **Créateur & Développeur Principal :** **Friart Script** ([@friartscript](https://steamcommunity.com))
-* **Moteur & Univers :** [Bohemia Interactive](https://www.bohemia.net/) (*Arma 3*)
+* **Moteur & Univers :** [Bohemia Interactive](https://www.bohemia.net/) (*Arma 3 Apex*)
 * **Assets & Équipements :** [CUP Team](http://cup-arma3.org/) (*Community Upgrade Project*)
-* **Modèles Féminins :** [Max](https://steamcommunity.com/sharedfiles/filedetails/?id=1451755886) (*Max Women*)
-* **Bande Son Originale :** *Shadow of the Valley* (Tracks 01, 02, 03)
+* **Modèles Féminins :** [TCGM Girls](https://steamcommunity.com/sharedfiles/filedetails/?id=1451755886)
+* **Bande Son d'Introduction :** *Chant de la Légion Étrangère* (Legion 001 - Marche)
 
 ---
 

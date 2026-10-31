@@ -60,9 +60,10 @@ for "_i" from 0 to (_numSpawns - 1) do {
 
         private _numGuards = 2 + floor (random 2);
         for "_g" from 1 to _numGuards do {
-            private _isGuardFemale = (random 1) < 0.15;
+            private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
+            private _isGuardFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
             private _guardClass = if (_isGuardFemale) then {
-                if (isClass (configFile >> "CfgVehicles" >> "Max_Tak_woman1")) then { selectRandom MISSION_CivilianClasses_Female } else { "O_G_Soldier_F" };
+                selectRandom _fEnemyClasses
             } else {
                 "O_G_Soldier_F"
             };
@@ -86,9 +87,10 @@ for "_i" from 0 to (_numSpawns - 1) do {
     private _grpOfficer = createGroup [east, true];
     _grpOfficer setBehaviour "SAFE";
     _grpOfficer setCombatMode "YELLOW";
-    private _isOfficerFemale = (random 1) < 0.10;
+    private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
+    private _isOfficerFemale = (random 1) < 0.10 && { count _fEnemyClasses > 0 };
     private _officerClass = if (_isOfficerFemale) then {
-        if (isClass (configFile >> "CfgVehicles" >> "Max_Tak_woman1")) then { selectRandom MISSION_CivilianClasses_Female } else { "O_Officer_F" };
+        selectRandom _fEnemyClasses
     } else {
         "O_Officer_F"
     };

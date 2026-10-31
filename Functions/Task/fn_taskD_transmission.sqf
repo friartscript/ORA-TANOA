@@ -81,9 +81,10 @@ for "_i" from 0 to (_numRadios - 1) do {
         for "_g" from 1 to _numGuards do {
             private _guardPos = _spawnPos getPos [random 5, random 360];
             _guardPos set [2, (_spawnPos select 2)];
-            private _isGuardFemale = (random 1) < 0.15;
+            private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
+            private _isGuardFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
             private _guardClass = if (_isGuardFemale) then {
-                if (isClass (configFile >> "CfgVehicles" >> "Max_Tak_woman1")) then { selectRandom MISSION_CivilianClasses_Female } else { "O_G_Soldier_F" };
+                selectRandom _fEnemyClasses
             } else {
                 "O_G_Soldier_F"
             };
