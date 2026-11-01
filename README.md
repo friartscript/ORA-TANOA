@@ -11,7 +11,7 @@
 
 **Un générateur d'opérations dynamiques en bac à sable et un centre de commandement tactique immersif pour Arma 3 Solo.**
 
-[Vue d'Ensemble](#-vue-densemble) • [Contexte & Lore](#-contexte-stratégique--lore) • [Fonctionnalités Clés](#-fonctionnalités-majeures) • [Opérations Tactiques](#-catalogue-des-missions) • [Commandement & R.O.E](#-règles-dengagement--commandement-descouade) • [Dépendances & Installation](#-installation--dépendances) • [Architecture](#-architecture-technique)
+[Vue d'Ensemble](#-vue-densemble) • [Contexte & Lore](#-contexte-stratégique--lore) • [Fonctionnalités Clés](#-fonctionnalités-majeures) • [Opérations Tactiques](#-catalogue-des-missions) • [Commandement & R.O.E](#-règles-dengagement--commandement-descouade) • [Dépendances & Installation](#-installation--dépendances) • [Architecture Détaillée](#-architecture-détaillée-du-projet)
 
 ---
 
@@ -21,7 +21,7 @@
 
 ## 🎯 Vue d'Ensemble
 
-**Operation Royal Alliance (ORA)** est une mission solo tactique non-linéaire se déroulant sur l'archipel tropical de **Tanoa**
+**Operation Royal Alliance (ORA)** est une mission solo tactique non-linéaire se déroulant sur l'archipel tropical de **Tanoa**.
 
 Incarnez le chef de groupe d'une escouade d'élite de la **Branche Française de la Légion Étrangère du RACS** (*Royal Army Corps of Sahrani*). Grâce à un **centre de commandement tactique 3D**, planifiez votre insertion héliportée, sélectionnez votre véhicule terrestre d'appui, réglez la météo en temps réel et enchaînez des missions procédurales infinies dans un environnement insulaire vivant, hostile et hautement réactif.
 
@@ -170,14 +170,97 @@ La mission intègre une internationalisation native complète grâce au fichier 
 
 ---
 
-## 🏗️ Architecture & Documentation Complémentaire
+## 🏗️ Architecture Détaillée du Projet
 
-Le projet suit des normes strictes de modularité et d'optimisation Solo (sans surcharge réseau inutile) :
+Le projet repose sur une architecture modulaire en scripts SQF autonomes, conçue spécifiquement pour le jeu Solo (Single-Player) afin d'assurer une fluidité maximale, sans aucune surcharge réseau superflue.
 
-* **[INFO_TANOA.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/INFO_TANOA.md)** : Synthèse narrative et technique détaillée du passage sur Tanoa et de la lutte contre le narcotrafic.
-* **[Music/MUSIC.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/Music/MUSIC.md)** : Retranscription intégrale, traduction et chronologie des 18 vers du *Chant de la Légion Étrangère*.
-* **[ARCHI.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/ARCHI.md)** : Architecture logicielle complète, nomenclature des fonctions et arborescence SQF.
-* **[VETEMENTS.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/VETEMENTS.md)** : Répertoire des équipements et tenues des différentes factions.
+```
+ORA.Tanoa/
+├── init.sqf                      # Point d'entrée principal de la mission
+├── description.ext               # Déclaration des fonctions (CfgFunctions), sons, musiques et GUI
+├── stringtable.xml               # Base de données de localisation (15 langues traduites)
+├── Dialogs/                      # Définitions des interfaces graphiques (GUI)
+│   └── main_menu.hpp             # Panneau de lancement tactique 3D
+└── Functions/                    # Modules fonctionnels de la mission
+    ├── Spawn/                    # Centre de commandement et préparation de mission
+    ├── Task/                     # Moteur procédural des opérations et cinématiques
+    ├── Team/ & Player/           # Escouade, identité, R.O.E et continuité Solo
+    ├── Medical/                  # Gestion des soins et de l'auto-médication IA
+    ├── Helicopter/ & Drone/      # Soutien tactique 0-8 (Largages, CAS, Drone, Extraction)
+    ├── Civilian/                 # Foule civile, comportement, fuite et faune
+    ├── Environment/              # Météo dynamique, anti-noyade et ouverture de portes
+    └── UI/                       # Radio militaire TTS et affichage sous-titré
+```
+
+---
+
+### 🔄 1. Pipeline Global d'Exécution (Cycle de Vie de la Mission)
+
+1. **Initialisation (`init.sqf`) :** Dès le chargement, les 6 membres de l'escouade (`player_0` à `player_5`) sont immunisés temporairement, leurs identités procédurales sont assignées, les gestionnaires d'ambiance et de confort démarrent en arrière-plan, et le joueur est plongé dans un fondu noir ouvrant le centre de commandement tactique.
+2. **Centre de Commandement 3D (`Functions/Spawn/`) :** Le joueur configure son opération sur un panneau à 3 colonnes : choix de l'heure, de la météo, du véhicule d'appui (visualisé en direct via une caméra 3D PiP) et sélection de 1 à 3 missions optionnelles.
+3. **Insertion Cinématique (`fn_intro_01` / `fn_intro_02`) :** Une cinématique immersive dépose l'escouade sur la zone d'opération au ras des arbres en hélicoptère UH-60L Black Hawk (ou largage aéroporté), accompagnée du *Chant de la Légion Étrangère*.
+4. **Arsenal & Logistique Véhicule (`fn_spawnStartArsenal`, `fn_initVehicleLoadout`) :** Au point de départ, une caisse d'arsenal complète permet d'ajuster l'armement. Tout équipement choisi par le joueur synchronise automatiquement les munitions et chargeurs correspondants dans le coffre du véhicule de patrouille.
+5. **Génération Procédurale en Cascade (`Functions/Task/`) :** L'arrivée à proximité du secteur d'opération déclenche automatiquement la mission d'infiltration (Tâche A), la surveillance de la population civile (Tâche B) et les objectifs optionnels choisis.
+6. **Extraction Tactique (`fn_extraction`, `fn_extraction_secure`) :** L'évacuation n'est jamais automatique. Le joueur appelle manuellement l'hélicoptère d'extraction via le menu radio Support (0-8-3) quand il le décide pour terminer sa session.
+
+---
+
+### 🧩 2. Les Sous-Systèmes & Fonctionnalités Clés
+
+#### 🎮 A. Escouade & Continuité Solo (`Functions/Team/` & `Functions/Player/`)
+* **Randomisation Procédurale (`fn_initIdentity`, `fn_initLoadout`) :** Chaque partie attribue des visages, voix, lunettes, casques et gilets RACS uniques à chaque coéquipier tout en conservant les uniformes réglementaires et l'armement.
+* **Continuité Immédiate sans Game Over (`fn_switchToAI`) :** Si le joueur tombe au combat, la caméra et le contrôle passent instantanément au membre survivant le plus proche au sein de l'escouade.
+* **Règles d'Engagement à la Molette (`fn_addRoeActions`, `fn_applyRoE`) :** 5 postures tactiques instantanées modifiant le comportement des coéquipiers (Infiltration discrète, Normal, Défense à 360°, Regroupement d'urgence en sprint, Assaut agressif).
+* **Auto-Soin des Coéquipiers (`fn_aiHealSelf`, `fn_addHealAction`) :** Les coéquipiers IA blessés se soignent et se stabilisent de façon autonome dès qu'ils sont hors de danger immédiat.
+
+#### 🎯 B. Moteur des Missions Procédurales (`Functions/Task/`)
+* **Tâches Systématiques :**
+  * **Tâche A (`fn_taskA`) :** Se rendre sur le secteur d'opération pour débloquer le réseau d'objectifs.
+  * **Tâche B (`fn_taskB`) :** Protéger les civils insulaires (toute bavure sanctionne l'opération d'un échec).
+  * **Tâche C (`fn_taskC`) :** Assurer la survie du détachement lors de l'évacuation finale.
+* **Catalogue des Missions Optionnelles (Tâches D) :**
+  * **Captif (`fn_taskD_captive`) :** Libération d'un agent retenu sous surveillance et ralliement au groupe.
+  * **Cible Prioritaire HVT (`fn_taskD_hvt`) :** Élimination du baron de la drogue protégé par sa garde d'élite.
+  * **Relais Radio (`fn_taskD_transmission`) :** Sabotage d'antennes émettrices avec amorces sonores et détonation.
+  * **Citernes Chimiques (`fn_taskD_chemical`) :** Sécurisation et extraction par hélicoptère lourd CH-47 Chinook avec câbles PhysX, ou détonation catastrophique avec onde de choc et nuage toxique (les épaves restent définitivement sur le terrain).
+  * **Renseignements (`fn_taskD_documents`) :** Récupération de documents confidentiels sur un officier adverse.
+  * **Véhicules Antiaériens (`fn_taskD_tigris`) :** Destruction des DCA blindées du cartel pour libérer l'espace aérien.
+* **Mission d'Urgence Bonus (`fn_taskBonus`) :** Le commandement peut contacter par radio l'escouade pour lui assigner un objectif surprise supplémentaire dans un secteur distant.
+* **Réaction & Contre-Attaque (`fn_taskCleanup`) :** La complétion d'un objectif déclenche une traque active des insurgés survivants vers la position du joueur.
+
+#### 🚁 C. Soutien Tactique & Appui Aérien (`Functions/Helicopter/` & `Functions/Drone/`)
+* **Menu de Communication Dédié (0-8) :** Accessible via la radio tactique native d'Arma 3 :
+  * **0-8-1 (Ravitaillement) :** Parachutage d'une caisse logistique complète balisée par des fumigènes tricolores (Bleu-Blanc-Rouge) et réarmement interactif des coéquipiers.
+  * **0-8-2 (Véhicule) :** Dépose d'un véhicule de transport de remplacement en cas de perte de mobilité.
+  * **0-8-3 (Extraction) :** Évacuation manuelle de l'escouade par hélicoptère allié.
+  * **0-8-4 (CAS) :** Appui-feu aérien rapproché au canon sur zone désignée.
+  * **0-8-5 (Drone) :** Survol de reconnaissance d'un MQ-9 Reaper avec flux de télémétrie.
+
+#### 🌴 D. Simulation du Monde & Vie Civile (`Functions/Civilian/`)
+* **6 Profils de Déplacement Civil (`fn_ambientCivilians`) :** Les civils vivent naturellement (présents à l'intérieur, marcheurs sur routes, voyageurs inter-villages, chalands de marché, personnes assises).
+* **4 Stratégies de Fuite Sous le Feu :** Dès les premiers tirs, les civils paniquent, se réfugient dans les habitations ou fuient par les chemins, propageant la panique aux résidents proches.
+* **Séparation Civils / Ennemis :** Respect strict entre les femmes civiles inoffensives (immunité totale) et les combattantes armées du cartel.
+* **Sécurité Anti-Noyade (`fn_preventWater`) :** Algorithme repositionnant immédiatement toute unité civile ou ennemie égarée dans l'océan ou les canaux pour éliminer les noyades absurdes.
+
+#### 🚪 E. Confort de Jeu & Environnement (`Functions/Environment/`)
+* **Portes Automatiques Intelligentes (`fn_doorSecurity`) :** Ouverture automatique à 4,5 m des portes, volets roulants et portails de clôture pour éviter que les coéquipiers IA ne restent coincés, avec fermeture automatique après passage.
+* **Météorologie Vivante (`fn_randomWeather`) :** Évolution fluide et naturelle du ciel, de la brume et du vent au fil de l'opération.
+
+#### 🌐 F. Traduction & Audio TTS (`Functions/UI/`, `stringtable.xml`)
+* **Sous-Titres & Menus 100% Traduits :** Prise en charge native intégrale des 15 langues d'Arma 3 dans tous les menus, directives et dialogues.
+* **Radio Militaire TTS (`fn_radioMessage`) :** Communications audio des pilotes et du QG transmises avec un traitement sonore Lo-Fi radio pour une immersion maximale.
+
+---
+
+## 📚 Documentation Technique Complémentaire
+
+Pour approfondir les détails d'implémentation et les directives de configuration, consultez les guides dédiés :
+
+* **[ARCHI.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/ARCHI.md)** : Répertoire exhaustif de toutes les fonctions SQF déclarées et variables globales de la mission.
+* **[INFO_STRINTABLE.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/INFO_STRINTABLE.md)** : Guide de gestion et de compilation des traductions multilingues (`stringtable.xml`).
+* **[INFO_TANOA.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/INFO_TANOA.md)** : Contexte narratif et adaptation géographique de l'archipel.
+* **[INFO_STEAM.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/INFO_STEAM.md)** : Modèle de publication officiel pour le Steam Workshop.
+* **[Music/MUSIC.md](file:///c:/Users/kevin/Documents/Arma%203/missions/ORA.Tanoa/Music/MUSIC.md)** : Retranscription intégrale, traduction et chronologie du *Chant de la Légion Étrangère*.
 
 ---
 
