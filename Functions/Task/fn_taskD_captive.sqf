@@ -50,10 +50,12 @@ for "_i" from 0 to (_numGroups - 1) do {
         
         private _fClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
         private _isGuardFemale = (random 1) < 0.20 && { count _fClasses > 0 };
-        private _guardClass = if (_isGuardFemale) then {
-            selectRandom _fClasses
-        } else {
-            "O_G_Soldier_F"
+        private _guardClass = "O_G_Soldier_F";
+        if (_isGuardFemale) then {
+            private _picked = selectRandom _fClasses;
+            if (!isNil "_picked" && { _picked != "" }) then {
+                _guardClass = _picked;
+            };
         };
         private _guard = _grpEnemy createUnit [_guardClass, _guardPos, [], 0, "CAN_COLLIDE"];
         [_guard] joinSilent _grpEnemy;
@@ -83,10 +85,12 @@ sleep 1.5;
 private _grpCiv = createGroup [civilian, true];
 private _fClasses = (missionNamespace getVariable ["MISSION_CivilianClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) && _x != "C_man_1" };
 private _isHostageFemale = (random 1) < 0.50 && { count _fClasses > 0 };
-private _hostageClass = if (_isHostageFemale) then {
-    selectRandom _fClasses
-} else {
-    "C_man_1"
+private _hostageClass = "C_man_1";
+if (_isHostageFemale) then {
+    private _picked = selectRandom _fClasses;
+    if (!isNil "_picked" && { _picked != "" }) then {
+        _hostageClass = _picked;
+    };
 };
 private _hostage = _grpCiv createUnit [_hostageClass, _spawnPos, [], 0, "CAN_COLLIDE"];
 _hostage setVariable ["not_Random", true, true];

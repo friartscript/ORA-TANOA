@@ -62,10 +62,12 @@ for "_i" from 0 to (_numSpawns - 1) do {
         for "_g" from 1 to _numGuards do {
             private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
             private _isGuardFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
-            private _guardClass = if (_isGuardFemale) then {
-                selectRandom _fEnemyClasses
-            } else {
-                "O_G_Soldier_F"
+            private _guardClass = "O_G_Soldier_F";
+            if (_isGuardFemale) then {
+                private _picked = selectRandom _fEnemyClasses;
+                if (!isNil "_picked" && { _picked != "" }) then {
+                    _guardClass = _picked;
+                };
             };
             private _guard = _grp createUnit [_guardClass, _spawnPos, [], 0, "CAN_COLLIDE"];
             [_guard] joinSilent _grp;
@@ -89,10 +91,12 @@ for "_i" from 0 to (_numSpawns - 1) do {
     _grpOfficer setCombatMode "YELLOW";
     private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
     private _isOfficerFemale = (random 1) < 0.10 && { count _fEnemyClasses > 0 };
-    private _officerClass = if (_isOfficerFemale) then {
-        selectRandom _fEnemyClasses
-    } else {
-        "O_Officer_F"
+    private _officerClass = "O_Officer_F";
+    if (_isOfficerFemale) then {
+        private _picked = selectRandom _fEnemyClasses;
+        if (!isNil "_picked" && { _picked != "" }) then {
+            _officerClass = _picked;
+        };
     };
     private _officer = _grpOfficer createUnit [_officerClass, _spawnPos, [], 0, "CAN_COLLIDE"];
     [_officer] joinSilent _grpOfficer;

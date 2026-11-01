@@ -50,10 +50,10 @@ class CfgSounds
         sound[] = {"TTS\output\STR_Drone_RTB.ogg", db+5, 1.0};
         titles[] = {0, ""};
     };
-    class STR_LL_AssignLeader_Changed
+    class STR_LL_Drone_Action_Unjammed
     {
-        name = "STR_LL_AssignLeader_Changed";
-        sound[] = {"TTS\output\STR_LL_AssignLeader_Changed.ogg", db+5, 1.0};
+        name = "STR_LL_Drone_Action_Unjammed";
+        sound[] = {"TTS\output\STR_LL_Drone_Action_Unjammed.ogg", db+5, 1.0};
         titles[] = {0, ""};
     };
     class STR_LL_HealAction_NoKits
@@ -68,24 +68,6 @@ class CfgSounds
         sound[] = {"TTS\output\STR_LL_HealAction_NoWounded.ogg", db+5, 1.0};
         titles[] = {0, ""};
     };
-    class STR_LL_Heli_Action_CASCooldown
-    {
-        name = "STR_LL_Heli_Action_CASCooldown";
-        sound[] = {"TTS\output\STR_LL_Heli_Action_CASCooldown.ogg", db+5, 1.0};
-        titles[] = {0, ""};
-    };
-    class STR_LL_Heli_Action_ClickMap
-    {
-        name = "STR_LL_Heli_Action_ClickMap";
-        sound[] = {"TTS\output\STR_LL_Heli_Action_ClickMap.ogg", db+5, 1.0};
-        titles[] = {0, ""};
-    };
-    class STR_LL_Heli_Action_EnRoute
-    {
-        name = "STR_LL_Heli_Action_EnRoute";
-        sound[] = {"TTS\output\STR_LL_Heli_Action_EnRoute.ogg", db+5, 1.0};
-        titles[] = {0, ""};
-    };
     class STR_LL_Heli_Action_Jammed
     {
         name = "STR_LL_Heli_Action_Jammed";
@@ -96,12 +78,6 @@ class CfgSounds
     {
         name = "STR_LL_Heli_Action_Unjammed";
         sound[] = {"TTS\output\STR_LL_Heli_Action_Unjammed.ogg", db+5, 1.0};
-        titles[] = {0, ""};
-    };
-    class STR_LL_Heli_Action_VehicleAlready
-    {
-        name = "STR_LL_Heli_Action_VehicleAlready";
-        sound[] = {"TTS\output\STR_LL_Heli_Action_VehicleAlready.ogg", db+5, 1.0};
         titles[] = {0, ""};
     };
     class STR_LL_Heli_Dispatch_Abort_CAS
@@ -338,10 +314,22 @@ class CfgSounds
         sound[] = {"TTS\output\STR_LL_Radio_Emergency_Call.ogg", db+5, 1.0};
         titles[] = {0, ""};
     };
-    class STR_LL_RoeAction_Changed
+    class STR_LL_Task_08_Plane_Incoming
     {
-        name = "STR_LL_RoeAction_Changed";
-        sound[] = {"TTS\output\STR_LL_RoeAction_Changed.ogg", db+5, 1.0};
+        name = "STR_LL_Task_08_Plane_Incoming";
+        sound[] = {"TTS\output\STR_LL_Task_08_Plane_Incoming.ogg", db+5, 1.0};
+        titles[] = {0, ""};
+    };
+    class STR_LL_Task_08_Plane_Safe
+    {
+        name = "STR_LL_Task_08_Plane_Safe";
+        sound[] = {"TTS\output\STR_LL_Task_08_Plane_Safe.ogg", db+5, 1.0};
+        titles[] = {0, ""};
+    };
+    class STR_LL_Task_08_Plane_ShotDown
+    {
+        name = "STR_LL_Task_08_Plane_ShotDown";
+        sound[] = {"TTS\output\STR_LL_Task_08_Plane_ShotDown.ogg", db+5, 1.0};
         titles[] = {0, ""};
     };
     class STR_LL_Task_Assigned

@@ -151,12 +151,14 @@ def generate_tts(text, output_path, key_id="", speed=KOKORO_SPEED, voice=KOKORO_
     chunks = [a for _, _, a in _pipeline(text, voice=voice, speed=speed)]
     sf.write(output_path, np.concatenate(chunks), 24000)  # sortie en .wav
 
-def generate_cfg_sounds(output_dir, cfg_path):
+def generate_cfg_sounds(output_dir, cfg_path, valid_keys=None):
     import stat
     sounds = []
     for file in os.listdir(output_dir):
-        if file.endswith(".ogg"):
-            sounds.append(file[:-4])
+        if file.endswith(".ogg") and not file.endswith(".new.ogg"):
+            sound_name = file[:-4]
+            if valid_keys is None or sound_name in valid_keys:
+                sounds.append(sound_name)
             
     content = 'class CfgSounds\n{\n    sounds[] = {};\n\n'
     for key_id in sorted(sounds):
@@ -190,17 +192,21 @@ def generate_cfg_sounds(output_dir, cfg_path):
 
 def is_tts_key(key_id):
     # Clés liées aux messages radio et PNJ
-    prefixes = ("STR_Drone_", "STR_LL_Heli_", "STR_LL_Msg_", "STR_TAG_Msg_", "STR_LL_Radio_")
+    prefixes = (
+        "STR_Drone_", "STR_LL_Drone_", "STR_LL_Heli_", 
+        "STR_LL_Msg_", "STR_TAG_Msg_", "STR_LL_Radio_", 
+        "STR_LL_Task_08_Plane_"
+    )
     if key_id.startswith(prefixes):
         return True
     # Clés liées aux dialogues (STR_LL_Task_XX_S1, etc.)
     if re.search(r"STR_LL_Task_.*_S\d+", key_id):
         return True
-    # Clés spécifiques de la liste précédente
+    # Clés spécifiques de la liste
     specific_keys = {
-        "STR_LL_AssignLeader_Changed", "STR_LL_HealAction_Healing", 
+        "STR_LL_HealAction_Healing", 
         "STR_LL_HealAction_NoKits", "STR_LL_HealAction_NoWounded", 
-        "STR_LL_RoeAction_Changed", "STR_LL_Task_Assigned", "STR_LL_Task_05_Alert"
+        "STR_LL_Task_Assigned", "STR_LL_Task_05_Alert"
     }
     return key_id in specific_keys
 
@@ -211,8 +217,23 @@ def main():
     tree = ET.parse(XML_PATH)
     root = tree.getroot()
     
+    # 0. Tenter de renommer les fichiers temporaires .new.ogg si Arma 3 a été fermé
+    for f in os.listdir(OUTPUT_DIR):
+        if f.endswith(".new.ogg"):
+            target_ogg = os.path.join(OUTPUT_DIR, f[:-8] + ".ogg")
+            src_ogg = os.path.join(OUTPUT_DIR, f)
+            try:
+                if os.path.exists(target_ogg):
+                    os.remove(target_ogg)
+                os.rename(src_ogg, target_ogg)
+                print(f"[RESTAURATION] Fichier mis à jour avec succès : {os.path.basename(target_ogg)}")
+            except Exception:
+                pass
+
     count = 0
     temp_file = os.path.join(OUTPUT_DIR, "temp.wav")
+    valid_keys = set()
+    locked_files = []
     
     for key in root.findall(".//Key"):
         key_id = key.get("ID")
@@ -220,7 +241,9 @@ def main():
         if not is_tts_key(key_id):
             continue
             
-        # Utilisation de la version française (voix radio en français)
+        valid_keys.add(key_id)
+            
+        # Utilisation exclusive de la version française pour la radio
         node = key.find("French")
         if node is None or not node.text:
             node = key.find("Original")
@@ -239,7 +262,7 @@ def main():
             if os.path.exists(out_file) and not FORCE_REGENERATE:
                 continue
                 
-            print(f"[TTS] Génération Kokoro pour {key_id} : '{text}'")
+            print(f"[TTS] Génération Kokoro FR pour {key_id} : '{text}'")
             
             try:
                 # 1. Générer le TTS avec Kokoro (format .wav)
@@ -250,8 +273,17 @@ def main():
                 radio_audio = apply_radio_effect(audio)
                 
                 # 3. Sauvegarder en OGG (format Arma 3)
-                radio_audio.export(out_file, format="ogg")
-                count += 1
+                try:
+                    radio_audio.export(out_file, format="ogg")
+                    count += 1
+                except PermissionError:
+                    locked_files.append(key_id)
+                    new_temp = os.path.join(OUTPUT_DIR, f"{key_id}.new.ogg")
+                    try:
+                        radio_audio.export(new_temp, format="ogg")
+                        print(f"  [ATTENTION VERROU] '{key_id}.ogg' est verrouillé par Arma 3 ! Préparé dans '{os.path.basename(new_temp)}'")
+                    except Exception as e2:
+                        print(f"  [ERREUR] Impossible d'exporter {key_id} : {e2}")
                 
             except Exception as e:
                 print(f"Erreur sur {key_id} : {e}")
@@ -264,9 +296,17 @@ def main():
             
     print(f"\nTerminé ! {count} nouveaux fichiers audio générés dans {OUTPUT_DIR}")
     
-    # Génération automatique de CfgSounds.hpp
+    if locked_files:
+        print("\n" + "=" * 75)
+        print(f"[ACTION REQUISE] {len(locked_files)} fichier(s) n'ont pas pu être écrasés car Arma 3 est OUVERT :")
+        for lf in locked_files:
+            print(f"   - {lf}.ogg")
+        print("Pour finaliser à 100% : QUITTEZ Arma 3 et relancez 'python generate_radio.py' !")
+        print("=" * 75 + "\n")
+    
+    # Génération automatique de CfgSounds.hpp avec les clés valides
     cfg_path = os.path.join(ROOT_DIR, "CfgSounds.hpp")
-    generate_cfg_sounds(OUTPUT_DIR, cfg_path)
+    generate_cfg_sounds(OUTPUT_DIR, cfg_path, valid_keys=valid_keys)
 
 if __name__ == "__main__":
     main()

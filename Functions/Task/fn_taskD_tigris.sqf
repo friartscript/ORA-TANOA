@@ -54,10 +54,12 @@ for "_gIdx" from 0 to (_numGroups - 1) do {
         private _spawnSpot = _posVeh getPos [15 + random 20, random 360];
         private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
         private _isUnitFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
-        private _unitClass = if (_isUnitFemale) then {
-            selectRandom _fEnemyClasses
-        } else {
-            _cls
+        private _unitClass = _cls;
+        if (_isUnitFemale) then {
+            private _picked = selectRandom _fEnemyClasses;
+            if (!isNil "_picked" && { _picked != "" }) then {
+                _unitClass = _picked;
+            };
         };
         private _unit = _grp createUnit [_unitClass, _spawnSpot, [], 0, "CAN_COLLIDE"];
         [_unit] joinSilent _grp;
@@ -98,26 +100,67 @@ for "_gIdx" from 0 to (_numGroups - 1) do {
 
 sleep 0.4;
 
-private _vehClass = if (isClass (configFile >> "CfgVehicles" >> "CUP_O_Hilux_zu23_TK")) then { "CUP_O_Hilux_zu23_TK" } else { "O_G_Offroad_01_armed_F" };
-private _dca = createVehicle [_vehClass, _posVeh, [], 0, "CAN_COLLIDE"];
-_dca setPosATL _posVeh;
-_dca allowDamage false;
-[_dca] spawn { sleep 3; (_this select 0) allowDamage true; };
-createVehicleCrew _dca;
+private _vehClass = "CUP_O_Ural_ZU23_TKM";
+if (!isClass (configFile >> "CfgVehicles" >> _vehClass)) then {
+    if (isClass (configFile >> "CfgVehicles" >> "CUP_O_Ural_ZU23_TK_GUE")) then {
+        _vehClass = "CUP_O_Ural_ZU23_TK_GUE";
+    } else {
+        if (isClass (configFile >> "CfgVehicles" >> "CUP_O_Ural_ZU23_SLA")) then {
+            _vehClass = "CUP_O_Ural_ZU23_SLA";
+        } else {
+            if (isClass (configFile >> "CfgVehicles" >> "CUP_O_Hilux_zu23_TK")) then {
+                _vehClass = "CUP_O_Hilux_zu23_TK";
+            } else {
+                _vehClass = "O_Truck_02_aa_F";
+            };
+        };
+    };
+};
+
+private _dirVeh = random 360;
+private _posVeh1 = _posVeh getPos [3.5, _dirVeh + 90];
+private _posVeh2 = _posVeh getPos [3.5, _dirVeh - 90];
+_posVeh1 set [2, 0.2];
+_posVeh2 set [2, 0.2];
+
+private _dca1 = createVehicle [_vehClass, _posVeh1, [], 0, "CAN_COLLIDE"];
+_dca1 setPosATL _posVeh1;
+_dca1 setDir _dirVeh;
+_dca1 allowDamage false;
+[_dca1] spawn { sleep 3; if (!isNull (_this select 0)) then { (_this select 0) allowDamage true; }; };
+createVehicleCrew _dca1;
+
+private _dca2 = createVehicle [_vehClass, _posVeh2, [], 0, "CAN_COLLIDE"];
+_dca2 setPosATL _posVeh2;
+_dca2 setDir _dirVeh;
+_dca2 allowDamage false;
+[_dca2] spawn { sleep 3; if (!isNull (_this select 0)) then { (_this select 0) allowDamage true; }; };
+createVehicleCrew _dca2;
+
+_dca1 setFuel 0;
+_dca2 setFuel 0;
+_dca1 setVariable ["LL_Task_Status", "WAIT"];
+_dca2 setVariable ["LL_Task_Status", "WAIT"];
 
 {
     [_x, false, true] call LL_fnc_applyTakistaniIdentity;
-} forEach (crew _dca);
+} forEach ((crew _dca1) + (crew _dca2));
 
-(group (driver _dca)) setCombatMode "YELLOW";
-(group (driver _dca)) setBehaviour "SAFE";
-_dca setFuel 0; 
-_dca setVariable ["LL_Task_Status", "WAIT"];
+if (!isNull (driver _dca1)) then {
+    (group (driver _dca1)) setCombatMode "YELLOW";
+    (group (driver _dca1)) setBehaviour "SAFE";
+};
+if (!isNull (driver _dca2)) then {
+    (group (driver _dca2)) setCombatMode "YELLOW";
+    (group (driver _dca2)) setBehaviour "SAFE";
+};
 
 missionNamespace setVariable ["LL_Heli_Jammed", true];
 missionNamespace setVariable ["LL_TaskDTigris_Finished", false];
 
 private _subVehicles = "task_tigris_vehicles";
+private _subVeh1 = "task_tigris_veh_1";
+private _subVeh2 = "task_tigris_veh_2";
 
 [
     group player,
@@ -127,7 +170,7 @@ private _subVehicles = "task_tigris_vehicles";
         localize "STR_LL_Task_08_Title",
         ""
     ],
-    [_dca, true],
+    _posVeh,
     "AUTOASSIGNED",
     5,
     true,
@@ -143,7 +186,7 @@ private _subVehicles = "task_tigris_vehicles";
         localize "STR_LL_Task_08_MarkerVehicles",
         ""
     ],
-    [_dca, true],
+    _posVeh,
     "AUTOASSIGNED",
     4,
     true,
@@ -151,88 +194,139 @@ private _subVehicles = "task_tigris_vehicles";
     false
 ] call BIS_fnc_taskCreate;
 
+[
+    group player,
+    [_subVeh1, _subVehicles],
+    [
+        localize "STR_LL_Task_08_MarkerVehicles",
+        format ["%1 #1", localize "STR_LL_Task_08_MarkerVehicles"],
+        ""
+    ],
+    [_dca1, true],
+    "AUTOASSIGNED",
+    3,
+    true,
+    "destroy",
+    false
+] call BIS_fnc_taskCreate;
+
+[
+    group player,
+    [_subVeh2, _subVehicles],
+    [
+        localize "STR_LL_Task_08_MarkerVehicles",
+        format ["%1 #2", localize "STR_LL_Task_08_MarkerVehicles"],
+        ""
+    ],
+    [_dca2, true],
+    "AUTOASSIGNED",
+    3,
+    true,
+    "destroy",
+    false
+] call BIS_fnc_taskCreate;
+
 [_subVehicles, true] call BIS_fnc_taskSetCurrent;
 
-{ _x createDiaryRecord ["diary", [localize "STR_LL_Diary_Task08_Title", localize "STR_LL_Diary_Task08_Text"]]; } forEach (units group player);
-
-LL_fnc_taskD_tigris_smokeRing = {
-    params [
-        ["_center", [0,0,0], [[]]],
-        ["_maxRadius", 40, [0]],
-        ["_duration", 3, [0]],
-        ["_color", [0.8, 0.8, 0.8, 1], [[]]]
-    ];
-
-    private _source = createVehicleLocal ["#particlesource", _center];
-    _source setParticleCircle [0.1, [2, 2, 0.1]];
-    _source setParticleRandom [0.3, [0.2, 0.2, 0.1], [0.3, 0.3, 0.1], 0, 0.3, [0,0,0,0.05], 0, 0];
-    _source setParticleParams [
-        ["\A3\data_f\ParticleEffects\Universal\Universal", 16, 7, 48, 1], "", "Billboard",
-        1, 2.5, [0,0,0], [0,0,0], 0, 1.275, 1, 0.2,
-        [1.5, 6, 10], 
-        [
-            [_color select 0, _color select 1, _color select 2, (_color select 3) * 0.8],
-            [_color select 0, _color select 1, _color select 2, (_color select 3) * 0.4],
-            [_color select 0, _color select 1, _color select 2, 0]
-        ],
-        [0.5], 0.1, 0, "", "", _source
-    ];
-    _source setDropInterval 0.01;
-
-    private _startTime = time;
-    private _radius = 0.1;
-    while { _radius < _maxRadius && (time - _startTime) < _duration } do {
-        private _progress = (time - _startTime) / _duration;
-        _radius = 0.1 + (_maxRadius - 0.1) * _progress;
-        _source setParticleCircle [_radius, [2 * (1 - _progress), 2 * (1 - _progress), 0.1]];
-        sleep 0.03;
-    };
-    deleteVehicle _source;
+[_dca1, _subVeh1] spawn {
+    params ["_dca", "_sub"];
+    waitUntil { sleep 1; isNull _dca || !alive _dca };
+    [_sub, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 };
+
+[_dca2, _subVeh2] spawn {
+    params ["_dca", "_sub"];
+    waitUntil { sleep 1; isNull _dca || !alive _dca };
+    [_sub, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+};
+
+{ _x createDiaryRecord ["diary", [localize "STR_LL_Diary_Task08_Title", localize "STR_LL_Diary_Task08_Text"]]; } forEach (units group player);
 
 private _addActionCode = {
     params ["_target"];
     _target addAction [
-        format ["<t color='#FFFF00'>%1</t>", localize "STR_LL_Task_03_Action"],
+        format ["<t color='#FFFF00'>%1</t>", localize "STR_LL_Task_D_Transmission_Action"],
         {
             params ["_target", "_caller", "_actionId"];
-            if (_target getVariable ["LL_TaskDTigris_Triggered", false]) exitWith {};
-            _target setVariable ["LL_TaskDTigris_Triggered", true];
-            _target removeAction _actionId;
+            if (_target getVariable ["LL_TaskD_Tigris_Triggered", false]) exitWith {};
+            _target setVariable ["LL_TaskD_Tigris_Triggered", true, true];
             
-            _caller playMove "AinvPknlMstpSnonWnonDnon_medic_1";
-            ["STR_LL_Task_03_Warning", [], 6, false] spawn LL_fnc_radioMessage;
-
+            _target removeAction _actionId;
+            _caller playActionNow "PutDown";
+            
             private _pos = getPosATL _target;
             private _charge = createVehicle ["DemoCharge_F", _pos, [], 0, "CAN_COLLIDE"];
-            _charge setPosATL _pos;
-
+            _charge attachTo [_target, [0, -2.0, 0.4]];
+            _charge setVectorUp [0, 0, 1];
+            
             [_target, _charge] spawn {
-                params ["_tgt", "_chg"];
-                sleep 40;
-                if (!isNull _chg) then { deleteVehicle _chg; };
-                if (!isNull _tgt && alive _tgt) then {
-                    private _p = getPos _tgt;
-                    "Bo_GBU12_LGB" createVehicle _p;
-                    _tgt setDamage 1;
+                params ["_veh", "_charge"];
+                
+                private _light = "#lightpoint" createVehicleLocal (getPosATL _charge);
+                _light attachTo [_charge, [0, 0, 0.15]];
+                _light setLightColor [1.0, 0.45, 0.05];
+                _light setLightAmbient [0.25, 0.1, 0.02];
+                _light setLightBrightness 0.15;
+                _light setLightAttenuation [0.5, 1, 0, 0.5, 1, 5];
+                _light setLightDayLight true;
+                _light setLightUseFlare true;
+                _light setLightFlareSize 0.25;
+                _light setLightFlareMaxDistance 60;
+
+                private _elapsed = 0;
+                while { _elapsed < 25 && !isNull _veh && !isNull _charge && alive _veh } do {
+                    sleep 1;
+                    _elapsed = _elapsed + 1;
+                };
+
+                private _steps = [
+                    [4, 1.5, 1.0],
+                    [5, 0.8, 1.1],
+                    [6, 0.5, 1.2],
+                    [6, 0.22, 1.35],
+                    [10, 0.1, 1.5]
+                ];
+
+                {
+                    _x params ["_count", "_interval", "_pitch"];
+                    for "_i" from 1 to _count do {
+                        if (isNull _veh || isNull _charge || !alive _veh) exitWith {};
+                        playSound3D ["A3\Sounds_F\sfx\beep_target.wss", _charge, false, getPosASL _charge, 1.5, _pitch, 75];
+                        _light setLightBrightness 0.5;
+                        sleep 0.06;
+                        _light setLightBrightness 0.15;
+                        sleep (_interval - 0.06);
+                    };
+                    if (isNull _veh || isNull _charge || !alive _veh) exitWith {};
+                } forEach _steps;
+
+                if (!isNull _light) then { deleteVehicle _light; };
+                if (!isNull _charge) then { deleteVehicle _charge; };
+
+                if (!isNull _veh && { alive _veh }) then {
+                    private _expPos = getPosATL _veh;
+                    "Bo_GBU12_LGB" createVehicle _expPos;
+                    "HelicopterExploBig" createVehicle _expPos;
+                    _veh setDamage 1;
                 };
             };
         },
-        nil, 6.0, true, true, "", "alive _target && _this distance _target < 6 && (_target getVariable ['LL_Task_Status', 'WAIT'] == 'WAIT')", 6
+        nil, 6.0, true, true, "", "alive _target && _this distance _target < 7 && !(_target getVariable ['LL_TaskD_Tigris_Triggered', false])", 7
     ];
 };
 
-[_dca] call _addActionCode;
+[_dca1] call _addActionCode;
+[_dca2] call _addActionCode;
 
-[_posVeh, _dca, _subVehicles, _enemies, _groups] spawn {
-    params ["_posVeh", "_dca", "_subVehicles", "_enemies", "_groups"];
+[_posVeh, _dca1, _dca2, _subVehicles, _enemies, _groups] spawn {
+    params ["_posVeh", "_dca1", "_dca2", "_subVehicles", "_enemies", "_groups"];
     
     private _delay = 1200 + random 600;
     private _startTime = time;
     private _endTime = _startTime + _delay;
 
     private _lastMin = -1;
-    while { time < _endTime && alive _dca && !(missionNamespace getVariable ["LL_TaskDTigris_Finished", false]) } do {
+    while { time < _endTime && ((alive _dca1 && !isNull _dca1) || (alive _dca2 && !isNull _dca2)) && !(missionNamespace getVariable ["LL_TaskDTigris_Finished", false]) } do {
         private _timeLeft = _endTime - time;
         private _min = ceil (_timeLeft / 60);
         
@@ -249,7 +343,7 @@ private _addActionCode = {
 
     if (missionNamespace getVariable ["LL_TaskDTigris_Finished", false]) exitWith {};
 
-    if (alive _dca) then {
+    if ((alive _dca1 && !isNull _dca1) || (alive _dca2 && !isNull _dca2)) then {
         ["STR_LL_Task_08_Plane_Incoming"] spawn LL_fnc_radioMessage;
 
         private _angleIn = random 360;
@@ -382,8 +476,11 @@ private _addActionCode = {
 
     private _allEnemies = [];
     { if (!isNull _x && alive _x) then { _allEnemies pushBack _x; }; } forEach _enemies;
-    if (!isNull _dca) then {
-        { if (!isNull _x && alive _x && !(_x in _allEnemies)) then { _allEnemies pushBack _x; }; } forEach (crew _dca);
+    if (!isNull _dca1) then {
+        { if (!isNull _x && alive _x && !(_x in _allEnemies)) then { _allEnemies pushBack _x; }; } forEach (crew _dca1);
+    };
+    if (!isNull _dca2) then {
+        { if (!isNull _x && alive _x && !(_x in _allEnemies)) then { _allEnemies pushBack _x; }; } forEach (crew _dca2);
     };
     [_allEnemies] spawn LL_fnc_taskCleanup;
     missionNamespace setVariable ["LL_Heli_Jammed", false];

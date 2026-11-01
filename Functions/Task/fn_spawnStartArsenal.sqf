@@ -65,19 +65,37 @@ if (!isServer) exitWith {};
         drone_BLUFOR doMove [(_pos select 0) + 1.5, (_pos select 1) + 1.5, 1.8];
     };
 
-    private _introSmoke = "SmokeShellRed" createVehicle _pos;
-    _introSmoke attachTo [_crate, [1.2, 0, 0]];
+    private _fnc_spawnTricolore = {
+        params ["_crate"];
+        if (isNull _crate) exitWith { [] };
 
-    [_crate, _pos] spawn {
-        params ["_crate", "_pos"];
+        private _smkBlue = "SmokeShellBlue" createVehicle (getPos _crate);
+        _smkBlue attachTo [_crate, [-3.0, 1.8, 0]];
+
+        private _smkWhite = "SmokeShell" createVehicle (getPos _crate);
+        _smkWhite attachTo [_crate, [0.0, 1.8, 0]];
+
+        private _smkRed = "SmokeShellRed" createVehicle (getPos _crate);
+        _smkRed attachTo [_crate, [3.0, 1.8, 0]];
+
+        [_smkBlue, _smkWhite, _smkRed]
+    };
+
+    [_crate] call _fnc_spawnTricolore;
+
+    [_crate, _fnc_spawnTricolore] spawn {
+        params ["_crate", "_fnc_spawnTricolore"];
+        sleep 50;
+        if (!isNull _crate) then {
+            [_crate] call _fnc_spawnTricolore;
+        };
         waitUntil {
             sleep 0.5;
             missionNamespace getVariable ["MISSION_intro_finished", false]
         };
         [] spawn LL_fnc_initVehicleLoadout;
         if (!isNull _crate) then {
-            private _startSmoke = "SmokeShellRed" createVehicle _pos;
-            _startSmoke attachTo [_crate, [1.2, 0, 0]];
+            [_crate] call _fnc_spawnTricolore;
         };
     };
 

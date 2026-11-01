@@ -114,10 +114,12 @@ for "_i" from 1 to _spawnCount do {
 
     private _fClasses = (missionNamespace getVariable ["MISSION_CivilianClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) && _x != "C_man_1" };
     private _isFemale = (random 1) < 0.40 && { count _fClasses > 0 };
-    private _civClass = if (_isFemale) then {
-        selectRandom _fClasses
-    } else {
-        "C_man_1"
+    private _civClass = "C_man_1";
+    if (_isFemale) then {
+        private _picked = selectRandom _fClasses;
+        if (!isNil "_picked" && { _picked != "" }) then {
+            _civClass = _picked;
+        };
     };
 
     private _grp = createGroup [civilian, true];

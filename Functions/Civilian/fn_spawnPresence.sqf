@@ -39,14 +39,15 @@ private _spawnedUnits = 0;
         private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) && _x != "O_G_Soldier_F" };
         private _canSpawnFemale = if (_isEnemy) then { count _fEnemyClasses > 0 } else { count _fCivClasses > 0 };
         private _isFemale = (random 1) < 0.40 && { _canSpawnFemale };
-        private _class = if (_isFemale) then {
-            if (_isEnemy) then {
-                selectRandom _fEnemyClasses
-            } else {
-                selectRandom _fCivClasses
+        private _class = if (_spawnSide == civilian) then { "C_man_1" } else { "O_G_Soldier_F" };
+        if (_isFemale) then {
+            private _pool = if (_isEnemy) then { _fEnemyClasses } else { _fCivClasses };
+            if (count _pool > 0) then {
+                private _picked = selectRandom _pool;
+                if (!isNil "_picked" && { _picked != "" }) then {
+                    _class = _picked;
+                };
             };
-        } else {
-            if (_spawnSide == civilian) then { "C_man_1" } else { "O_G_Soldier_F" }
         };
         
         private _unit = _grp createUnit [_class, _bPos, [], 0, "NONE"];

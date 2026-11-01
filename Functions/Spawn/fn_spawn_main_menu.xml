@@ -413,9 +413,21 @@
         <French>Récupérer la comptabilité du cartel</French>
     </Key>
     <Key ID="STR_TASK_OPT8">
-        <Original>Destroy armed heavy technical</Original>
-        <English>Destroy armed heavy technical</English>
-        <French>Détruire le technical lourd du cartel</French>
+        <Original>Destroy Cartel AA Vehicles</Original>
+        <English>Destroy Cartel AA Vehicles</English>
+        <French>Détruire des DCA du cartel</French>
+        <Spanish>Destruir vehículos antiaéreos del cartel</Spanish>
+        <German>Flugabwehrfahrzeuge des Kartells zerstören</German>
+        <Italian>Distruggi i veicoli contraerei del cartello</Italian>
+        <Polish>Zniszcz pojazdy przeciwlotnicze kartelu</Polish>
+        <Portuguese>Destruir veículos antiaéreos do cartel</Portuguese>
+        <Russian>Уничтожить зенитные комплексы картеля</Russian>
+        <Czech>Zničit protiletadlová vozidla kartelu</Czech>
+        <Korean>카르텔 대공 차량 파괴</Korean>
+        <Japanese>カルテルの対空車両を破壊</Japanese>
+        <Chinese>摧毀卡特爾防空車輛</Chinese>
+        <Chinesesimp>摧毁卡特尔防空车辆</Chinesesimp>
+        <Turkish>Kartel Uçaksavar Araçlarını Yok Et</Turkish>
     </Key>
     <Key ID="STR_TASK_OPT9">
         <Original>Arrest cartel lieutenant</Original>

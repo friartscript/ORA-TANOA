@@ -89,10 +89,12 @@ private _excludedObjects = [
 
             private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) && _x != "O_G_Soldier_F" };
             private _isRebelFemale = (random 1) < 0.20 && { count _fEnemyClasses > 0 };
-            private _unitClass = if (_isRebelFemale) then {
-                selectRandom _fEnemyClasses
-            } else {
-                "O_G_Soldier_F"
+            private _unitClass = "O_G_Soldier_F";
+            if (_isRebelFemale) then {
+                private _picked = selectRandom _fEnemyClasses;
+                if (!isNil "_picked" && { _picked != "" }) then {
+                    _unitClass = _picked;
+                };
             };
 
             private _unit = _grpEast createUnit [_unitClass, _spawnPos, [], 0, "CAN_COLLIDE"];

@@ -411,23 +411,44 @@ private _fnExecDelivery = {
         [_cargo] spawn {
             params ["_crate"];
             if (isNull _crate) exitWith {};
-            private _smoke = createVehicle ["SmokeShellGreen", getPos _crate, [], 0, "CAN_COLLIDE"];
+
+            private _fnc_spawnTricolore = {
+                params ["_box"];
+                if (isNull _box || { !alive _box }) exitWith { [] };
+                private _smkBlue = "SmokeShellBlue" createVehicle (getPos _box);
+                _smkBlue attachTo [_box, [-3.0, 1.8, 0]];
+                private _smkWhite = "SmokeShell" createVehicle (getPos _box);
+                _smkWhite attachTo [_box, [0.0, 1.8, 0]];
+                private _smkRed = "SmokeShellRed" createVehicle (getPos _box);
+                _smkRed attachTo [_box, [3.0, 1.8, 0]];
+                [_smkBlue, _smkWhite, _smkRed]
+            };
+
+            private _activeSmokes = [_crate] call _fnc_spawnTricolore;
+            private _allSmokes = +_activeSmokes;
             private _dead = false;
+
             for "_i" from 1 to 59 do {
                 sleep 10;
                 if (!alive _crate) exitWith { _dead = true; };
+                if (_i mod 5 == 0 && { _i < 55 } && { alive _crate }) then {
+                    private _newSmokes = [_crate] call _fnc_spawnTricolore;
+                    _allSmokes append _newSmokes;
+                };
             };
+
             if (_dead) exitWith {
-                if (!isNull _smoke && { alive _smoke }) then { deleteVehicle _smoke; };
+                { if (!isNull _x) then { deleteVehicle _x; }; } forEach _allSmokes;
             };
+
             if (alive _crate) then {
                 private _smks = [];
                 for "_d" from 0 to 315 step 45 do {
                     _smks pushBack (createVehicle ["SmokeShell", (_crate getPos [2, _d]), [], 0, "CAN_COLLIDE"]);
                 };
                 sleep 10;
-                if (alive _crate)                          then { deleteVehicle _crate; };
-                if (!isNull _smoke && { alive _smoke })    then { deleteVehicle _smoke; };
+                if (alive _crate) then { deleteVehicle _crate; };
+                { if (!isNull _x) then { deleteVehicle _x; }; } forEach _allSmokes;
                 sleep 120;
                 { if (!isNull _x && { alive _x }) then { deleteVehicle _x; }; } forEach _smks;
             };

@@ -1,93 +1,294 @@
+/*
+    Author: Friart Script
+    Description: Orchestrateur et exécutant complet de la mission opérationnelle Tâche D-04 : Citernes chimiques.
+    Logique unifiée et autonome :
+    1. Effets chimiques, seuils de toxicité, gestion des dégâts et explosion critique.
+    2. Hélitransport lourd par hélicoptère CH-47F Chinook RACS :
+       - Apparition à 1500m du joueur.
+       - Appui-feu CAS de couverture si présence ennemie.
+       - Vol stationnaire de précision et élingage PhysX à 4 câbles au sol.
+       - Levage vertical verrouillé.
+       - Départ direct en CARELESS (plus de combat) à pleine vitesse (140 km/h, 120m d'altitude).
+       - Disparition simultanée de l'hélicoptère et du camion au loin (> 1500m des joueurs).
+    3. Création des citernes chimiques, garnisons insurgées et tâches opérationnelles.
+
+    Paramètres:
+        _locMarker (String) : Nom du marqueur de la zone d'opération
+*/
+
 params [
     ["_locMarker", "", [""]]
 ];
 
 if (_locMarker == "" || _locMarker == "init") then { _locMarker = "marker_0"; };
 
-private _centerPos = getMarkerPos _locMarker;
-private _radius = (markerSize _locMarker) select 0;
-if (_radius == 0) then { _radius = 250; };
-
-private _nearHelipads = nearestObjects [_centerPos, ["Land_HelipadEmpty_F"], _radius];
-private _nearLogics = nearestObjects [_centerPos, ["Logic"], _radius];
-
-private _usedPositions = missionNamespace getVariable ["LL_g_usedTaskPos", []];
-private _validSpawnPoints = _nearHelipads select {
-    private _candidate = _x;
-    !(_candidate getVariable ["LL_logic_occupied", false]) && 
-    { (_usedPositions findIf { _x distance2D _candidate < 25 }) == -1 }
-};
-
-if (count _validSpawnPoints == 0) then {
-    private _fallback = _centerPos findEmptyPosition [10, 150, "B_Truck_01_transport_F"];
-    if (count _fallback == 0) then { _fallback = _centerPos getPos [40, random 360]; };
-    private _dummy = "Land_HelipadEmpty_F" createVehicle _fallback;
-    _validSpawnPoints = [_dummy];
-};
-
-private _numTrucks = 1 + floor(random 2);
-if (_numTrucks > count _validSpawnPoints) then { _numTrucks = count _validSpawnPoints; };
-if (_numTrucks < 1) then { _numTrucks = 1; };
-
-private _selectedLogics = [];
-private _shuffled = _validSpawnPoints call BIS_fnc_arrayShuffle;
-for "_i" from 0 to (_numTrucks - 1) do {
-    private _chosen = _shuffled select _i;
-    _chosen setVariable ["LL_logic_occupied", true];
-    _selectedLogics pushBack _chosen;
-    _usedPositions pushBack (getPosATL _chosen);
-};
-
-missionNamespace setVariable ["LL_g_usedTaskPos", _usedPositions];
-
-missionNamespace setVariable ["LL_TaskDChemical_RemainingTrucks", []];
-missionNamespace setVariable ["LL_TaskDChemical_AllUnits", []];
-missionNamespace setVariable ["LL_TaskDChemical_Failed", false];
-
-private _allTrucks = [];
-private _allUnits = [];
-
-LL_fnc_taskD_chemical_smokeRing = {
+// =========================================================================
+// MODULE 1 : EFFETS CHIMIQUES, TOXICITÉ, DÉGÂTS ET DÉTONATION
+// =========================================================================
+private _fnc_chemical_effects = {
     params [
-        ["_center", [0,0,0], [[]]],
-        ["_maxRadius", 40, [0]],
-        ["_duration", 3, [0]],
-        ["_color", [0.8, 0.8, 0.8, 1], [[]]]
+        ["_truck", objNull, [objNull]]
     ];
 
-    private _source = createVehicleLocal ["#particlesource", _center];
-    _source setParticleCircle [0.1, [2, 2, 0.1]];
-    _source setParticleRandom [0.3, [0.2, 0.2, 0.1], [0.3, 0.3, 0.1], 0, 0.3, [0,0,0,0.05], 0, 0];
-    _source setParticleParams [
-        ["\A3\data_f\ParticleEffects\Universal\Universal", 16, 7, 48, 1], "", "Billboard",
-        1, 2.5, [0,0,0], [0,0,0], 0, 1.275, 1, 0.2,
-        [1.5, 6, 10], 
-        [
-            [_color select 0, _color select 1, _color select 2, (_color select 3) * 0.8],
-            [_color select 0, _color select 1, _color select 2, (_color select 3) * 0.4],
-            [_color select 0, _color select 1, _color select 2, 0]
-        ],
-        [0.5], 0.1, 0, "", "", _source
-    ];
-    _source setDropInterval 0.01;
+    if (isNull _truck || !alive _truck) exitWith {};
 
-    private _startTime = time;
-    private _radius = 0.1;
-    while { _radius < _maxRadius && (time - _startTime) < _duration } do {
-        private _progress = (time - _startTime) / _duration;
-        _radius = 0.1 + (_maxRadius - 0.1) * _progress;
-        _source setParticleCircle [_radius, [2 * (1 - _progress), 2 * (1 - _progress), 0.1]];
-        sleep 0.03;
+    // Fonction interne : Génération de l'anneau de particules toxiques
+    private _fnc_smokeRing = {
+        params [
+            ["_center", [0,0,0], [[]]],
+            ["_maxRadius", 40, [0]],
+            ["_duration", 3, [0]],
+            ["_color", [0.8, 0.8, 0.8, 1], [[]]]
+        ];
+
+        private _source = createVehicleLocal ["#particlesource", _center];
+        _source setParticleCircle [0.1, [2, 2, 0.1]];
+        _source setParticleRandom [0.3, [0.2, 0.2, 0.1], [0.3, 0.3, 0.1], 0, 0.3, [0,0,0,0.05], 0, 0];
+        _source setParticleParams [
+            ["\A3\data_f\ParticleEffects\Universal\Universal", 16, 7, 48, 1], "", "Billboard",
+            1, 2.5, [0,0,0], [0,0,0], 0, 1.275, 1, 0.2,
+            [1.5, 6, 10], 
+            [
+                [_color select 0, _color select 1, _color select 2, (_color select 3) * 0.8],
+                [_color select 0, _color select 1, _color select 2, (_color select 3) * 0.4],
+                [_color select 0, _color select 1, _color select 2, 0]
+            ],
+            [0.5], 0.1, 0, "", "", _source
+        ];
+        _source setDropInterval 0.01;
+
+        private _startTime = time;
+        private _radius = 0.1;
+        while { _radius < _maxRadius && (time - _startTime) < _duration } do {
+            private _progress = (time - _startTime) / _duration;
+            _radius = 0.1 + (_maxRadius - 0.1) * _progress;
+            _source setParticleCircle [_radius, [2 * (1 - _progress), 2 * (1 - _progress), 0.1]];
+            sleep 0.03;
+        };
+        deleteVehicle _source;
     };
-    deleteVehicle _source;
+
+    // Gestionnaire de dégâts : seuils de fuite de gaz et explosion
+    _truck addEventHandler ["HandleDamage", {
+        params ["_unit", "_selection", "_damage", "_source", "_projectile"];
+        if (!alive _unit) exitWith { 0 };
+        if (_unit getVariable ["LL_TaskDChemical_IsExploding", false]) exitWith { _damage };
+
+        private _oldDmg = if (_selection != "") then { _unit getHit _selection } else { damage _unit };
+        if (isNil "_oldDmg") then { _oldDmg = 0; };
+
+        private _delta = (_damage - _oldDmg) max 0;
+        
+        if (_projectile != "" && _selection == "" && _delta < 0.008) then {
+            _delta = 0.008; 
+        };
+
+        if (_delta > 0) then {
+            private _clampedDelta = _delta min 0.15;
+            private _cumul = (_unit getVariable ["LL_Truck_AccumDamage", 0]) + (_clampedDelta * 2.5);
+            _unit setVariable ["LL_Truck_AccumDamage", _cumul];
+
+            // Seuil 1 : Fuite toxique initiale (fumée jaune et contamination)
+            if (_cumul >= 0.05 && { (_unit getVariable ["LL_Toxic_Level", 0]) < 1 }) then {
+                _unit setVariable ["LL_Toxic_Level", 1];
+
+                [_unit] spawn {
+                    params ["_truck"];
+                    private _emitter = "#particlesource" createVehicleLocal (getPos _truck);
+                    _emitter attachTo [_truck, [0, -1.5, 0.5]];
+                    _emitter setParticleCircle [0.2, [0.2, 0.2, 0.1]];
+                    _emitter setParticleRandom [0.5, [0.3, 0.3, 0.2], [0.3, 0.3, 0.2], 0, 0.2, [0, 0, 0, 0.05], 0, 0];
+                    _emitter setParticleParams [
+                        ["\A3\data_f\ParticleEffects\Universal\Universal", 16, 7, 48, 1], "", "Billboard", 1, 6,
+                        [0, 0, 0], [0, 0, 0.8], 0, 1.28, 1, 0.05, [0.8, 2.5, 4.5],
+                        [[0.9, 0.85, 0.1, 0.5], [0.8, 0.75, 0.08, 0.25], [0.6, 0.55, 0.05, 0]], [0.125], 1, 0, "", "", _truck
+                    ];
+                    _emitter setDropInterval 0.03;
+
+                    while { alive _truck && !isNull _emitter } do {
+                        private _lvl = _truck getVariable ["LL_Toxic_Level", 1];
+                        if (_lvl >= 2) then {
+                            _emitter setDropInterval 0.015;
+                            _emitter setParticleParams [
+                                ["\A3\data_f\ParticleEffects\Universal\Universal", 16, 7, 48, 1], "", "Billboard", 1, 7,
+                                [0, 0, 0], [0, 0, 1.2], 0, 1.28, 1, 0.05, [1.5, 4.0, 7.0],
+                                [[0.92, 0.88, 0.1, 0.7], [0.82, 0.75, 0.08, 0.45], [0.6, 0.55, 0.05, 0]], [0.125], 1, 0, "", "", _truck
+                            ];
+                        };
+                        sleep 1;
+                    };
+                    deleteVehicle _emitter;
+                };
+
+                [_unit] spawn {
+                    params ["_truck"];
+                    while { alive _truck } do {
+                        private _lvl = _truck getVariable ["LL_Toxic_Level", 0];
+                        if (_lvl >= 1) then {
+                            private _radius = if (_lvl >= 2) then { 14 } else { 8 };
+                            private _dmg = if (_lvl >= 2) then { 0.03 } else { 0.015 };
+                            {
+                                if (alive _x && _x distance2D _truck < _radius) then {
+                                    _x setDamage ((damage _x) + _dmg);
+                                    if (isPlayer _x) then {
+                                        _x setFatigue 1;
+                                        addCamShake [2, 1, 15];
+                                    };
+                                };
+                            } forEach allUnits;
+                        };
+                        sleep 1;
+                    };
+                };
+            };
+
+            // Seuil 2 : Fuite toxique majeure (expansion du rayon de poison)
+            if (_cumul >= 0.25 && { (_unit getVariable ["LL_Toxic_Level", 0]) < 2 }) then {
+                _unit setVariable ["LL_Toxic_Level", 2];
+            };
+
+            // Seuil 3 : Détonation critique
+            if (_cumul >= 0.65) then {
+                _unit setVariable ["LL_TaskDChemical_IsExploding", true];
+                _unit setDamage 1;
+            };
+        };
+
+        if (_damage >= 0.89) then { _damage = 0.89; };
+        _damage
+    }];
+
+    _truck setHitPointDamage ["HitEngine", 1];
+
+    // Gestionnaire de destruction : Explosion catastrophique, onde de choc et échec
+    _truck addEventHandler ["Killed", {
+        params ["_unit"];
+        if (missionNamespace getVariable ["LL_TaskDChemical_Failed", false]) exitWith {};
+        missionNamespace setVariable ["LL_TaskDChemical_Failed", true];
+
+        ["task_chemical", "FAILED", true] call BIS_fnc_taskSetState;
+        missionNamespace setVariable ["LL_g_taskInProgress", false];
+
+        private _subTask = _unit getVariable ["LL_TaskDChemical_SubTask", ""];
+        if (_subTask != "") then {
+            [_subTask, "FAILED", true] call BIS_fnc_taskSetState;
+        };
+
+        private _remaining = missionNamespace getVariable ["LL_TaskDChemical_RemainingTrucks", []];
+
+        {
+            private _t = _x;
+            if (!isNull _t && _t != _unit) then {
+                [_t] spawn {
+                    params ["_t"];
+                    waitUntil {
+                        sleep 5;
+                        isNull _t || !alive _t || ({ _x distance2D _t <= 800 } count (allPlayers select { alive _x })) == 0
+                    };
+                    if (!isNull _t) then { deleteVehicle _t; };
+                };
+            };
+        } forEach _remaining;
+
+        private _posATL = getPosATL _unit;
+        private _posASL = getPosASL _unit;
+
+        "HelicopterExploBig" createVehicle _posATL;
+        
+        // Dispersion du nuage toxique
+        private _fnc_ring = {
+            params ["_center", "_maxRadius", "_duration", "_color"];
+            private _source = createVehicleLocal ["#particlesource", _center];
+            _source setParticleCircle [0.1, [2, 2, 0.1]];
+            _source setParticleRandom [0.3, [0.2, 0.2, 0.1], [0.3, 0.3, 0.1], 0, 0.3, [0,0,0,0.05], 0, 0];
+            _source setParticleParams [
+                ["\A3\data_f\ParticleEffects\Universal\Universal", 16, 7, 48, 1], "", "Billboard",
+                1, 2.5, [0,0,0], [0,0,0], 0, 1.275, 1, 0.2,
+                [1.5, 6, 10], 
+                [
+                    [_color select 0, _color select 1, _color select 2, (_color select 3) * 0.8],
+                    [_color select 0, _color select 1, _color select 2, (_color select 3) * 0.4],
+                    [_color select 0, _color select 1, _color select 2, 0]
+                ],
+                [0.5], 0.1, 0, "", "", _source
+            ];
+            _source setDropInterval 0.01;
+            private _startTime = time;
+            private _radius = 0.1;
+            while { _radius < _maxRadius && (time - _startTime) < _duration } do {
+                private _progress = (time - _startTime) / _duration;
+                _radius = 0.1 + (_maxRadius - 0.1) * _progress;
+                _source setParticleCircle [_radius, [2 * (1 - _progress), 2 * (1 - _progress), 0.1]];
+                sleep 0.03;
+            };
+            deleteVehicle _source;
+        };
+        [_posATL, 110, 8, [0.9, 0.85, 0.1, 0.85]] spawn _fnc_ring;
+
+        // Onde de choc physique et létalité progressive
+        [_posATL, _posASL] spawn {
+            params ["_posATL", "_posASL"];
+            private _maxRadius = 110;
+            private _duration = 8;
+            private _startTime = time;
+            private _damagedUnits = [];
+
+            while { (time - _startTime) < _duration } do {
+                private _progress = (time - _startTime) / _duration;
+                private _currentRadius = _maxRadius * _progress;
+                {
+                    if (alive _x && !(_x in _damagedUnits)) then {
+                        private _dist = _x distance _posATL;
+                        if (_dist <= _currentRadius) then {
+                            _damagedUnits pushBack _x;
+                            if (_dist <= 30) then {
+                                _x setDamage 1;
+                            } else {
+                                if (_dist <= 80) then {
+                                    private _dmg = 0.5 + ((80 - _dist) / 50) * 0.4;
+                                    _x setDamage ((damage _x) + _dmg);
+                                    if (_x isKindOf "Man") then {
+                                        private _dir = _posASL vectorFromTo (getPosASL _x);
+                                        _dir set [2, 0.4];
+                                        private _vel = velocity _x;
+                                        _x setVelocity (_vel vectorAdd (_dir vectorMultiply 15));
+                                    };
+                                } else {
+                                    if (_dist <= 110) then {
+                                        private _dmg = 0.1 + ((110 - _dist) / 30) * 0.2;
+                                        _x setDamage ((damage _x) + _dmg);
+                                    };
+                                };
+                            };
+                        };
+                    };
+                } forEach (allUnits select { alive _x });
+                sleep 0.05;
+            };
+        };
+
+        private _allUnits = missionNamespace getVariable ["LL_TaskDChemical_AllUnits", []];
+        private _guards = _allUnits select { alive _x && _x isKindOf "Man" };
+        [_guards] spawn LL_fnc_taskCleanup;
+    }];
 };
 
-LL_fnc_taskD_chemical_heliExtract = {
-    params ["_cargo", "_dropPos"];
-    
-    if (!alive _cargo) exitWith {};
+// =========================================================================
+// MODULE 2 : HÉLITRANSPORT LOURD PAR HÉLICOPTÈRE (CH-47F CHINOOK RACS)
+// =========================================================================
+private _fnc_chemical_extract = {
+    params [
+        ["_cargo", objNull, [objNull]],
+        ["_dropPos", nil]
+    ];
 
-    private _spawnPosHeli = (getPosATL _cargo) getPos [1200, random 360];
+    if (isNull _cargo || !alive _cargo) exitWith {};
+
+    // --- Calcul du point de spawn (exactement 1500m du joueur) et de sortie ---
+    private _playerPos = if (!isNull player && { alive player }) then { getPosATL player } else { getPosATL _cargo };
+    private _spawnDir = random 360;
+    private _spawnPosHeli = _playerPos getPos [1500, _spawnDir];
+
     if (_spawnPosHeli select 0 < 50 || { _spawnPosHeli select 0 > (worldSize - 50) || { _spawnPosHeli select 1 < 50 || { _spawnPosHeli select 1 > (worldSize - 50) } } }) then {
         _spawnPosHeli = [50, 50, 250];
     } else {
@@ -95,7 +296,8 @@ LL_fnc_taskD_chemical_heliExtract = {
     };
 
     if (isNil "_dropPos") then {
-        _dropPos = _spawnPosHeli getPos [1500, random 360];
+        private _exitDir = (_spawnDir + 150 + random 60) % 360;
+        _dropPos = _playerPos getPos [2500, _exitDir];
         if (_dropPos select 0 < 50 || { _dropPos select 0 > (worldSize - 50) || { _dropPos select 1 < 50 || { _dropPos select 1 > (worldSize - 50) } } }) then {
             _dropPos = [worldSize - 50, worldSize - 50, 150];
         } else {
@@ -103,6 +305,7 @@ LL_fnc_taskD_chemical_heliExtract = {
         };
     };
 
+    // --- Création de l'hélicoptère lourd CH-47F Chinook RACS et équipage ---
     private _heli = createVehicle ["CUP_I_CH47F_VIV_RACS", _spawnPosHeli, [], 0, "FLY"];
     _heli setPosATL _spawnPosHeli;
     createVehicleCrew _heli;
@@ -140,6 +343,7 @@ LL_fnc_taskD_chemical_heliExtract = {
     _wp setWaypointSpeed "FULL";
     _heli doMove _targetPos;
 
+    // Attente de l'approche sur zone
     private _apTimer = 0;
     waitUntil {
         sleep 0.3;
@@ -153,6 +357,7 @@ LL_fnc_taskD_chemical_heliExtract = {
         deleteGroup _grp;
     };
 
+    // --- PHASE D'APPUI-FEU / SÉCURISATION DU PÉRIMÈTRE SI ENNEMIS DÉTECTÉS ---
     private _nearEnemies = allUnits select { side group _x == east && alive _x && (_x distance2D _targetPos < 500) };
 
     if (count _nearEnemies > 0) then {
@@ -223,7 +428,7 @@ LL_fnc_taskD_chemical_heliExtract = {
         deleteVehicle _heli;
         deleteGroup _grp;
     };
-    
+
     _grp setBehaviour "CARELESS";
     _grp setCombatMode "BLUE";
 
@@ -240,7 +445,6 @@ LL_fnc_taskD_chemical_heliExtract = {
     private _cargoY = _cargoPosASL select 1;
     private _cargoASL = _cargoPosASL select 2;
     private _transitAlt = 45;
-    private _hoverHeight = 7.5;
 
     _heli flyInHeight _transitAlt;
     _heli flyInHeightASL [_cargoASL + _transitAlt, _cargoASL + _transitAlt, _cargoASL + _transitAlt];
@@ -266,7 +470,7 @@ LL_fnc_taskD_chemical_heliExtract = {
         deleteGroup _grp;
     };
 
-    // 1. ARRIVÉE ET PRISE DE CONTRÔLE POUR VOL STATIONNAIRE DE PRÉCISION
+    // --- 1. PRISE DE CONTRÔLE ET VOL STATIONNAIRE DE PRÉCISION ---
     _pilot disableAI "MOVE";
     _pilot disableAI "PATH";
     doStop _heli;
@@ -298,7 +502,7 @@ LL_fnc_taskD_chemical_heliExtract = {
         deleteGroup _grp;
     };
 
-    // 2. DESCENTE VERTICALE DOUCE ET PARFAITEMENT CENTRÉE VERS LE STATIONNAIRE BAS (8.0m ASL)
+    // --- 2. DESCENTE VERTICALE DOUCE VERS LE STATIONNAIRE BAS (8.0m ASL) ---
     private _targetHoverZ = _cargoASL + 8.0;
     private _descentDistance = _startZ - _targetHoverZ;
     private _descendDuration = (_descentDistance / 3.0) max 6 min 15;
@@ -324,19 +528,16 @@ LL_fnc_taskD_chemical_heliExtract = {
         deleteGroup _grp;
     };
 
-    // 3. FIXATION DES SÉCURITÉS ET DÉPLOIEMENT DES CÂBLES AU SOL
+    // --- 3. FIXATION DES ÉLINGUES ET DÉPLOIEMENT DES CÂBLES AU SOL ---
     _cargo allowDamage false;
     _cargo enableRopeAttach true;
     _heli enableRopeAttach true;
     _cargo disableCollisionWith _heli;
     _heli disableCollisionWith _cargo;
 
-    // Aligner le camion dans le même axe que l'hélicoptère (évite tout croisement des câbles)
     _cargo setVectorDirAndUp [_fwd, [0, 0, 1]];
-    private _originalMass = getMass _cargo;
-    _cargo setMass 50; // Masse allégée pour neutraliser tout couple PhysX déstabilisant sur l'hélicoptère
+    _cargo setMass 1; // Charge neutralisée à 1 kg pour éliminer tout déséquilibre physique
 
-    private _attachedWithRopes = false;
     private _ropes = [];
 
     // Connexion séquentielle des 4 câbles PhysX au camion au sol
@@ -347,13 +548,12 @@ LL_fnc_taskD_chemical_heliExtract = {
     _ropes pushBack (ropeCreate [_heli, [0, -2.0, -1.2], _cargo, [-1.2, -2.5, 0.4], _ropeLen]);
     _ropes pushBack (ropeCreate [_heli, [0, -2.0, -1.2], _cargo, [1.2, -2.5, 0.4], _ropeLen]);
 
-    // Pause d'immersion : les 4 câbles relient le Chinook au camion au sol
     sleep 2.5;
 
     _cargo removeAllEventHandlers "Killed";
     _cargo removeAllEventHandlers "HandleDamage";
 
-    // Sécurité globale (timeout 120s)
+    // Sécurité de nettoyage en cas de blocage (timeout 120s)
     [_heli, _cargo, _dropPos, _grp, _ropes] spawn {
         params ["_heli", "_cargo", "_dropPos", "_grp", "_ropes"];
         sleep 120;
@@ -370,9 +570,9 @@ LL_fnc_taskD_chemical_heliExtract = {
         };
     };
 
-    // 4. MONTÉE ET LEVAGE PHYSIQUE DU CAMION DANS LES AIRS (ASSIETTE STRICTEMENT VERROUILLÉE)
-    private _climbDistance = 45.0;
-    private _climbDuration = (_climbDistance / 3.0) max 8 min 16;
+    // --- 4. LEVAGE PHYSIQUE SÉCURISÉ (MONTÉE VERTICALE À 80M HORS DE PORTÉE DU RELIEF) ---
+    private _climbDistance = 80.0;
+    private _climbDuration = (_climbDistance / 3.5) max 10 min 20;
     private _climbStart = time;
     private _truckStartASL = getPosASL _cargo;
     private _truckBaseZ = _truckStartASL select 2;
@@ -384,9 +584,8 @@ LL_fnc_taskD_chemical_heliExtract = {
 
         _heli setPosASL [_cargoX, _cargoY, _curHeliZ];
         _heli setVelocity [0, 0, 2.5];
-        _heli setVectorDirAndUp [_fwd, [0, 0, 1]]; // Maintien rigide de l'assiette horizontale
+        _heli setVectorDirAndUp [_fwd, [0, 0, 1]];
 
-        // Le camion est hissé à la hauteur des élingues tendues (différence = 8.0m)
         private _curTruckZ = (_curHeliZ - 8.0) max _truckBaseZ;
         _cargo setPosASL [_cargoX, _cargoY, _curTruckZ];
         _cargo setVelocity [0, 0, 2.5];
@@ -401,76 +600,31 @@ LL_fnc_taskD_chemical_heliExtract = {
         deleteGroup _grp;
     };
 
-    // 5. TRANSIT SÉCURISÉ UNE FOIS EN VOL DE CROISIÈRE
+    // --- 5. DÉPART SÉCURISÉ EN VOL DE TRANSIT (PLUS DE COMBAT, ÉVITEMENT DE RELIEF ACTIF) ---
     { if (!isNull _x) then { ropeDestroy _x; }; } forEach _ropes;
     _ropes = [];
 
     _cargo attachTo [_heli, [0, 0, -8.0]];
     _cargo setVectorDirAndUp [[0, 1, 0], [0, 0, 1]];
-    _attachedWithRopes = true;
 
-    // Impulsion initiale vers l'avant pour une reprise de vol fluide
-    _heli setVelocity [(_fwd select 0) * 15, (_fwd select 1) * 15, 0];
+    // Neutralisation absolue de la physique du camion : 1 kg + désactivation de simulation globale
+    // (Zéro traînée aérodynamique, zéro collision avec le décor/arbres, zéro interférence PhysX)
+    _cargo setMass 1;
+    _cargo enableSimulationGlobal false;
+    _cargo disableCollisionWith _heli;
 
-    // Réactivation des commandes de vol du pilote IA
+    // Impulsion initiale ascendante (+5 m/s) pour empêcher tout affaissement lié au cabré d'accélération
+    _heli setVelocity [(_fwd select 0) * 16, (_fwd select 1) * 16, 5.0];
+
     _pilot enableAI "MOVE";
     _pilot enableAI "PATH";
-    _heli flyInHeight 75;
-    _heli limitSpeed 70;
+    _heli flyInHeight 160;
+    _heli limitSpeed 140;
 
-    _grp setBehaviour "CARELESS";
+    // AWARE + BLUE : Le pilote active l'altimétrie et le suivi de relief (évite collines et arbres),
+    // tandis que BLUE et les IA de combat coupées empêchent tout engagement ou déviation.
+    _grp setBehaviour "AWARE";
     _grp setCombatMode "BLUE";
-
-    while { count (waypoints _grp) > 0 } do { deleteWaypoint [_grp, 0]; };
-    private _wpMove = _grp addWaypoint [_dropPos, 0];
-    _wpMove setWaypointType "MOVE";
-    _wpMove setWaypointSpeed "NORMAL";
-    _wpMove setWaypointBehaviour "CARELESS";
-    _heli doMove _dropPos;
-
-    {
-        _x enableAI "FSM";
-        _x enableAI "TARGET";
-        _x enableAI "AUTOTARGET";
-        _x enableAI "WEAPONAIM";
-        _x enableAI "CHECKVISIBLE";
-        _x setBehaviour "COMBAT";
-        _x setCombatMode "RED";
-        _x setSkill ["aimingAccuracy", 1.0];
-        _x setSkill ["aimingSpeed", 1.0];
-        _x setSkill ["aimingShake", 0.01];
-        _x setSkill ["spotDistance", 1.0];
-        _x setSkill ["spotTime", 1.0];
-        _x setSkill ["courage", 1.0];
-        _x setSkill ["commanding", 1.0];
-    } forEach _gunners;
-
-    private _postClimbCombatTimer = 0;
-    while { _postClimbCombatTimer < 15 && alive _heli && alive _cargo } do {
-        private _enemies = allUnits select { side group _x == east && alive _x && (_x distance2D _heli < 650 || _x distance2D _cargo < 650) };
-        _heli setVehicleAmmo 1;
-        _heli doMove _dropPos;
-
-        {
-            private _e = _x;
-            _grp reveal [_e, 4];
-            _heli reveal [_e, 4];
-            {
-                _x reveal [_e, 4];
-                _x commandTarget _e;
-                _heli fireAtTarget [_e];
-            } forEach _gunners;
-        } forEach _enemies;
-
-        sleep 1.5;
-        _postClimbCombatTimer = _postClimbCombatTimer + 1.5;
-    };
-
-    if (!alive _heli || !alive _cargo) exitWith {
-        { deleteVehicle _x; } forEach crew _heli;
-        deleteVehicle _heli;
-        deleteGroup _grp;
-    };
 
     {
         _x disableAI "FSM";
@@ -478,18 +632,21 @@ LL_fnc_taskD_chemical_heliExtract = {
         _x disableAI "AUTOTARGET";
         _x disableAI "AUTOCOMBAT";
         _x disableAI "COVER";
+        _x setBehaviour "AWARE";
+        _x setCombatMode "BLUE";
     } forEach _crew;
 
-    _heli flyInHeight 120;
-    _heli limitSpeed 140;
+    _pilot setBehaviour "AWARE";
+    _pilot setCombatMode "BLUE";
 
     while { count (waypoints _grp) > 0 } do { deleteWaypoint [_grp, 0]; };
     private _wpEnd = _grp addWaypoint [_dropPos, 0];
     _wpEnd setWaypointType "MOVE";
     _wpEnd setWaypointSpeed "FULL";
-    _wpEnd setWaypointBehaviour "CARELESS";
+    _wpEnd setWaypointBehaviour "AWARE";
     _heli doMove _dropPos;
 
+    // --- 6. VALIDATION DE L'OBJECTIF TACTIQUE ---
     private _remaining = missionNamespace getVariable ["LL_TaskDChemical_RemainingTrucks", []];
     _remaining = _remaining - [_cargo];
     missionNamespace setVariable ["LL_TaskDChemical_RemainingTrucks", _remaining];
@@ -510,30 +667,84 @@ LL_fnc_taskD_chemical_heliExtract = {
         };
     };
 
-    waitUntil { sleep 1; (_heli distance2D _dropPos < 300) || !alive _heli };
-
-    if (_attachedWithRopes) then {
-        detach _cargo;
-    };
-    if (!isNull (getSlingLoad _heli)) then {
-        _heli setSlingLoad objNull;
-    };
-    { if (!isNull _x) then { ropeDestroy _x; }; } forEach _ropes;
-
-    sleep 2;
-    deleteVehicle _cargo;
-
+    // Attente que l'hélicoptère s'éloigne au loin et disparaisse avec le camion hors de vue des joueurs
+    // Boucle de sécurité anti-crash relief
     waitUntil {
-        sleep 2;
+        sleep 1;
+        if (!alive _heli) exitWith { true };
+
+        // Sécurité anti-collision relief : correction immédiate si l'altitude descend sous 70m AGL
+        private _curAlt = (getPosATL _heli) select 2;
+        if (_curAlt < 70) then {
+            private _v = velocity _heli;
+            _heli setVelocity [_v select 0, _v select 1, ((_v select 2) max 4)];
+            _heli flyInHeight 160;
+        };
+
         private _players = allPlayers select { alive _x };
-        ({ _x distance2D _heli <= 1500 } count _players) == 0
+        ({ _x distance2D _heli < 1500 } count _players) == 0 || (_heli distance2D _dropPos < 300)
     };
 
+    // Suppression simultanée et propre de l'hélicoptère, de son équipage et du camion emporté
+    if (!isNull _cargo) then {
+        detach _cargo;
+        deleteVehicle _cargo;
+    };
     { deleteVehicle _x; } forEach crew _heli;
     deleteVehicle _heli;
     deleteGroup _grp;
 };
 
+// Stockage pour compatibilité globale
+missionNamespace setVariable ["LL_fnc_taskD_chemical_extract", _fnc_chemical_extract];
+missionNamespace setVariable ["LL_fnc_taskD_chemical_02", _fnc_chemical_extract];
+missionNamespace setVariable ["LL_fnc_taskD_chemical_03", _fnc_chemical_effects];
+
+// =========================================================================
+// MODULE 3 : CRÉATION DU DISPOSITIF AU SOL, GARNISONS ET TÂCHES
+// =========================================================================
+private _centerPos = getMarkerPos _locMarker;
+private _radius = (markerSize _locMarker) select 0;
+if (_radius == 0) then { _radius = 250; };
+
+private _nearHelipads = nearestObjects [_centerPos, ["Land_HelipadEmpty_F"], _radius];
+private _nearLogics = nearestObjects [_centerPos, ["Logic"], _radius];
+
+private _usedPositions = missionNamespace getVariable ["LL_g_usedTaskPos", []];
+private _validSpawnPoints = _nearHelipads select {
+    private _candidate = _x;
+    !(_candidate getVariable ["LL_logic_occupied", false]) && 
+    { (_usedPositions findIf { _x distance2D _candidate < 25 }) == -1 }
+};
+
+if (count _validSpawnPoints == 0) then {
+    private _fallback = _centerPos findEmptyPosition [10, 150, "B_Truck_01_transport_F"];
+    if (count _fallback == 0) then { _fallback = _centerPos getPos [40, random 360]; };
+    private _dummy = "Land_HelipadEmpty_F" createVehicle _fallback;
+    _validSpawnPoints = [_dummy];
+};
+
+private _numTrucks = 1 + floor(random 2);
+if (_numTrucks > count _validSpawnPoints) then { _numTrucks = count _validSpawnPoints; };
+if (_numTrucks < 1) then { _numTrucks = 1; };
+
+private _selectedLogics = [];
+private _shuffled = _validSpawnPoints call BIS_fnc_arrayShuffle;
+for "_i" from 0 to (_numTrucks - 1) do {
+    private _chosen = _shuffled select _i;
+    _chosen setVariable ["LL_logic_occupied", true];
+    _selectedLogics pushBack _chosen;
+    _usedPositions pushBack (getPosATL _chosen);
+};
+
+missionNamespace setVariable ["LL_g_usedTaskPos", _usedPositions];
+
+missionNamespace setVariable ["LL_TaskDChemical_RemainingTrucks", []];
+missionNamespace setVariable ["LL_TaskDChemical_AllUnits", []];
+missionNamespace setVariable ["LL_TaskDChemical_Failed", false];
+
+private _allTrucks = [];
+private _allUnits = [];
 
 {
     private _selectedLogic = _x;
@@ -550,10 +761,12 @@ LL_fnc_taskD_chemical_heliExtract = {
     for "_g" from 1 to _numGuards do {
         private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
         private _isGuardFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
-        private _guardClass = if (_isGuardFemale) then {
-            selectRandom _fEnemyClasses
-        } else {
-            "O_G_Soldier_F"
+        private _guardClass = "O_G_Soldier_F";
+        if (_isGuardFemale) then {
+            private _picked = selectRandom _fEnemyClasses;
+            if (!isNil "_picked" && { _picked != "" }) then {
+                _guardClass = _picked;
+            };
         };
         private _guard = _grp createUnit [_guardClass, _spawnPos, [], 0, "CAN_COLLIDE"];
         [_guard] joinSilent _grp;
@@ -593,193 +806,24 @@ LL_fnc_taskD_chemical_heliExtract = {
     _allTrucks pushBack _truck;
     _allUnits pushBack _truck;
 
-    _truck addEventHandler ["HandleDamage", {
-        params ["_unit", "_selection", "_damage", "_source", "_projectile"];
-        if (!alive _unit) exitWith { 0 };
-        if (_unit getVariable ["LL_TaskDChemical_IsExploding", false]) exitWith { _damage };
+    // Application des effets chimiques et de toxicité
+    [_truck] call _fnc_chemical_effects;
 
-        private _oldDmg = if (_selection != "") then { _unit getHit _selection } else { damage _unit };
-        if (isNil "_oldDmg") then { _oldDmg = 0; };
-
-        private _delta = (_damage - _oldDmg) max 0;
-        
-        if (_projectile != "" && _selection == "" && _delta < 0.008) then {
-            _delta = 0.008; 
-        };
-
-        if (_delta > 0) then {
-            private _clampedDelta = _delta min 0.15;
-            private _cumul = (_unit getVariable ["LL_Truck_AccumDamage", 0]) + (_clampedDelta * 2.5);
-            _unit setVariable ["LL_Truck_AccumDamage", _cumul];
-
-            if (_cumul >= 0.05 && { (_unit getVariable ["LL_Toxic_Level", 0]) < 1 }) then {
-                _unit setVariable ["LL_Toxic_Level", 1];
-
-                [_unit] spawn {
-                    params ["_truck"];
-                    private _emitter = "#particlesource" createVehicleLocal (getPos _truck);
-                    _emitter attachTo [_truck, [0, -1.5, 0.5]];
-                    _emitter setParticleCircle [0.2, [0.2, 0.2, 0.1]];
-                    _emitter setParticleRandom [0.5, [0.3, 0.3, 0.2], [0.3, 0.3, 0.2], 0, 0.2, [0, 0, 0, 0.05], 0, 0];
-                    _emitter setParticleParams [
-                        ["\A3\data_f\ParticleEffects\Universal\Universal", 16, 7, 48, 1], "", "Billboard", 1, 6,
-                        [0, 0, 0], [0, 0, 0.8], 0, 1.28, 1, 0.05, [0.8, 2.5, 4.5],
-                        [[0.9, 0.85, 0.1, 0.5], [0.8, 0.75, 0.08, 0.25], [0.6, 0.55, 0.05, 0]], [0.125], 1, 0, "", "", _truck
-                    ];
-                    _emitter setDropInterval 0.03;
-
-                    while { alive _truck && !isNull _emitter } do {
-                        private _lvl = _truck getVariable ["LL_Toxic_Level", 1];
-                        if (_lvl >= 2) then {
-                            _emitter setDropInterval 0.015;
-                            _emitter setParticleParams [
-                                ["\A3\data_f\ParticleEffects\Universal\Universal", 16, 7, 48, 1], "", "Billboard", 1, 7,
-                                [0, 0, 0], [0, 0, 1.2], 0, 1.28, 1, 0.05, [1.5, 4.0, 7.0],
-                                [[0.92, 0.88, 0.1, 0.7], [0.82, 0.75, 0.08, 0.45], [0.6, 0.55, 0.05, 0]], [0.125], 1, 0, "", "", _truck
-                            ];
-                        };
-                        sleep 1;
-                    };
-                    deleteVehicle _emitter;
-                };
-
-                [_unit] spawn {
-                    params ["_truck"];
-                    while { alive _truck } do {
-                        private _lvl = _truck getVariable ["LL_Toxic_Level", 0];
-                        if (_lvl >= 1) then {
-                            private _radius = if (_lvl >= 2) then { 14 } else { 8 };
-                            private _dmg = if (_lvl >= 2) then { 0.03 } else { 0.015 };
-                            {
-                                if (alive _x && _x distance2D _truck < _radius) then {
-                                    _x setDamage ((damage _x) + _dmg);
-                                    if (isPlayer _x) then {
-                                        _x setFatigue 1;
-                                        addCamShake [2, 1, 15];
-                                    };
-                                };
-                            } forEach allUnits;
-                        };
-                        sleep 1;
-                    };
-                };
-            };
-
-            if (_cumul >= 0.25 && { (_unit getVariable ["LL_Toxic_Level", 0]) < 2 }) then {
-                _unit setVariable ["LL_Toxic_Level", 2];
-            };
-
-            if (_cumul >= 0.65) then {
-                _unit setVariable ["LL_TaskDChemical_IsExploding", true];
-                _unit setDamage 1;
-            };
-        };
-
-        if (_damage >= 0.89) then { _damage = 0.89; };
-        _damage
-    }];
-
-    _truck setHitPointDamage ["HitEngine", 1];
-
-    _truck addEventHandler ["Killed", {
-        params ["_unit"];
-        if (missionNamespace getVariable ["LL_TaskDChemical_Failed", false]) exitWith {};
-        missionNamespace setVariable ["LL_TaskDChemical_Failed", true];
-
-        ["task_chemical", "FAILED", true] call BIS_fnc_taskSetState;
-        missionNamespace setVariable ["LL_g_taskInProgress", false];
-
-        private _subTask = _unit getVariable ["LL_TaskDChemical_SubTask", ""];
-        if (_subTask != "") then {
-            [_subTask, "FAILED", true] call BIS_fnc_taskSetState;
-        };
-
-        private _remaining = missionNamespace getVariable ["LL_TaskDChemical_RemainingTrucks", []];
-
-        {
-            private _t = _x;
-            if (!isNull _t && _t != _unit) then {
-                [_t] spawn {
-                    params ["_t"];
-                    waitUntil {
-                        sleep 5;
-                        isNull _t || !alive _t || ({ _x distance2D _t <= 800 } count (allPlayers select { alive _x })) == 0
-                    };
-                    if (!isNull _t) then { deleteVehicle _t; };
-                };
-            };
-        } forEach _remaining;
-
-        private _posATL = getPosATL _unit;
-        private _posASL = getPosASL _unit;
-
-        "HelicopterExploBig" createVehicle _posATL;
-        [_posATL, 110, 8, [0.9, 0.85, 0.1, 0.85]] spawn LL_fnc_taskD_chemical_smokeRing;
-
-        [_posATL, _posASL] spawn {
-            params ["_posATL", "_posASL"];
-            private _maxRadius = 110;
-            private _duration = 8;
-            private _startTime = time;
-            private _damagedUnits = [];
-
-            while { (time - _startTime) < _duration } do {
-                private _progress = (time - _startTime) / _duration;
-                private _currentRadius = _maxRadius * _progress;
-                {
-                    if (alive _x && !(_x in _damagedUnits)) then {
-                        private _dist = _x distance _posATL;
-                        if (_dist <= _currentRadius) then {
-                            _damagedUnits pushBack _x;
-                            if (_dist <= 30) then {
-                                _x setDamage 1;
-                            } else {
-                                if (_dist <= 80) then {
-                                    private _dmg = 0.5 + ((80 - _dist) / 50) * 0.4;
-                                    _x setDamage ((damage _x) + _dmg);
-                                    if (_x isKindOf "Man") then {
-                                        private _dir = _posASL vectorFromTo (getPosASL _x);
-                                        _dir set [2, 0.4];
-                                        private _vel = velocity _x;
-                                        _x setVelocity (_vel vectorAdd (_dir vectorMultiply 15));
-                                    };
-                                } else {
-                                    if (_dist <= 110) then {
-                                        private _dmg = 0.1 + ((110 - _dist) / 30) * 0.2;
-                                        _x setDamage ((damage _x) + _dmg);
-                                    };
-                                };
-                            };
-                        };
-                    };
-                } forEach (allUnits select { alive _x });
-                sleep 0.05;
-            };
-        };
-
-        private _allUnits = missionNamespace getVariable ["LL_TaskDChemical_AllUnits", []];
-        private _guards = _allUnits select { alive _x && _x isKindOf "Man" };
-        [_guards] spawn LL_fnc_taskCleanup;
-    }];
-
-
-
+    // Action d'extraction pour le joueur
     _truck addAction [
         format ["<t color='#FFFF00'>%1</t>", localize "STR_LL_Task_04_Action"],
         {
-            params ["_target", "_caller", "_actionId"];
+            params ["_target", "_caller", "_actionId", "_arguments"];
+            _arguments params ["_fnc_extract"];
             if (_target getVariable ["LL_TaskDChemical_Triggered", false]) exitWith {};
             _target setVariable ["LL_TaskDChemical_Triggered", true];
 
             _target removeAction _actionId;
             _caller playActionNow "PutDown";
 
-            private _spawnPosHeli = (getPosATL _target) getPos [1500, random 360];
-            private _dropPos = _spawnPosHeli getPos [1500, random 360];
-            
-            [_target, _dropPos] spawn LL_fnc_taskD_chemical_heliExtract;
+            [_target] spawn _fnc_extract;
         },
-        nil, 6.0, true, true, "", "alive _target && _this distance _target < 15", 15
+        [_fnc_chemical_extract], 6.0, true, true, "", "alive _target && _this distance _target < 15", 15
     ];
 
 } forEach _selectedLogics;
@@ -789,6 +833,7 @@ missionNamespace setVariable ["LL_TaskDChemical_AllUnits", _allUnits];
 
 private _mainDest = if (count _allTrucks > 0) then { [_allTrucks select 0, true] } else { _centerPos };
 
+// Création de la tâche principale
 [
     group player,
     ["task_chemical"],
@@ -805,6 +850,7 @@ private _mainDest = if (count _allTrucks > 0) then { [_allTrucks select 0, true]
     false
 ] call BIS_fnc_taskCreate;
 
+// Création des sous-tâches pour chaque citerne chimique
 {
     private _truck = _x;
     private _idx = _forEachIndex + 1;

@@ -53,10 +53,12 @@ private _sentinelLogics = _otherLogics select [0, 4];
 
     private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
     private _isSentinelFemale = (random 1) < 0.20 && { count _fEnemyClasses > 0 };
-    private _sClass = if (_isSentinelFemale) then {
-        selectRandom _fEnemyClasses
-    } else {
-        "O_G_Soldier_F"
+    private _sClass = "O_G_Soldier_F";
+    if (_isSentinelFemale) then {
+        private _picked = selectRandom _fEnemyClasses;
+        if (!isNil "_picked" && { _picked != "" }) then {
+            _sClass = _picked;
+        };
     };
     private _sentinel = _sGrp createUnit [_sClass, _sPos, [], 0, "CAN_COLLIDE"];
     [_sentinel] joinSilent _sGrp;
@@ -84,20 +86,21 @@ for "_p" from 1 to 2 do {
     _pGrp setSpeedMode "LIMITED";
     _allGroups pushBack _pGrp;
 
-    private _pStartPos = if (count _patrolLogics > 0) then {
-        getPosATL (selectRandom _patrolLogics)
-    } else {
-        _hvtPos getPos [30 + random 50, random 360]
+    private _pStartPos = _hvtPos getPos [30 + random 50, random 360];
+    if (count _patrolLogics > 0) then {
+        _pStartPos = getPosATL (selectRandom _patrolLogics);
     };
     _pStartPos set [2, (_pStartPos select 2) + 0.2];
 
     for "_g" from 1 to 2 do {
         private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
         private _isPGuardFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
-        private _pGuardClass = if (_isPGuardFemale) then {
-            selectRandom _fEnemyClasses
-        } else {
-            "O_G_Soldier_F"
+        private _pGuardClass = "O_G_Soldier_F";
+        if (_isPGuardFemale) then {
+            private _picked = selectRandom _fEnemyClasses;
+            if (!isNil "_picked" && { _picked != "" }) then {
+                _pGuardClass = _picked;
+            };
         };
         private _pGuard = _pGrp createUnit [_pGuardClass, _pStartPos, [], 0, "CAN_COLLIDE"];
         [_pGuard] joinSilent _pGrp;
@@ -126,10 +129,12 @@ private _angles = [0, 120, 240];
 
     private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
     private _isBgFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
-    private _bgClass = if (_isBgFemale) then {
-        selectRandom _fEnemyClasses
-    } else {
-        "O_G_Soldier_F"
+    private _bgClass = "O_G_Soldier_F";
+    if (_isBgFemale) then {
+        private _picked = selectRandom _fEnemyClasses;
+        if (!isNil "_picked" && { _picked != "" }) then {
+            _bgClass = _picked;
+        };
     };
     private _bg = _bgGrp createUnit [_bgClass, _bgPos, [], 0, "CAN_COLLIDE"];
     [_bg] joinSilent _bgGrp;
@@ -152,10 +157,12 @@ _allGroups pushBack _hvtGrp;
 
 private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
 private _isHvtFemale = (random 1) < 0.10 && { count _fEnemyClasses > 0 };
-private _hvtClass = if (_isHvtFemale) then {
-    selectRandom _fEnemyClasses
-} else {
-    "O_Officer_F"
+private _hvtClass = "O_Officer_F";
+if (_isHvtFemale) then {
+    private _picked = selectRandom _fEnemyClasses;
+    if (!isNil "_picked" && { _picked != "" }) then {
+        _hvtClass = _picked;
+    };
 };
 private _hvt = _hvtGrp createUnit [_hvtClass, _hvtPos, [], 0, "CAN_COLLIDE"];
 [_hvt] joinSilent _hvtGrp;

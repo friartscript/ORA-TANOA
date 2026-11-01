@@ -1,84 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keys>
     <Key ID="STR_LL_Diary_Task08_Title">
-        <Original>OPORD: Destroy Heavy Technical &amp; Jammer</Original>
-        <English>OPORD: Destroy Heavy Technical &amp; Jammer</English>
-        <French>OPORD : Détruire le Technical Lourd et le Brouilleur</French>
-        <Spanish>OPORD: Destruir el Technical Pesado y el Inhibidor</Spanish>
-        <German>OPORD: Schweres Technical &amp; Störsender zerstören</German>
-        <Italian>OPORD: Distruggi il Technical Pesante e il Disturbatore</Italian>
-        <Polish>OPORD: Zniszcz ciężki technical i zagłuszacz</Polish>
-        <Portuguese>OPORD: Destruir o Technical Pesado e o Bloqueador</Portuguese>
-        <Russian>Боевой приказ: Уничтожить тяжелый пикап и глушитель</Russian>
-        <Czech>OPORD: Zničit těžký technical a rušičku</Czech>
-        <Turkish>OPORD: Ağır Silahlı Pikap ve Karıştırıcıyı Yok Et</Turkish>
-        <Korean>작전 명령: 중화기 테크니컬 및 교란기 파괴</Korean>
-        <Japanese>作戦命令: 重武装テクニカルとジャマーの破壊</Japanese>
-        <Chinese>作战命令：摧毁重型武装皮卡与干扰器</Chinese>
-        <Chinesesimp>作战命令：摧毁重型武装皮卡与干扰器</Chinesesimp>
+        <Original>OPORD: Destroy Cartel AA Vehicles</Original>
+        <English>OPORD: Destroy Cartel AA Vehicles</English>
+        <French>OPORD : Détruire des DCA du cartel</French>
+        <Spanish>OPORD: Destruir vehículos antiaéreos del cartel</Spanish>
+        <German>OPORD: Flugabwehrfahrzeuge des Kartells zerstören</German>
+        <Italian>OPORD: Distruggi i veicoli contraerei del cartello</Italian>
+        <Polish>OPORD: Zniszcz pojazdy przeciwlotnicze kartelu</Polish>
+        <Portuguese>OPORD: Destruir veículos antiaéreos do cartel</Portuguese>
+        <Russian>Боевой приказ: Уничтожить зенитные комплексы картеля</Russian>
+        <Czech>OPORD: Zničit protiletadlová vozidla kartelu</Czech>
+        <Turkish>OPORD: Kartel Uçaksavar Araçlarını Yok Et</Turkish>
+        <Korean>작전 명령: 카르텔 대공 차량 파괴</Korean>
+        <Japanese>作戦命令: カルテル対空車両の破壊</Japanese>
+        <Chinese>作戰命令：摧毀卡特爾防空車輛</Chinese>
+        <Chinesesimp>作战命令：摧毁卡特尔防空车辆</Chinesesimp>
     </Key>
 
     <Key ID="STR_LL_Diary_Task08_Text">
-        <Original>&lt;font color='#FF4444'&gt;HIGH RISK MISSION&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The Tanoa cartel has fortified a heavy anti-aircraft network and electronic jamming system. Allied air support is unavailable at the start of operations.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;ALLIED LOGISTICS FLIGHT:&lt;/font&gt;&lt;br/&gt;- A French RACS C-130J cargo flight will transit the airspace &lt;b&gt;between the 45th and 55th minute&lt;/b&gt;.&lt;br/&gt;- If the Tempest jammer and cartel heavy technicals are not neutralized before arrival, enemy fire will shoot down the cargo plane, causing mission failure.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;TACTICAL INFO:&lt;/font&gt;&lt;br/&gt;- &lt;font color='#FF8800'&gt;Drone Jammer (Position A):&lt;/font&gt; A Tempest jammer truck blocks tactical drone support.&lt;br/&gt;- &lt;font color='#FF8800'&gt;Heavy Cartel Technical (Position B, &gt;600m):&lt;/font&gt; A modified heavy pickup armed with twin 23mm autocannons and a rocket launcher denies helicopter flight corridors.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;RESOLUTION:&lt;/font&gt;&lt;br/&gt;- Destroying the Tempest jammer validates the primary objective, unlocks drone surveillance, and blinds cartel air defense radars.&lt;br/&gt;- Destroying the heavy technical unlocks CAS helicopter support.</Original>
-        <French>&lt;font color='#FF4444'&gt;MISSION À HAUT RISQUE&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Le cartel de Tanoa a mis en place un puissant réseau de brouillage et une défense antiaérienne mobile. Les soutiens aériens alliés sont indisponibles au début de l'opération.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;VOL LOGISTIQUE ALLIÉ :&lt;/font&gt;&lt;br/&gt;- Un avion cargo C-130J de la Légion RACS doit survoler l'espace aérien &lt;b&gt;entre la 45ème et la 55ème minute&lt;/b&gt;.&lt;br/&gt;- Si le brouilleur Tempest et les technicals du cartel ne sont pas neutralisés avant son arrivée, l'avion cargo sera abattu, entraînant l'échec de la mission.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;INFORMATIONS TACTIQUES :&lt;/font&gt;&lt;br/&gt;- &lt;font color='#FF8800'&gt;Brouilleur Drone (Position A) :&lt;/font&gt; Un camion Tempest (Dispositif) bloque l'utilisation du drone.&lt;br/&gt;- &lt;font color='#FF8800'&gt;Technical Armé Lourd (Position B, &gt;600m) :&lt;/font&gt; Un pickup lourd militarisé équipé d'un bitube antiaérien et d'un lance-roquettes bloque les hélicoptères.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;RÉSOLUTION :&lt;/font&gt;&lt;br/&gt;- La destruction du Tempest valide la tâche principale, débloque le drone et aveugle la défense antiaérienne du cartel.&lt;br/&gt;- La destruction du technical lourd débloque le soutien hélicoptère.</French>
-        <English>&lt;font color='#FF4444'&gt;HIGH RISK MISSION&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The Tanoa cartel has fortified a heavy anti-aircraft network and electronic jamming system. Allied air support is unavailable at the start of operations.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;ALLIED LOGISTICS FLIGHT:&lt;/font&gt;&lt;br/&gt;- A French RACS C-130J cargo flight will transit the airspace &lt;b&gt;between the 45th and 55th minute&lt;/b&gt;.&lt;br/&gt;- If the Tempest jammer and cartel heavy technicals are not neutralized before arrival, enemy fire will shoot down the cargo plane, causing mission failure.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;TACTICAL INFO:&lt;/font&gt;&lt;br/&gt;- &lt;font color='#FF8800'&gt;Drone Jammer (Position A):&lt;/font&gt; A Tempest jammer truck blocks tactical drone support.&lt;br/&gt;- &lt;font color='#FF8800'&gt;Heavy Cartel Technical (Position B, &gt;600m):&lt;/font&gt; A modified heavy pickup armed with twin 23mm autocannons and a rocket launcher denies helicopter flight corridors.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;RESOLUTION:&lt;/font&gt;&lt;br/&gt;- Destroying the Tempest jammer validates the primary objective, unlocks drone surveillance, and blinds cartel air defense radars.&lt;br/&gt;- Destroying the heavy technical unlocks CAS helicopter support.</English>
-        <Spanish>&lt;font color='#FF4444'&gt;MISIÓN DE ALTO RIESGO&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;El cartel de Tanoa ha desplegado un sistema de interferencias y defensa antiaérea móvil. Destruya el camión inhibidor Tempest y el pickup pesado artillado para asegurar el vuelo logístico aliado.</Spanish>
-        <German>&lt;font color='#FF4444'&gt;HOCHRISIKO-EINSATZ&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Das Tanoa-Kartell hat ein Störsystem und schwere bewaffnete Pickups postiert. Zerstören Sie den Tempest-Störsender und das schwere Technical, um den alliierten Frachtflug zu sichern.</German>
-        <Italian>&lt;font color='#FF4444'&gt;MISSIONE AD ALTO RISCHIO&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Il cartello di Tanoa ha schierato disturbatori e pickup pesanti armati. Neutralizza il camion Tempest e il technical per proteggere il volo cargo alleato.</Italian>
-        <Polish>&lt;font color='#FF4444'&gt;MISJA WYSOKIEGO RYZYKA&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Kartel z Tanoa rozmieścił system zakłócania i ciężkie uzbrojone technicale. Zniszcz pojazd Tempest oraz uzbrojony pickup, aby zabezpieczyć sojuszniczy przelot logistyczny.</Polish>
-        <Russian>&lt;font color='#FF4444'&gt;ОПАСНАЯ МИССИЯ&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Картель Таноа развернул систему глушения и тяжелые пикапы с зенитными орудиями. Уничтожьте грузовик Tempest и тяжелый technical для защиты транспортного самолета союзников.</Russian>
-        <Turkish>&lt;font color='#FF4444'&gt;YÜKSEK RİSKLİ GÖREV&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Tanoa karteli karıştırma sistemi ve ağır silahlı pikaplar konuşlandırdı. Müttefik kargo uçağını korumak için Tempest aracını ve teknik aracı yok edin.</Turkish>
-        <Korean>&lt;font color='#FF4444'&gt;고위험 임무&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;타노아 카르텔이 전파 방해 장치와 중화기 무장 테크니컬을 배치했습니다. 아군 수송기 통과를 위해 템페스트 차량과 테크니컬을 파괴하십시오.</Korean>
-        <Japanese>&lt;font color='#FF4444'&gt;高リスク任務&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;タノア・カルテルは電子妨害装置と重武装テクニカルを配備しました。味方輸送機の安全のため、テンペスト車両と武装ピックアップを破壊せよ。</Japanese>
-        <Chinese>&lt;font color='#FF4444'&gt;高风险任务&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;塔诺阿卡特尔部署了电子干扰系统与重武装皮卡。摧毁神风干扰车与重型武装皮卡，确保盟军运输机安全飞越。</Chinese>
-        <Chinesesimp>&lt;font color='#FF4444'&gt;高风险任务&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;塔诺阿卡特尔部署了电子干扰系统与重武装皮卡。摧毁神风干扰车与重型武装皮卡，确保盟军运输机安全飞越。</Chinesesimp>
+        <Original>&lt;font color='#FF4444'&gt;HIGH RISK MISSION&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The Tanoa cartel has deployed a heavy anti-aircraft network consisting of armed Ural ZU-23 AA trucks. Allied air support is unavailable at the start of operations.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;ALLIED LOGISTICS FLIGHT:&lt;/font&gt;&lt;br/&gt;- A French RACS C-130J cargo flight will transit the airspace &lt;b&gt;between the 45th and 55th minute&lt;/b&gt;.&lt;br/&gt;- If the cartel AA vehicles are not neutralized before arrival, enemy fire will shoot down the cargo plane, causing mission failure.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;TACTICAL INFO:&lt;/font&gt;&lt;br/&gt;- &lt;font color='#FF8800'&gt;AA Battery (Position B):&lt;/font&gt; Two heavy Ural trucks equipped with twin 23mm autocannons deny all helicopter and aircraft corridors.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;RESOLUTION:&lt;/font&gt;&lt;br/&gt;- You can plant explosive charges directly on each AA vehicle or eliminate them with anti-tank weaponry.&lt;br/&gt;- Neutralizing both AA vehicles unlocks helicopter support and secures the allied cargo flight.</Original>
+        <French>&lt;font color='#FF4444'&gt;MISSION À HAUT RISQUE&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Le cartel de Tanoa a déployé une batterie de défense antiaérienne composée de camions Ural armés de bitubes ZU-23. Les soutiens aériens alliés sont indisponibles au début de l'opération.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;VOL LOGISTIQUE ALLIÉ :&lt;/font&gt;&lt;br/&gt;- Un avion cargo C-130J de la Légion RACS doit survoler l'espace aérien &lt;b&gt;entre la 45ème et la 55ème minute&lt;/b&gt;.&lt;br/&gt;- Si les véhicules DCA du cartel ne sont pas neutralisés avant son arrivée, l'avion cargo sera abattu, entraînant l'échec de la mission.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;INFORMATIONS TACTIQUES :&lt;/font&gt;&lt;br/&gt;- &lt;font color='#FF8800'&gt;Batterie DCA (Position B) :&lt;/font&gt; Deux camions Ural lourds équipés de bitubes antiaériens de 23 mm interdisent tout survol d'hélicoptère ou d'avion.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;RÉSOLUTION :&lt;/font&gt;&lt;br/&gt;- Vous pouvez poser des charges explosives directement sur chaque véhicule DCA ou utiliser des armes antichars.&lt;br/&gt;- La destruction des deux DCA débloque le soutien hélicoptère et sécurise le survol de l'avion cargo.</French>
+        <English>&lt;font color='#FF4444'&gt;HIGH RISK MISSION&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;The Tanoa cartel has deployed a heavy anti-aircraft network consisting of armed Ural ZU-23 AA trucks. Allied air support is unavailable at the start of operations.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;ALLIED LOGISTICS FLIGHT:&lt;/font&gt;&lt;br/&gt;- A French RACS C-130J cargo flight will transit the airspace &lt;b&gt;between the 45th and 55th minute&lt;/b&gt;.&lt;br/&gt;- If the cartel AA vehicles are not neutralized before arrival, enemy fire will shoot down the cargo plane, causing mission failure.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;TACTICAL INFO:&lt;/font&gt;&lt;br/&gt;- &lt;font color='#FF8800'&gt;AA Battery (Position B):&lt;/font&gt; Two heavy Ural trucks equipped with twin 23mm autocannons deny all helicopter and aircraft corridors.&lt;br/&gt;&lt;br/&gt;&lt;font color='#FFFF00'&gt;RESOLUTION:&lt;/font&gt;&lt;br/&gt;- You can plant explosive charges directly on each AA vehicle or eliminate them with anti-tank weaponry.&lt;br/&gt;- Neutralizing both AA vehicles unlocks helicopter support and secures the allied cargo flight.</English>
+        <Spanish>&lt;font color='#FF4444'&gt;MISIÓN DE ALTO RIESGO&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;El cartel de Tanoa ha desplegado camiones Ural antiaéreos ZU-23. Destruya los vehículos DCA para asegurar el vuelo logístico aliado y desbloquear el apoyo de helicópteros.</Spanish>
+        <German>&lt;font color='#FF4444'&gt;HOCHRISIKO-EINSATZ&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Das Tanoa-Kartell hat bewaffnete Ural ZU-23 Flak-LKW positioniert. Zerstören Sie die Flugabwehrfahrzeuge, um den alliierten Frachtflug zu sichern und Hubschrauberunterstützung freizuschalten.</German>
+        <Italian>&lt;font color='#FF4444'&gt;MISSIONE AD ALTO RISCHIO&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Il cartello di Tanoa ha schierato camion Ural contraerei ZU-23. Neutralizza i veicoli DCA per proteggere il volo cargo alleato e sbloccare il supporto elicotteri.</Italian>
+        <Polish>&lt;font color='#FF4444'&gt;MISJA WYSOKIEGO RYZYKA&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Kartel z Tanoa rozmieścił ciężarówki Ural ZU-23 OPL. Zniszcz pojazdy przeciwlotnicze, aby zabezpieczyć sojuszniczy lot transportowy i odblokować wsparcie śmigłowców.</Polish>
+        <Portuguese>&lt;font color='#FF4444'&gt;MISSÃO DE ALTO RISCO&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;O cartel de Tanoa posicionou camiões Ural antiaéreos ZU-23. Destrua os veículos DCA para assegurar o voo logístico aliado e desbloquear o apoio de helicópteros.</Portuguese>
+        <Russian>&lt;font color='#FF4444'&gt;ОПАСНАЯ МИССИЯ&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Картель Таноа развернул зенитные грузовики Урал ЗУ-23. Уничтожьте зенитные комплексы DCA для защиты транспортного самолета союзников и вызова вертолетов.</Russian>
+        <Czech>&lt;font color='#FF4444'&gt;VYSOCE RIZIKOVÁ MISE&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Kartel na Tanoa rozmístil protiletadlové nákladní vozy Ural ZU-23. Zničte vozidla DCA k zajištění spojeneckého nákladního letu a odblokování podpory vrtulníků.</Czech>
+        <Turkish>&lt;font color='#FF4444'&gt;YÜKSEK RİSKLİ GÖREV&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;Tanoa karteli ZU-23 uçaksavar Ural kamyonları konuşlandırdı. Müttefik kargo uçağını korumak ve helikopter desteğini açmak için DCA araçlarını yok edin.</Turkish>
+        <Korean>&lt;font color='#FF4444'&gt;고위험 임무&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;타노아 카르텔이 우랄 ZU-23 대공 트럭을 배치했습니다. 아군 수송기를 보호하고 헬기 지원을 확보하기 위해 DCA 차량을 파괴하십시오.</Korean>
+        <Japanese>&lt;font color='#FF4444'&gt;高リスク任務&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;タノア・カルテルはウラルZU-23対空トラックを配備しました。味方輸送機の安全確保とヘリ支援解除のため、DCA車両を破壊せよ。</Japanese>
+        <Chinese>&lt;font color='#FF4444'&gt;高風險任務&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;塔諾阿卡特爾部署了烏拉爾 ZU-23 防空卡車。摧毀防空 (DCA) 車輛，以確保盟軍領空安全並解鎖直升機支援。</Chinese>
+        <Chinesesimp>&lt;font color='#FF4444'&gt;高风险任务&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;塔诺阿卡特尔部署了乌拉尔 ZU-23 防空卡车。摧毁防空 (DCA) 车辆，以确保盟军领空安全并解锁直升机支持。</Chinesesimp>
     </Key>
 
     <Key ID="STR_LL_Task_08_Title">
-        <Original>Destroy Heavy Technical and Jammer</Original>
-        <English>Destroy Heavy Technical and Jammer</English>
-        <French>Détruire le Pickup d'appui lourd et le Brouilleur</French>
-        <Spanish>Destruir el Pickup de apoyo pesado y el Inhibidor</Spanish>
-        <German>Schweres Unterstützungs-Technical und Störsender zerstören</German>
-        <Italian>Distruggi il Pickup di supporto pesante e il Disturbatore</Italian>
-        <Polish>Zniszcz ciężki pickup wsparcia i zagłuszacz</Polish>
-        <Russian>Уничтожить тяжелый пикап огневой поддержки и глушитель</Russian>
-        <Turkish>Ağır Destek Pikabını ve Karıştırıcıyı Yok Et</Turkish>
-        <Korean>중화기 지원 테크니컬 및 교란기 파괴</Korean>
-        <Japanese>重火力支援テクニカルとジャマーを破壊</Japanese>
-        <Chinese>摧毁重火力支援皮卡与干扰器</Chinese>
-        <Chinesesimp>摧毁重火力支援皮卡与干扰器</Chinesesimp>
+        <Original>Destroy Cartel AA Vehicles</Original>
+        <English>Destroy Cartel AA Vehicles</English>
+        <French>Détruire des DCA du cartel</French>
+        <Spanish>Destruir vehículos antiaéreos del cartel</Spanish>
+        <German>Flugabwehrfahrzeuge des Kartells zerstören</German>
+        <Italian>Distruggi i veicoli contraerei del cartello</Italian>
+        <Polish>Zniszcz pojazdy przeciwlotnicze kartelu</Polish>
+        <Portuguese>Destruir veículos antiaéreos do cartel</Portuguese>
+        <Russian>Уничтожить зенитные комплексы картеля</Russian>
+        <Czech>Zničit protiletadlová vozidla kartelu</Czech>
+        <Turkish>Kartel Uçaksavar Araçlarını Yok Et</Turkish>
+        <Korean>카르텔 대공 차량 파괴</Korean>
+        <Japanese>カルテルの対空車両を破壊</Japanese>
+        <Chinese>摧毀卡特爾防空車輛</Chinese>
+        <Chinesesimp>摧毁卡特尔防空车辆</Chinesesimp>
     </Key>
 
     <Key ID="STR_LL_Task_08_Desc">
-        <Original>Destroy the cartel Tempest jammer, the armed heavy technical, and the rocket launcher artillery.</Original>
-        <English>Destroy the cartel Tempest jammer, the armed heavy technical, and the rocket launcher artillery.</English>
-        <French>Détruisez le Tempest (brouilleur), le pickup armé lourd et le lance-roquettes du cartel.</French>
-        <Spanish>Destruye el Tempest (inhibidor), el pickup pesado artillado y el lanzacohetes del cartel.</Spanish>
-        <German>Zerstören Sie den Tempest-Störsender, das bewaffnete schwere Technical und die Raketenartillerie des Kartells.</German>
-        <Italian>Distruggi il Tempest (disturbatore), il pickup pesante armato e il lanciarazzi del cartello.</Italian>
-        <Polish>Zniszcz zagłuszacz Tempest, uzbrojony ciężki pickup i artylerię rakietową kartelu.</Polish>
-        <Russian>Уничтожьте глушитель Tempest, вооруженный тяжелый пикап и ракетную артиллерию картеля.</Russian>
-        <Turkish>Kartelin Tempest karıştırıcısını, silahlı ağır pikabını ve roketatar topçusunu yok edin.</Turkish>
-        <Korean>카르텔의 템페스트 교란기, 무장 중화기 테크니컬, 로켓포를 파괴하십시오.</Korean>
-        <Japanese>カルテルのテンペストジャマー、重武装テクニカル、ロケット砲兵を破壊せよ。</Japanese>
-        <Chinese>摧毁卡特尔神风干扰车、武装重型皮卡与火箭炮。</Chinese>
-        <Chinesesimp>摧毁卡特尔神风干扰车、武装重型皮卡与火箭炮。</Chinesesimp>
+        <Original>Neutralize the cartel's armed Ural AA trucks to secure allied airspace and unlock helicopter support.</Original>
+        <English>Neutralize the cartel's armed Ural AA trucks to secure allied airspace and unlock helicopter support.</English>
+        <French>Neutralisez les camions Ural DCA armés du cartel pour sécuriser l'espace aérien allié et débloquer le soutien hélicoptère.</French>
+        <Spanish>Neutraliza los camiones Ural DCA del cartel para asegurar el espacio aéreo aliado y desbloquear el apoyo de helicópteros.</Spanish>
+        <German>Neutralisieren Sie die bewaffneten Ural-Flak-LKW des Kartells, um den alliierten Luftraum zu sichern und Hubschrauberunterstützung freizuschalten.</German>
+        <Italian>Neutralizza i camion Ural DCA del cartello per mettere in sicurezza lo spazio aereo alleato e sbloccare il supporto elicotteri.</Italian>
+        <Polish>Zneutralizuj uzbrojone ciężarówki Ural OPL kartelu, aby zabezpieczyć sojuszniczą przestrzeń powietrzną i odblokować wsparcie śmigłowców.</Polish>
+        <Portuguese>Neutralize os camiões Ural antiaéreos do cartel para proteger o espaço aéreo aliado e desbloquear o apoio de helicópteros.</Portuguese>
+        <Russian>Нейтрализуйте вооруженные зенитные грузовики Урал картеля, чтобы обезопасить воздушное пространство и разблокировать вертолеты.</Russian>
+        <Czech>Zneškodněte ozbrojené protiletadlové nákladní vozy Ural kartelu pro zajištění vzdušného prostoru a odemknutí podpory vrtulníků.</Czech>
+        <Turkish>Müttefik hava sahasını emniyete almak ve helikopter desteğini açmak için kartelin silahlı Ural uçaksavar kamyonlarını etkisiz hale getirin.</Turkish>
+        <Korean>아군 공역을 확보하고 헬기 지원을 잠금 해제하기 위해 카르텔의 무장 우랄 대공 트럭을 무력화하십시오.</Korean>
+        <Japanese>味方空域を確保しヘリ支援を解除するため、カルテルの重武装ウラル対空トラックを無力化せよ。</Japanese>
+        <Chinese>消滅卡特爾的武裝烏拉爾防空卡車，以確保盟軍領空安全並解鎖直升機支援。</Chinese>
+        <Chinesesimp>消灭卡特尔的武装乌拉尔防空卡车，以确保盟军领空安全并解锁直升机支持。</Chinesesimp>
     </Key>
 
     <Key ID="STR_LL_Task_08_MarkerVehicles">
-        <Original>Heavy Technical - High Risk</Original>
-        <English>Heavy Technical - High Risk</English>
-        <French>Technical armé - Risque Élevé</French>
-        <Spanish>Technical artillado - Riesgo Alto</Spanish>
-        <German>Bewaffnetes Technical - Hohes Risiko</German>
-        <Italian>Technical armato - Rischio Elevato</Italian>
-        <Polish>Uzbrojony Technical - Wysokie Ryzyko</Polish>
-        <Russian>Вооруженный пикап - Высокий риск</Russian>
-        <Turkish>Silahlı Pikap - Yüksek Risk</Turkish>
-        <Korean>무장 테크니컬 - 높은 위험</Korean>
-        <Japanese>武装テクニカル - 高リスク</Japanese>
-        <Chinese>重武装皮卡 - 高风险</Chinese>
-        <Chinesesimp>重武装皮卡 - 高风险</Chinesesimp>
+        <Original>Cartel AA Trucks - High Risk</Original>
+        <English>Cartel AA Trucks - High Risk</English>
+        <French>Camions DCA du Cartel - Risque Élevé</French>
+        <Spanish>Camiones DCA del Cartel - Riesgo Alto</Spanish>
+        <German>Kartell-Flak-LKW - Hohes Risiko</German>
+        <Italian>Camion DCA del Cartello - Rischio Elevato</Italian>
+        <Polish>Ciężarówki OPL Kartelu - Wysokie Ryzyko</Polish>
+        <Portuguese>Camiões Antiaéreos do Cartel - Risco Elevado</Portuguese>
+        <Russian>Зенитные грузовики картеля - Высокий риск</Russian>
+        <Czech>Protiletadlové nákladní vozy kartelu - Vysoké riziko</Czech>
+        <Turkish>Kartel Uçaksavar Kamyonları - Yüksek Risk</Turkish>
+        <Korean>카르텔 대공 트럭 - 높은 위험</Korean>
+        <Japanese>カルテル対空トラック - 高リスク</Japanese>
+        <Chinese>卡特爾防空卡車 - 高風險</Chinese>
+        <Chinesesimp>卡特尔防空卡车 - 高风险</Chinesesimp>
     </Key>
 </Keys>

@@ -50,8 +50,6 @@ vehicule_team setPosATL _vehPos;
 vehicule_team setDir (random 360);
 publicVariable "vehicule_team";
 
-private _smokePos = _destPos getPos [6, 45];
-"SmokeShellGreen" createVehicle _smokePos;
 [] spawn LL_fnc_spawnStartArsenal;
 
 private _allUnits = [];
@@ -181,16 +179,16 @@ private _ehPlan2 = addMissionEventHandler ["EachFrame", {
 
     private _hASL = getPosASLVisual _heli;
     private _hDir = getDirVisual _heli;
-    private _angle = _hDir - 45 + (_smooth * 20);
-    private _dist = 56 - (_smooth * 8);
+    private _angle = _hDir - 25 + (_smooth * 35);
+    private _dist = 24 + (_smooth * 8);
     private _cASL = [
         (_hASL select 0) + (sin _angle * _dist),
         (_hASL select 1) + (cos _angle * _dist),
-        (_hASL select 2) + 12 - (_smooth * 3)
+        (_hASL select 2) + 38 - (_smooth * 9)
     ];
     _cam camSetPos (ASLToAGL _cASL);
-    _cam camSetTarget (_heli modelToWorldVisual [0, 2, 0]);
-    _cam camSetFov (0.62 - (_smooth * 0.07));
+    _cam camSetTarget (_heli modelToWorldVisual [0, 0, -1]);
+    _cam camSetFov (0.75 - (_smooth * 0.12));
     _cam camCommit 0;
 }];
 
@@ -249,16 +247,16 @@ private _ehPlan3 = addMissionEventHandler ["EachFrame", {
 
     private _hASL = getPosASLVisual _heli;
     private _hDir = getDirVisual _heli;
-    private _angle = _hDir + 135 - (_smooth * 25);
-    private _dist = 52 + (_smooth * 4);
+    private _angle = _hDir + 165 - (_smooth * 30);
+    private _dist = 36 + (_smooth * 10);
     private _cASL = [
         (_hASL select 0) + (sin _angle * _dist),
         (_hASL select 1) + (cos _angle * _dist),
-        (_hASL select 2) + 9 + (_smooth * 3)
+        (_hASL select 2) - 14 + (_smooth * 5)
     ];
     _cam camSetPos (ASLToAGL _cASL);
-    _cam camSetTarget (_heli modelToWorldVisual [0, 0, 0]);
-    _cam camSetFov (0.58 - (_smooth * 0.06));
+    _cam camSetTarget (_heli modelToWorldVisual [0, 1, 1.5]);
+    _cam camSetFov (0.65 - (_smooth * 0.08));
     _cam camCommit 0;
 }];
 
@@ -284,16 +282,16 @@ private _ehPlan4 = addMissionEventHandler ["EachFrame", {
 
     private _hASL = getPosASLVisual _heli;
     private _hDir = getDirVisual _heli;
-    private _angle = _hDir + 35 + (_smooth * 30);
-    private _dist = 48 - (_smooth * 4);
+    private _angle = _hDir - 85 + (_smooth * 40);
+    private _dist = 11 + (_smooth * 3);
     private _cASL = [
         (_hASL select 0) + (sin _angle * _dist),
         (_hASL select 1) + (cos _angle * _dist),
-        (_hASL select 2) + 11 - (_smooth * 4)
+        (_hASL select 2) + 0.4 + (_smooth * 1.2)
     ];
     _cam camSetPos (ASLToAGL _cASL);
-    _cam camSetTarget (_heli modelToWorldVisual [0, 1, 0]);
-    _cam camSetFov (0.56 - (_smooth * 0.06));
+    _cam camSetTarget (_heli modelToWorldVisual [0, 0.5, 0.2]);
+    _cam camSetFov (0.45 - (_smooth * 0.05));
     _cam camCommit 0;
 }];
 
@@ -308,13 +306,13 @@ removeMissionEventHandler ["EachFrame", _ehPlan4];
 _heli land "GET OUT";
 
 private _camGround5 = [
-    (_destPos select 0) + 52,
-    (_destPos select 1) - 54,
-    (_destPos select 2) + 3.5
+    (_destPos select 0) + 40,
+    (_destPos select 1) - 42,
+    (_destPos select 2) + 0.7
 ];
 _cam camSetPos _camGround5;
 _cam camSetTarget _heli;
-_cam camSetFov 0.52;
+_cam camSetFov 0.60;
 _cam camCommit 0;
 waitUntil { camCommitted _cam };
 
@@ -334,12 +332,12 @@ private _ehPlan5 = addMissionEventHandler ["EachFrame", {
     private _smooth = _prog * _prog * (3 - 2 * _prog);
 
     _cam camSetPos [
-        (_base select 0) + (sin (_smooth * 80) * 4),
-        (_base select 1) + (cos (_smooth * 80) * 4),
-        (_base select 2) + (_smooth * 2.8)
+        (_base select 0) - (_smooth * 5),
+        (_base select 1) + (_smooth * 4),
+        (_base select 2) + (_smooth * 0.5)
     ];
-    _cam camSetTarget (_heli modelToWorldVisual [0, 0, 0.5]);
-    _cam camSetFov (0.52 + (_smooth * 0.06));
+    _cam camSetTarget (_heli modelToWorldVisual [0, 0, 0.8]);
+    _cam camSetFov (0.60 - (_smooth * 0.12));
     _cam camCommit 0;
 }];
 
@@ -350,13 +348,13 @@ waitUntil { (diag_tickTime - _t0) >= 51.77 };
 removeMissionEventHandler ["EachFrame", _ehPlan5];
 
 private _camGround6 = [
-    (_destPos select 0) - 38,
-    (_destPos select 1) + 35,
-    (_destPos select 2) + 2.5
+    (_destPos select 0) - 28,
+    (_destPos select 1) + 32,
+    (_destPos select 2) + 18.0
 ];
 _cam camSetPos _camGround6;
 _cam camSetTarget _heli;
-_cam camSetFov 0.48;
+_cam camSetFov 0.55;
 _cam camCommit 0;
 waitUntil { camCommitted _cam };
 
@@ -376,12 +374,12 @@ private _ehPlan6 = addMissionEventHandler ["EachFrame", {
     private _smooth = _prog * _prog * (3 - 2 * _prog);
 
     _cam camSetPos [
-        (_base select 0) + (_smooth * 5),
-        (_base select 1) - (_smooth * 3.5),
-        (_base select 2) + (_smooth * 0.8)
+        (_base select 0) + (_smooth * 6),
+        (_base select 1) - (_smooth * 5),
+        (_base select 2) - (_smooth * 6.5)
     ];
-    _cam camSetTarget (_heli modelToWorldVisual [0, 0, 0.4]);
-    _cam camSetFov (0.48 - (_smooth * 0.05));
+    _cam camSetTarget (_heli modelToWorldVisual [0, 0, 0.3]);
+    _cam camSetFov (0.55 - (_smooth * 0.08));
     _cam camCommit 0;
 }];
 
@@ -392,13 +390,13 @@ waitUntil { (diag_tickTime - _t0) >= 61.33 };
 removeMissionEventHandler ["EachFrame", _ehPlan6];
 
 private _camGround7 = [
-    (_destPos select 0) + 25,
-    (_destPos select 1) - 22,
-    (_destPos select 2) + 1.8
+    (_destPos select 0) + 14,
+    (_destPos select 1) - 13,
+    (_destPos select 2) + 1.1
 ];
 _cam camSetPos _camGround7;
 _cam camSetTarget _heli;
-_cam camSetFov 0.46;
+_cam camSetFov 0.44;
 _cam camCommit 0;
 waitUntil { camCommitted _cam };
 
@@ -418,12 +416,12 @@ private _ehPlan7 = addMissionEventHandler ["EachFrame", {
     private _smooth = _prog * _prog * (3 - 2 * _prog);
 
     _cam camSetPos [
-        (_base select 0) - (_smooth * 3),
-        (_base select 1) + (_smooth * 2),
-        (_base select 2) + (_smooth * 0.3)
+        (_base select 0) - (_smooth * 2.5),
+        (_base select 1) - (_smooth * 1.5),
+        (_base select 2) + (_smooth * 0.2)
     ];
-    _cam camSetTarget (_heli modelToWorldVisual [0, 0, 0.2]);
-    _cam camSetFov (0.46 + (_smooth * 0.04));
+    _cam camSetTarget (_heli modelToWorldVisual [0, 0, 0.1]);
+    _cam camSetFov (0.44 + (_smooth * 0.06));
     _cam camCommit 0;
 }];
 
@@ -469,13 +467,13 @@ _heli flyInHeight 100;
 };
 
 private _camGround8 = [
-    (_teamRef select 0) - 16,
-    (_teamRef select 1) - 14,
-    (_teamRef select 2) + 1.6
+    (_teamRef select 0) - 13,
+    (_teamRef select 1) - 11,
+    (_teamRef select 2) + 1.3
 ];
 _cam camSetPos _camGround8;
 _cam camSetTarget _teamRef;
-_cam camSetFov 0.50;
+_cam camSetFov 0.52;
 _cam camCommit 0;
 waitUntil { camCommitted _cam };
 
@@ -488,16 +486,23 @@ private _ehPlan8 = addMissionEventHandler ["EachFrame", {
     private _cam = missionNamespace getVariable ["LL_cam_obj", objNull];
     if (isNull _cam) exitWith {};
 
-    private _base = missionNamespace getVariable ["LL_p8_cPos", [0,0,0]];
+    private _teamPos = missionNamespace getVariable ["MISSION_intro_lz", [0,0,0]];
+    if (!isNil "vehicule_team" && {!isNull vehicule_team}) then { _teamPos = getPosATL vehicule_team; };
+
     private _start = missionNamespace getVariable ["LL_p8_t0", diag_tickTime];
     private _prog = ((diag_tickTime - _start) / 9.02) min 1;
     private _smooth = _prog * _prog * (3 - 2 * _prog);
 
-    _cam camSetPos [
-        (_base select 0) + (_smooth * 3),
-        (_base select 1) - (_smooth * 2),
-        (_base select 2) + (_smooth * 0.2)
+    private _angle = 220 + (_smooth * 75);
+    private _dist = 16 - (_smooth * 3);
+    private _cPos = [
+        (_teamPos select 0) + (sin _angle * _dist),
+        (_teamPos select 1) + (cos _angle * _dist),
+        (_teamPos select 2) + 1.3 + (_smooth * 0.7)
     ];
+    _cam camSetPos _cPos;
+    _cam camSetTarget [_teamPos select 0, _teamPos select 1, (_teamPos select 2) + 1.1];
+    _cam camSetFov (0.52 - (_smooth * 0.06));
     _cam camCommit 0;
 }];
 

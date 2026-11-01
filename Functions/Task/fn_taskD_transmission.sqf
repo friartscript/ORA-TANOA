@@ -83,10 +83,12 @@ for "_i" from 0 to (_numRadios - 1) do {
             _guardPos set [2, (_spawnPos select 2)];
             private _fEnemyClasses = (missionNamespace getVariable ["MISSION_EnemyClasses_Female", []]) select { isClass (configFile >> "CfgVehicles" >> _x) };
             private _isGuardFemale = (random 1) < 0.15 && { count _fEnemyClasses > 0 };
-            private _guardClass = if (_isGuardFemale) then {
-                selectRandom _fEnemyClasses
-            } else {
-                "O_G_Soldier_F"
+            private _guardClass = "O_G_Soldier_F";
+            if (_isGuardFemale) then {
+                private _picked = selectRandom _fEnemyClasses;
+                if (!isNil "_picked" && { _picked != "" }) then {
+                    _guardClass = _picked;
+                };
             };
             private _guard = _grp createUnit [_guardClass, _guardPos, [], 0, "CAN_COLLIDE"];
             [_guard] joinSilent _grp;
