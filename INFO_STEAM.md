@@ -30,11 +30,13 @@ Lors de la publication, ajoutez ces mods dans la section "Required items" du Pub
 *Copiez-collez ce texte dans la description de votre objet sur Steam lors de la publication :*
 
 ```text
-[h1]Operation Royal Alliance - Takistan[/h1]
+[h1]Operation Royal Alliance[/h1]
 [b]A custom tactical mission launcher & dynamic operations generator by Friart Script (@friartscript)[/b]
 
+[h2]🎙️ Radio voices are in French, but the game is fully translated into all languages![/h2]
+
 [h2]SITUATION[/h2]
-Deploy into the harsh environments of Takistan. As part of the RACS Foreign Legion, take command through a custom operational launcher to plan and execute precision operations behind enemy lines. Every deployment is unique.
+Deploy into the operation zone. As part of the RACS Foreign Legion, take command through a custom operational launcher to plan and execute precision operations behind enemy lines. Every deployment is unique.
 
 [h2]🎖️ A WORD FROM THE CREATOR[/h2]
 [quote]
@@ -50,12 +52,12 @@ I poured a lot of heart into the gritty atmosphere, sound design, and realistic 
 
 [h2]FEATURES[/h2]
 [list]
-[*] [b]Custom Tactical Mission Launcher[/b]: An interactive 3-panel command center to configure deployment sectors, weather conditions, insertion vector (UH-60 Insertion or C-130 HALO), and live 3D PiP vehicle selection.
-[*] [b]Dynamic Operations Generator[/b]: Choose between 3 mandatory operations and multiple procedural secondary tasks (Hostage Rescue, HVT Elimination, Radio Sabotage with timed beeping explosive charges, Chemical Weapons, Secret Intel).
-[*] [b]Living Takistani World & Culture[/b]: A living civilian population, including women in traditional attire (burqas), authentic Persian/Takistani names, procedural rural livestock (sheep herds), and spatialized 3D Call to Prayer (Ezan) resonating from village mosques.
-[*] [b]Reactive AI & Dynamic Threats[/b]: 6 realistic civilian behavioral profiles fleeing dynamically under fire, diverse insurgent cells (male and female combatants), light discipline, and coordinated enemy counter-attacks upon objective completion.
-[*] [b]Dynamic Military Radio Communications & Tactical Support[/b]: Immersive radio transmissions with authentic Lo-Fi military effects, CAS airstrikes, helicopter resupply drops, and real-time MQ-9 Reaper drone surveillance via native communication menu (0-8).
-[*] [b]Multilingual Support[/b]: Fully localized with dynamic subtitles in 11 languages (FR, EN, ES, DE, IT, RU, PL, TR, CN, JP, KO).
+[*] [b]Custom Tactical Mission Launcher[/b]: An interactive 3-panel command center to configure deployment sectors, weather conditions, insertion vector (Helicopter Insertion or Airdrop), and live 3D PiP vehicle selection.
+[*] [b]Dynamic Operations Generator[/b]: Choose between 3 mandatory operations and multiple procedural secondary tasks (Hostage Rescue, HVT Elimination, Radio Sabotage with timed beeping explosive charges, Chemical Weapons, Secret Intel, AA Vehicles destruction).
+[*] [b]Living World & Culture[/b]: A living civilian population, women in traditional attire, authentic names, procedural rural livestock (sheep herds), and spatialized 3D Call to Prayer (Ezan) resonating from village mosques.
+[*] [b]Reactive AI & Dynamic Threats[/b]: Realistic civilian behavioral profiles fleeing dynamically under fire, diverse insurgent cells (male and female combatants), light discipline, and coordinated enemy counter-attacks upon objective completion.
+[*] [b]Dynamic Military Radio Communications & Tactical Support[/b]: Immersive radio transmissions with authentic Lo-Fi military effects, CAS airstrikes, helicopter resupply drops, and real-time drone surveillance via native communication menu (0-8).
+[*] [b]Full Multilingual Support[/b]: Fully localized with dynamic subtitles in all supported languages (FR, EN, ES, DE, IT, RU, PL, PT, CZ, TR, KO, JA, CN). [i]Note: Voice acting is in French for Foreign Legion realism.[/i]
 [/list]
 
 [i]Leave a rating and feedback if you enjoyed the mission![/i]

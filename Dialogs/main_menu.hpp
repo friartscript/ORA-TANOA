@@ -936,13 +936,23 @@ class Refour_Main_Menu_Dialog
             colorText[] = {0.95, 0.75, 0.2, 1};
         };
 
+        class Txt_ExtractionNotice: RscStructuredText {
+            idc = -1;
+            text = "$STR_MAIN_MENU_EXTRACTION_NOTICE";
+            x = safezoneX + (0.025 * safezoneW);
+            y = safezoneY + (0.485 * safezoneH);
+            w = 0.29 * safezoneW;
+            h = 0.065 * safezoneH;
+            colorBackground[] = {0.35, 0.05, 0.05, 0.75};
+        };
+
         class Txt_Rules: RscStructuredText {
             idc = -1;
             text = "$STR_MAIN_MENU_RULES";
             x = safezoneX + (0.025 * safezoneW);
-            y = safezoneY + (0.50 * safezoneH);
+            y = safezoneY + (0.56 * safezoneH);
             w = 0.29 * safezoneW;
-            h = 0.25 * safezoneH;
+            h = 0.28 * safezoneH;
             colorBackground[] = {0,0,0,0};
         };
 

@@ -160,35 +160,19 @@ private _fnc_chemical_effects = {
 
     _truck setHitPointDamage ["HitEngine", 1];
 
-    // Gestionnaire de destruction : Explosion catastrophique, onde de choc et échec
     _truck addEventHandler ["Killed", {
         params ["_unit"];
-        if (missionNamespace getVariable ["LL_TaskDChemical_Failed", false]) exitWith {};
-        missionNamespace setVariable ["LL_TaskDChemical_Failed", true];
-
-        ["task_chemical", "FAILED", true] call BIS_fnc_taskSetState;
-        missionNamespace setVariable ["LL_g_taskInProgress", false];
 
         private _subTask = _unit getVariable ["LL_TaskDChemical_SubTask", ""];
         if (_subTask != "") then {
             [_subTask, "FAILED", true] call BIS_fnc_taskSetState;
         };
 
-        private _remaining = missionNamespace getVariable ["LL_TaskDChemical_RemainingTrucks", []];
-
-        {
-            private _t = _x;
-            if (!isNull _t && _t != _unit) then {
-                [_t] spawn {
-                    params ["_t"];
-                    waitUntil {
-                        sleep 5;
-                        isNull _t || !alive _t || ({ _x distance2D _t <= 800 } count (allPlayers select { alive _x })) == 0
-                    };
-                    if (!isNull _t) then { deleteVehicle _t; };
-                };
-            };
-        } forEach _remaining;
+        if (!(missionNamespace getVariable ["LL_TaskDChemical_Failed", false])) then {
+            missionNamespace setVariable ["LL_TaskDChemical_Failed", true];
+            ["task_chemical", "FAILED", true] call BIS_fnc_taskSetState;
+            missionNamespace setVariable ["LL_g_taskInProgress", false];
+        };
 
         private _posATL = getPosATL _unit;
         private _posASL = getPosASL _unit;
@@ -314,6 +298,68 @@ private _fnc_chemical_extract = {
     private _crew = crew _heli;
     private _pilot = driver _heli;
     private _gunners = _crew select { _x != _pilot };
+    private _ropes = [];
+
+    private _fnc_heliAbort = {
+        params ["_heli", "_grp", "_crew", "_pilot", "_dropPos", ["_ropes", []]];
+        if (!alive _heli) exitWith {
+            { deleteVehicle _x; } forEach _crew;
+            deleteVehicle _heli;
+            if (!isNull _grp) then { deleteGroup _grp; };
+        };
+
+        { if (!isNull _x) then { ropeDestroy _x; }; } forEach _ropes;
+
+        _pilot enableAI "MOVE";
+        _pilot enableAI "PATH";
+        _heli flyInHeight 160;
+        _heli limitSpeed 160;
+
+        _grp setBehaviour "AWARE";
+        _grp setCombatMode "BLUE";
+
+        {
+            _x disableAI "FSM";
+            _x disableAI "TARGET";
+            _x disableAI "AUTOTARGET";
+            _x disableAI "AUTOCOMBAT";
+            _x disableAI "COVER";
+            _x setBehaviour "AWARE";
+            _x setCombatMode "BLUE";
+        } forEach _crew;
+
+        _pilot setBehaviour "AWARE";
+        _pilot setCombatMode "BLUE";
+
+        private _v = velocity _heli;
+        _heli setVelocity [_v select 0, _v select 1, ((_v select 2) max 5)];
+
+        while { count (waypoints _grp) > 0 } do { deleteWaypoint [_grp, 0]; };
+        private _wpEnd = _grp addWaypoint [_dropPos, 0];
+        _wpEnd setWaypointType "MOVE";
+        _wpEnd setWaypointSpeed "FULL";
+        _wpEnd setWaypointBehaviour "AWARE";
+        _heli doMove _dropPos;
+
+        waitUntil {
+            sleep 1;
+            if (!alive _heli) exitWith { true };
+
+            private _curAlt = (getPosATL _heli) select 2;
+            if (_curAlt < 70) then {
+                private _vel = velocity _heli;
+                _heli setVelocity [_vel select 0, _vel select 1, ((_vel select 2) max 4)];
+                _heli flyInHeight 160;
+            };
+
+            private _players = allPlayers select { alive _x };
+            ({ _x distance2D _heli < 1500 } count _players) == 0 || (_heli distance2D _dropPos < 300)
+        };
+
+        { deleteVehicle _x; } forEach (crew _heli);
+        deleteVehicle _heli;
+        if (!isNull _grp) then { deleteGroup _grp; };
+    };
 
     { _x allowDamage false; } forEach _crew;
     _heli allowDamage false;
@@ -343,7 +389,6 @@ private _fnc_chemical_extract = {
     _wp setWaypointSpeed "FULL";
     _heli doMove _targetPos;
 
-    // Attente de l'approche sur zone
     private _apTimer = 0;
     waitUntil {
         sleep 0.3;
@@ -351,10 +396,13 @@ private _fnc_chemical_extract = {
         (_heli distance2D _targetPos < 180) || _apTimer > 60 || !alive _heli || !alive _cargo
     };
 
-    if (!alive _heli || !alive _cargo) exitWith {
+    if (!alive _heli) exitWith {
         { deleteVehicle _x; } forEach crew _heli;
         deleteVehicle _heli;
         deleteGroup _grp;
+    };
+    if (!alive _cargo) exitWith {
+        [_heli, _grp, _crew, _pilot, _dropPos, _ropes] spawn _fnc_heliAbort;
     };
 
     // --- PHASE D'APPUI-FEU / SÉCURISATION DU PÉRIMÈTRE SI ENNEMIS DÉTECTÉS ---
@@ -423,10 +471,13 @@ private _fnc_chemical_extract = {
         while { count (waypoints _grp) > 0 } do { deleteWaypoint [_grp, 0]; };
     };
 
-    if (!alive _heli || !alive _cargo) exitWith {
+    if (!alive _heli) exitWith {
         { deleteVehicle _x; } forEach crew _heli;
         deleteVehicle _heli;
         deleteGroup _grp;
+    };
+    if (!alive _cargo) exitWith {
+        [_heli, _grp, _crew, _pilot, _dropPos, _ropes] spawn _fnc_heliAbort;
     };
 
     _grp setBehaviour "CARELESS";
@@ -464,10 +515,13 @@ private _fnc_chemical_extract = {
         (_heli distance2D _cargo < 30) || _transitTimer > 40 || !alive _heli || !alive _cargo
     };
 
-    if (!alive _heli || !alive _cargo) exitWith {
+    if (!alive _heli) exitWith {
         { deleteVehicle _x; } forEach crew _heli;
         deleteVehicle _heli;
         deleteGroup _grp;
+    };
+    if (!alive _cargo) exitWith {
+        [_heli, _grp, _crew, _pilot, _dropPos, _ropes] spawn _fnc_heliAbort;
     };
 
     // --- 1. PRISE DE CONTRÔLE ET VOL STATIONNAIRE DE PRÉCISION ---
@@ -496,10 +550,13 @@ private _fnc_chemical_extract = {
         sleep 0.02;
     };
 
-    if (!alive _heli || !alive _cargo) exitWith {
+    if (!alive _heli) exitWith {
         { deleteVehicle _x; } forEach crew _heli;
         deleteVehicle _heli;
         deleteGroup _grp;
+    };
+    if (!alive _cargo) exitWith {
+        [_heli, _grp, _crew, _pilot, _dropPos, _ropes] spawn _fnc_heliAbort;
     };
 
     // --- 2. DESCENTE VERTICALE DOUCE VERS LE STATIONNAIRE BAS (8.0m ASL) ---
@@ -522,10 +579,13 @@ private _fnc_chemical_extract = {
     _heli setVelocity [0, 0, 0];
     _heli setVectorDirAndUp [_fwd, [0, 0, 1]];
 
-    if (!alive _heli || !alive _cargo) exitWith {
+    if (!alive _heli) exitWith {
         { deleteVehicle _x; } forEach crew _heli;
         deleteVehicle _heli;
         deleteGroup _grp;
+    };
+    if (!alive _cargo) exitWith {
+        [_heli, _grp, _crew, _pilot, _dropPos, _ropes] spawn _fnc_heliAbort;
     };
 
     // --- 3. FIXATION DES ÉLINGUES ET DÉPLOIEMENT DES CÂBLES AU SOL ---
@@ -536,9 +596,9 @@ private _fnc_chemical_extract = {
     _heli disableCollisionWith _cargo;
 
     _cargo setVectorDirAndUp [_fwd, [0, 0, 1]];
-    _cargo setMass 1; // Charge neutralisée à 1 kg pour éliminer tout déséquilibre physique
+    _cargo setMass 1;
 
-    private _ropes = [];
+    _ropes = [];
 
     // Connexion séquentielle des 4 câbles PhysX au camion au sol
     private _ropeLen = 7.0;
@@ -594,10 +654,13 @@ private _fnc_chemical_extract = {
         sleep 0.02;
     };
 
-    if (!alive _heli || !alive _cargo) exitWith {
+    if (!alive _heli) exitWith {
         { deleteVehicle _x; } forEach crew _heli;
         deleteVehicle _heli;
         deleteGroup _grp;
+    };
+    if (!alive _cargo) exitWith {
+        [_heli, _grp, _crew, _pilot, _dropPos, _ropes] spawn _fnc_heliAbort;
     };
 
     // --- 5. DÉPART SÉCURISÉ EN VOL DE TRANSIT (PLUS DE COMBAT, ÉVITEMENT DE RELIEF ACTIF) ---

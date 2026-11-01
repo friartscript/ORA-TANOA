@@ -139,35 +139,19 @@ _truck addEventHandler ["HandleDamage", {
 
 _truck setHitPointDamage ["HitEngine", 1];
 
-// --- GESTIONNAIRE DE DESTRUCTION : Explosion catastrophique, onde de choc et échec ---
 _truck addEventHandler ["Killed", {
     params ["_unit"];
-    if (missionNamespace getVariable ["LL_TaskDChemical_Failed", false]) exitWith {};
-    missionNamespace setVariable ["LL_TaskDChemical_Failed", true];
-
-    ["task_chemical", "FAILED", true] call BIS_fnc_taskSetState;
-    missionNamespace setVariable ["LL_g_taskInProgress", false];
 
     private _subTask = _unit getVariable ["LL_TaskDChemical_SubTask", ""];
     if (_subTask != "") then {
         [_subTask, "FAILED", true] call BIS_fnc_taskSetState;
     };
 
-    private _remaining = missionNamespace getVariable ["LL_TaskDChemical_RemainingTrucks", []];
-
-    {
-        private _t = _x;
-        if (!isNull _t && _t != _unit) then {
-            [_t] spawn {
-                params ["_t"];
-                waitUntil {
-                    sleep 5;
-                    isNull _t || !alive _t || ({ _x distance2D _t <= 800 } count (allPlayers select { alive _x })) == 0
-                };
-                if (!isNull _t) then { deleteVehicle _t; };
-            };
-        };
-    } forEach _remaining;
+    if (!(missionNamespace getVariable ["LL_TaskDChemical_Failed", false])) then {
+        missionNamespace setVariable ["LL_TaskDChemical_Failed", true];
+        ["task_chemical", "FAILED", true] call BIS_fnc_taskSetState;
+        missionNamespace setVariable ["LL_g_taskInProgress", false];
+    };
 
     private _posATL = getPosATL _unit;
     private _posASL = getPosASL _unit;

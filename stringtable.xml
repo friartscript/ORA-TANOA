@@ -2324,6 +2324,23 @@ Ağ doluysa istekleriniz reddedilebilir veya kesintiye uğrayabilir.&lt;br/&gt;&
             <Chinesesimp>叛军威胁 (罕见的平民伪装伏击)</Chinesesimp>
             <Turkish>İsyancı Tehdidi (Nadir sivil pusuları)</Turkish>
         </Key>
+        <Key ID="STR_MAIN_MENU_EXTRACTION_NOTICE">
+            <Original>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;EXTRACTION NOTICE:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;Extraction is strictly MANUAL via radio Support (0-8-3), NEVER automatic! You can call it at any time.&lt;/t&gt;</Original>
+            <English>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;EXTRACTION NOTICE:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;Extraction is strictly MANUAL via radio Support (0-8-3), NEVER automatic! You can call it at any time.&lt;/t&gt;</English>
+            <French>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;AVIS D'EXTRACTION :&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;L'extraction est strictement MANUELLE via le support radio (0-8-3), JAMAIS automatique ! Vous pouvez l'appeler à tout moment.&lt;/t&gt;</French>
+            <Spanish>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;AVISO DE EXTRACCIÓN:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;La extracción es estrictamente MANUAL mediante radio Soporte (0-8-3), ¡NUNCA automática! Puedes solicitarla en cualquier momento.&lt;/t&gt;</Spanish>
+            <German>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;EVAKUIERUNGSHINWEIS:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;Die Evakuierung erfolgt strikt MANUELL über Funkunterstützung (0-8-3), NIEMALS automatisch! Sie kann jederzeit angefordert werden.&lt;/t&gt;</German>
+            <Italian>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;AVVISO DI ESTRAZIONE:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;L'estrazione è rigorosamente MANUALE tramite radio Supporto (0-8-3), MAI automatica! Puoi richiederla in qualsiasi momento.&lt;/t&gt;</Italian>
+            <Polish>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;UWAGA DOTYCZĄCA EWAKUACJI:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;Ewakuacja odbywa się ściśle RĘCZNIE przez wsparcie radiowe (0-8-3), NIGDY automatycznie! Możesz ją wezwać w dowolnym momencie.&lt;/t&gt;</Polish>
+            <Portuguese>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;AVISO DE EXTRAÇÃO:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;A extração é estritamente MANUAL via rádio Suporte (0-8-3), NUNCA automática! Você pode solicitá-la a qualquer momento.&lt;/t&gt;</Portuguese>
+            <Russian>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;УВЕДОМЛЕНИЕ ОБ ЭВАКУАЦИИ:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;Эвакуация строго РУЧНАЯ через меню радиоподдержки (0-8-3), НИКОГДА не автоматическая! Вы можете вызвать её в любой момент.&lt;/t&gt;</Russian>
+            <Czech>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;UPOZORNĚNÍ K EVAKUACI:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;Evakuace je striktně MANUÁLNÍ přes rádiovou podporu (0-8-3), NIKDY automatická! Můžete ji povolat kdykoliv.&lt;/t&gt;</Czech>
+            <Korean>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;탈출 관련 안내:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;탈출은 무선 지원(0-8-3)을 통한 완전한 [수동] 요청이며, 절대 자동으로 진행되지 않습니다! 언제든 요청할 수 있습니다.&lt;/t&gt;</Korean>
+            <Japanese>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;脱出に関する重要通知:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;脱出は無線サポート(0-8-3)経由の完全【手動】要請であり、自動では行われません！作戦中いつでも要請可能です。&lt;/t&gt;</Japanese>
+            <Chinese>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;撤離重要通知：&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;撤離必須透過無線電支援（0-8-3）完全【手動】呼叫，絕非自動！您可以在任何時候呼叫撤離。&lt;/t&gt;</Chinese>
+            <Chinesesimp>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;撤离重要通知：&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;撤离必须通过无线电支援（0-8-3）完全【手动】呼叫，绝非自动！您可以在任何时候呼叫撤离。&lt;/t&gt;</Chinesesimp>
+            <Turkish>&lt;t color='#FF2222' font='RobotoCondensedBold' size='0.85'&gt;TAHLİYE BİLDİRİMİ:&lt;/t&gt;&lt;br/&gt;&lt;t color='#FF6666' size='0.80'&gt;Tahliye telsiz Destek (0-8-3) menüsü üzerinden kesinlikle MANUELDİR, ASLA otomatik değildir! İstediğiniz zaman çağırabilirsiniz.&lt;/t&gt;</Turkish>
+        </Key>
     </Package>
     <Package name="Task">
         <Key ID="STR_LL_Task_Extraction_Title">
